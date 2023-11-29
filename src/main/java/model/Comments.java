@@ -3,49 +3,57 @@ package model;
 public class Comments {
 
 	private int comment_id;
-	private Diary diary;
-	private Customer customer;
 	private String content;
-	@Override
-	public String toString() {
-		return "Comments [comment_id=" + comment_id + ", diary=" + diary + ", customer=" + customer + ", content="
-				+ content + "]";
+	private int diary_id;
+	private int customer_id;
+	
+	public Comments(){};
+
+	public Comments(int comment_id, String content, int diary_id, int customer_id) {
+		super();
+		this.comment_id = comment_id;
+		this.content = content;
+		this.diary_id = diary_id;
+		this.customer_id = customer_id;
 	}
+
 	public int getComment_id() {
 		return comment_id;
 	}
+
 	public void setComment_id(int comment_id) {
 		this.comment_id = comment_id;
 	}
-	public Diary getDiary() {
-		return diary;
-	}
-	public void setDiary(Diary diary) {
-		this.diary = diary;
-	}
-	public Customer getCustomer() {
-		return customer;
-	}
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
+
 	public String getContent() {
 		return content;
 	}
+
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Comments(int comment_id, Diary diary, Customer customer, String content) {
-		super();
-		this.comment_id = comment_id;
-		this.diary = diary;
-		this.customer = customer;
-		this.content = content;
+
+	public int getDiary_id() {
+		return diary_id;
 	}
-	
-	
-	
-	
+
+	public void setDiary_id(int diary_id) {
+		this.diary_id = diary_id;
+	}
+
+	public int getCustomer_id() {
+		return customer_id;
+	}
+
+	public void setCustomer_id(int customer_id) {
+		this.customer_id = customer_id;
+	}
+
+	@Override
+	public String toString() {
+		return "Comments [comment_id=" + comment_id + ", content=" + content + ", diary_id=" + diary_id
+				+ ", customer_id=" + customer_id + "]";
+	};
 	
 	
 
