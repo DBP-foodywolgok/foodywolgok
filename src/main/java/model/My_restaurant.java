@@ -4,96 +4,135 @@ import java.util.Date;
 
 public class My_restaurant {
 
-	private int my_restaurant_id;
-	private int score;
-	private Date created_at;
-	private Date updated_at;
-	private Category category;
-	private Restaurant restaurant;
-	private Customer customer;
-	private String name;
-	private String memo;
-	private String address;
-	@Override
-	public String toString() {
-		return "My_restaurant [my_restaurant_id=" + my_restaurant_id + ", score=" + score + ", created_at=" + created_at
-				+ ", updated_at=" + updated_at + ", category=" + category + ", restaurant=" + restaurant + ", customer="
-				+ customer + ", name=" + name + ", memo=" + memo + ", address=" + address + "]";
+	private int id = 0;
+	private String name = null;
+	private String address = null;
+	private int score = 0;
+	private String memo = null;
+	private Date created_at = null;
+	private Date updated_at = null;
+	private int customerId = 0;
+	private int restaurantId = 0;
+	private int categoryId = 0;
+	private String category = null; // category의 이름
+	
+	// default 생성자
+	public My_restaurant() {
+		
 	}
-	public int getMy_restaurant_id() {
-		return my_restaurant_id;
-	}
-	public void setMy_restaurant_id(int my_restaurant_id) {
-		this.my_restaurant_id = my_restaurant_id;
-	}
-	public int getScore() {
-		return score;
-	}
-	public void setScore(int score) {
+	
+	// 멤버 변수 초기화 생성자
+	public My_restaurant(int id, String name, String address, int score, String memo, Date created_at, Date updated_at,
+			int customerId, int restaurantId, int categoryId, String category) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.address = address;
 		this.score = score;
-	}
-	public Date getCreated_at() {
-		return created_at;
-	}
-	public void setCreated_at(Date created_at) {
+		this.memo = memo;
 		this.created_at = created_at;
-	}
-	public Date getUpdated_at() {
-		return updated_at;
-	}
-	public void setUpdated_at(Date updated_at) {
 		this.updated_at = updated_at;
-	}
-	public Category getCategory() {
-		return category;
-	}
-	public void setCategory(Category category) {
+		this.customerId = customerId;
+		this.restaurantId = restaurantId;
+		this.categoryId = categoryId;
 		this.category = category;
 	}
-	public Restaurant getRestaurant() {
-		return restaurant;
+	
+	// getter & setter
+	public int getId() {
+		return id;
 	}
-	public void setRestaurant(Restaurant restaurant) {
-		this.restaurant = restaurant;
+	
+	public void setId(int id) {
+		this.id = id;
 	}
-	public Customer getCustomer() {
-		return customer;
-	}
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getMemo() {
-		return memo;
-	}
-	public void setMemo(String memo) {
-		this.memo = memo;
-	}
+
 	public String getAddress() {
 		return address;
 	}
+
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public My_restaurant(int my_restaurant_id, int score, Date created_at, Date updated_at, Category category,
-			Restaurant restaurant, Customer customer, String name, String memo, String address) {
-		super();
-		this.my_restaurant_id = my_restaurant_id;
-		this.score = score;
-		this.created_at = created_at;
-		this.updated_at = updated_at;
-		this.category = category;
-		this.restaurant = restaurant;
-		this.customer = customer;
-		this.name = name;
-		this.memo = memo;
-		this.address = address;
+
+	public int getScore() {
+		return score;
 	}
-	
-	
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+
+	public String getMemo() {
+		return memo;
+	}
+
+	public void setMemo(String memo) {
+		this.memo = memo;
+	}
+
+	public Date getCreated_at() {
+		return created_at;
+	}
+
+	public void setCreated_at(Date created_at) {
+		this.created_at = created_at;
+	}
+
+	public Date getUpdated_at() {
+		return updated_at;
+	}
+
+	public void setUpdated_at(Date updated_at) {
+		this.updated_at = updated_at;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public int getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
+	}
+
+	public int getRestaurantId() {
+		return restaurantId;
+	}
+
+	public void setRestaurantId(int restaurantId) {
+		this.restaurantId = restaurantId;
+	}
+
+	public int getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
+	}
+
+	// toString
+	@Override
+	public String toString() {
+		return "My_restaurant [id=" + id + ", name=" + name + ", address=" + address + ", score=" + score + ", memo="
+				+ memo + ", created_at=" + created_at + ", updated_at=" + updated_at + ", customerId=" + customerId
+				+ ", restaurantId=" + restaurantId + ", categoryId=" + categoryId + ", category=" + category + "]";
+	}
+
 }
