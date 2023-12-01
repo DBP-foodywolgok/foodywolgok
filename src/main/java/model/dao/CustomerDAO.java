@@ -14,8 +14,6 @@ public class CustomerDAO {
 
 	private JDBCUtil jdbcUtil = null;
 	
-
-	
 	public CustomerDAO() {			
 		jdbcUtil = new JDBCUtil();	// JDBCUtil 객체 생성
 	}

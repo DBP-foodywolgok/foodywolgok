@@ -9,6 +9,15 @@ public class Customer {
     private String password;
     private String name;
 
+    private List<String> favoriteCategories; // 고객이 선택한 카테고리 정보를 담을 리스트
+
+    public List<String> getFavoriteCategories() {
+        return favoriteCategories;
+    }
+
+    public void setFavoriteCategories(List<String> favoriteCategories) {
+        this.favoriteCategories = favoriteCategories;
+    }
   
 
     public Customer(String email, String password, String name) {
@@ -17,6 +26,10 @@ public class Customer {
 		this.email = email;
 		this.password = password;
 		this.name = name;
+	}
+
+	public Customer() {
+		// TODO Auto-generated constructor stub
 	}
 
 	// ID에 접근하기 위한 게터와 세터
