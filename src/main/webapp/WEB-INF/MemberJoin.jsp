@@ -55,24 +55,25 @@
 </head>
 <body>
 <div class="container">
-    <form class="form-signin" action="/customer" method="post">
+
+<form class="form-signin" method="post" action="<c:url value='/customer/register' />">
         <h2 class="form-signin-heading text-center">회원 가입</h2>
 
-        <!-- 이름 입력 필드 -->
-        <label for="inputName" class="visually-hidden">이름</label>
-        <input type="text" id="inputName" class="form-control" placeholder="이름" required autofocus>
+      <!-- 이름 입력 필드 -->
+<label for="inputName" class="visually-hidden">이름</label>
+<input type="text" id="inputName" name="inputName" class="form-control" placeholder="이름" required autofocus>
 
-        <!-- 이메일 입력 필드 -->
-        <label for="inputEmail" class="visually-hidden">이메일 주소</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="이메일 주소" required>
+<!-- 이메일 입력 필드 -->
+<label for="inputEmail" class="visually-hidden">이메일 주소</label>
+<input type="email" id="inputEmail" name="inputEmail" class="form-control" placeholder="이메일 주소" required>
 
-        <!-- 비밀번호 입력 필드 -->
-        <label for="inputPassword" class="visually-hidden">비밀번호</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="비밀번호" required>
+<!-- 비밀번호 입력 필드 -->
+<label for="inputPassword" class="visually-hidden">비밀번호</label>
+<input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="비밀번호" required>
 
-        <!-- 비밀번호 재입력 필드 -->
-        <label for="inputConfirmPassword" class="visually-hidden">비밀번호 확인</label>
-        <input type="password" id="inputConfirmPassword" class="form-control" placeholder="비밀번호 확인" required>
+<!-- 비밀번호 재입력 필드 -->
+<label for="inputConfirmPassword" class="visually-hidden">비밀번호 확인</label>
+<input type="password" id="inputConfirmPassword" name="inputConfirmPassword" class="form-control" placeholder="비밀번호 확인" required>
 
         <!-- 선호하는 음식 종류 선택 -->
         <label class="visually-hidden">선호하는 음식 종류</label>
