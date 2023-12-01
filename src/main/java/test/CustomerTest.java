@@ -1,18 +1,18 @@
-package controller;
+package test;
 
 import java.sql.SQLException;
 
 import model.Customer;
 import model.dao.CustomerDAO;
 
-public class Test {
+public class CustomerTest {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
 		Customer customer = new Customer("example@email.com", "password123", "John Doe");
 	        customer.setCustomer_id(1); // 고객 ID 설정 (고유한 값)
-	        customer.setEmail("glp0509@naver.com"); // 이메일 설정
+	        customer.setEmail("1234@naver.com"); // 이메일 설정
 	        customer.setPassword("password123"); // 비밀번호 설정
 	        customer.setName("John Doe"); // 이름 설정
 
