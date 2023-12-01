@@ -3,30 +3,28 @@ package model;
 public class Customer_Category {
 
 	
-	private Customer customer;
-	private Category category;
-	@Override
-	public String toString() {
-		return "Customer_Category [customer=" + customer + ", category=" + category + "]";
-	}
-	public Customer getCustomer() {
-		return customer;
-	}
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
-	public Category getCategory() {
-		return category;
-	}
-	public void setCategory(Category category) {
-		this.category = category;
-	}
-	public Customer_Category(Customer customer, Category category) {
-		super();
-		this.customer = customer;
-		this.category = category;
-	}
-	
-	
-	
+	  private int categoryId;
+	    private int customerId;
+		@Override
+		public String toString() {
+			return "Customer_Category [categoryId=" + categoryId + ", customerId=" + customerId + "]";
+		}
+		public int getCategoryId() {
+			return categoryId;
+		}
+		public void setCategoryId(int categoryId) {
+			this.categoryId = categoryId;
+		}
+		public int getCustomerId() {
+			return customerId;
+		}
+		public void setCustomerId(int customerId) {
+			this.customerId = customerId;
+		}
+		public Customer_Category(int categoryId, int customerId) {
+			super();
+			this.categoryId = categoryId;
+			this.customerId = customerId;
+		}
+	    
 }

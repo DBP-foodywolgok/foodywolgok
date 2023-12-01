@@ -71,7 +71,4 @@ public class Wishlist {
 		this.memo = memo;
 		this.restaurant_wishlists = restaurant_wishlists;
 	}
-	
-	
-	
 }
