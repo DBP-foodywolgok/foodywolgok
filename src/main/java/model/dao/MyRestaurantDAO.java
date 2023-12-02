@@ -1,6 +1,7 @@
 package model.dao;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,11 +85,12 @@ public class MyRestaurantDAO {
 	public int insertMyRestaurantByRes(My_restaurant myR) {
 		int result = 0;
 		String insertByRes = "INSERT INTO my_restaurant (my_restaurant_id, name, address, score, memo, created_at, customer_id, restaurant_id, category_id) "
-							+ "VALUES (?, NULL, NULL, ?, ?, ?, ?, ?, ?)";
-		Object[] param = new Object[] { 1, myR.getScore(), myR.getMemo(), myR.getCreated_at(), myR.getCustomerId(), myR.getRestaurantId(), myR.getCategoryId() }; // my_restaurant_id는 임시로 하드코딩함
+							+ "VALUES (my_restaurant_seq.nextval, NULL, NULL, ?, ?, ?, ?, ?, ?)";
+		Object[] param = new Object[] { myR.getScore(), myR.getMemo(), myR.getCreated_at(), myR.getCustomerId(), myR.getRestaurantId(), myR.getCategoryId() }; // my_restaurant_id는 임시로 하드코딩함
 		jdbcUtil.setSqlAndParameters(insertByRes, param);
 		try {
 			result = jdbcUtil.executeUpdate();
+			return result;
 		} catch (Exception ex) {
 			jdbcUtil.rollback();
 			ex.printStackTrace();
@@ -102,11 +104,12 @@ public class MyRestaurantDAO {
 	public int insertMyRestaurantByUser(My_restaurant myR) {
 		int result = 0;
 		String insertByUser = "INSERT INTO my_restaurant (my_restaurant_id, name, address, score, memo, created_at, customer_id, restaurant_id, category_id) "
-							+ "VALUES (?, ?, ?, ?, ?, ?, ?, NULL, ?)";
-		Object[] param = new Object[] { 1, myR.getName(), myR.getAddress(), myR.getScore(), myR.getMemo(), myR.getCreated_at(), myR.getCustomerId(), myR.getCategoryId() }; // my_restaurant_id는 임시로 하드코딩함
+							+ "VALUES (my_restaurant_seq.nextval, ?, ?, ?, ?, ?, ?, NULL, ?)";
+		Object[] param = new Object[] { myR.getName(), myR.getAddress(), myR.getScore(), myR.getMemo(), myR.getCreated_at(), myR.getCustomerId(), myR.getCategoryId() }; // my_restaurant_id는 임시로 하드코딩함
 		jdbcUtil.setSqlAndParameters(insertByUser, param);
 		try {
 			result = jdbcUtil.executeUpdate();
+			return result;
 		} catch (Exception ex) {
 			jdbcUtil.rollback();
 			ex.printStackTrace();
@@ -116,8 +119,8 @@ public class MyRestaurantDAO {
 		} return 0;
 	}
 	
-	// My_restaurant 테이블 데이터 수정 (식당이 DB에 등록외어 있는 경우)
-	public int updateMyRestaurntByRes(My_restaurant myR, String mrId) {
+	// My_restaurant 테이블 데이터 수정 (식당이 DB에 등록되어 있는 경우)
+	public int updateMyRestaurantByRes(My_restaurant myR, int mrId) {
 		int result = 0;
 		String updateByRes = "UPDATE my_restaurant SET name = NULL, address = NULL, "
 							+ "score = ?, memo = ?, restaurant_id = ?, category_id = ? "
@@ -126,6 +129,7 @@ public class MyRestaurantDAO {
 		jdbcUtil.setSqlAndParameters(updateByRes, param);
 		try {
 			result = jdbcUtil.executeUpdate();
+			return result;
 		} catch (Exception ex) {
 			jdbcUtil.rollback();
 			ex.printStackTrace();
@@ -136,7 +140,7 @@ public class MyRestaurantDAO {
 	}
 	
 	// My_restaurant 테이블 데이터 수정 (사용자가 직접 식당 정보를 입력할 경우)
-	public int updateMyRestaurntByUser(My_restaurant myR, String mrId) {
+	public int updateMyRestaurantByUser(My_restaurant myR, int mrId) {
 		int result = 0;
 		String updateByRes = "UPDATE my_restaurant SET name = ?, address = ?, "
 							+ "score = ?, memo = ?, restaurant_id = NULL, category_id = ? "
@@ -145,6 +149,7 @@ public class MyRestaurantDAO {
 		jdbcUtil.setSqlAndParameters(updateByRes, param);
 		try {
 			result = jdbcUtil.executeUpdate();
+			return result;
 		} catch (Exception ex) {
 			jdbcUtil.rollback();
 			ex.printStackTrace();
@@ -163,6 +168,7 @@ public class MyRestaurantDAO {
 		jdbcUtil.setSqlAndParameters(delete, param);
 		try {
 			result = jdbcUtil.executeUpdate();
+			return result;
 		} catch (Exception ex) {
 			jdbcUtil.rollback();
 			ex.printStackTrace();
@@ -176,8 +182,9 @@ public class MyRestaurantDAO {
 	public List<String[]> findRestaurant(String keyword) {
 		String findQuery = "SELECT r.name name, r.address address, c.name category "
 						+ "FROM restaurant r JOIN category c ON r.category_id = c.category_id "
-						+ "WHERE name LIKE '%' || ? || '%'";
+						+ "WHERE r.name LIKE '%' || ? || '%'";
 		Object[] param = new Object[] { keyword };
+		jdbcUtil.setSqlAndParameters(findQuery, param);
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();
 			List<String[]> list = new ArrayList<>();
