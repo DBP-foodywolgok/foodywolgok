@@ -23,6 +23,16 @@ public class RequestMapping {
     	// 각 uri에 대응되는 controller 객체를 생성 및 저장
     	mappings.put("/", new ForwardController("index.jsp"));
         mappings.put("/customer", new ForwardController("/MemberJoin.jsp"));
+        mappings.put("/customer/login",new ForwardController("/login.jsp"));
+        mappings.put("/customer/findPassword", new ForwardController("/FindPassword.jsp"));
+        mappings.put("/customer/diaryList", new ForwardController("/DiaryList.jsp"));
+        mappings.put("/customer/recommendation", new ForwardController("/Recommendation.jsp"));
+        mappings.put("/customer/friendlist", new ForwardController("/FriendList.jsp"));
+        mappings.put("/customer/mypage", new ForwardController("/MyPage.jsp"));
+        mappings.put("/customer/memberInformation", new ForwardController("/MemberInformation.jsp"));
+        mappings.put("/customer/changePassword", new ForwardController("/ChangePassword.jsp"));
+        mappings.put("/customer/findFriendList", new ForwardController("/FriendList.jsp"));
+        
     //    mappings.put("/customer/register", new customerController());
     	//mappings.put("/customer", new customerController());
    
