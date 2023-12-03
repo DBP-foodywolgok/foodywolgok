@@ -58,12 +58,14 @@
         <!-- placeholder 속성에 원하는 플레이스홀더 텍스트를 넣으세요 -->
         <input type="password" id="inputPassword" class="form-control" placeholder="사용자의 비밀번호가 표시됩니다" required>
         <button class="btn btn-lg btn-darkpurple btn-block" type="submit">로그인하기</button>
-        <a href="#" class="btn btn-lg btn-darkpurple btn-block">비밀번호 찾기</a>
+       <a href="/customer/findPassword" class="btn btn-lg btn-darkpurple btn-block">비밀번호 찾기</a>
     </form>
 </div>
  
 
     <!-- 부트스트랩 및 자바스크립트 라이브러리 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+   
+  
 </body>
 </html>

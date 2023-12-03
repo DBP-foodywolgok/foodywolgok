@@ -226,6 +226,11 @@
           <li class="nav-item">
            <a class="nav-link" href="#" id="joinBtn">Join</a>
           </li>
+          
+          <li>
+          <li class="nav-item">
+          <a class="nav-link" href="/customer/mypage" id="mypageBtn">MyPage</a>
+          </li>
         </ul>
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -275,17 +280,17 @@
     <div class="col-lg-4">
       <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>
       <h4 class="fw-normal">나만의 맛집 다이어리</h4>
-      <p><a class="btn btn-secondary" href="#">View details »</a></p>
+      <p><a class="btn btn-secondary" href="/customer/diaryList">View details »</a></p>
     </div><!-- /.col-lg-4 -->
     <div class="col-lg-4">
       <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>
       <h4 class="fw-normal">음식 추천</h4>
-      <p><a class="btn btn-secondary" href="#">View details »</a></p>
+      <p><a class="btn btn-secondary" href="/customer/recommendation">View details »</a></p>
     </div><!-- /.col-lg-4 -->
     <div class="col-lg-4">
       <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>
       <h4 class="fw-normal">친구 리스트 </h4>
-      <p><a class="btn btn-secondary" href="#">View details »</a></p>
+      <p><a class="btn btn-secondary" href="/customer/friendlist">View details »</a></p>
     </div><!-- /.col-lg-4 -->
   </div><!-- /.row -->
 </div><!-- /.container -->
@@ -315,6 +320,15 @@
     
     // MemberJoin.jsp 페이지로 이동
     window.location.href = '/customer';
+  });
+</script>
+
+  <script>
+  document.getElementById('loginBtn').addEventListener('click', function(event) {
+    event.preventDefault(); // 기본 이벤트 방지 (링크의 기본 동작인 페이지 이동을 막음)
+    
+    // MemberJoin.jsp 페이지로 이동
+    window.location.href = '/customer/login';
   });
 </script>
 
