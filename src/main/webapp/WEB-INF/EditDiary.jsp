@@ -89,7 +89,6 @@
 	        <div class="form-check-label">
             <div style="display: flex; align-items: center;">
                 <input class="form-control" type="checkbox" value="친구공유" id="input-friend" checked >
-	        
             </div>
         </div><br/>
 	
