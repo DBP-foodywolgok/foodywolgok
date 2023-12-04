@@ -76,7 +76,9 @@
 <body>
 
 	<div class="mb-3 center-form">
-	    <form action="Registration-Diary" method="post">
+	      <form action="Registration-Diary" method="post">  
+	
+	
 	        <h3>다이어리 작성</h3>
 	
 	        <label for="input_title" class="form-label">제목</label>
@@ -104,7 +106,7 @@
 	        
 	
 	        <!--  <button type="submit" class="btn btn-primary">등록하기</button>-->
-	    	<a href="/diary/view" class="btn btn-primary">등록하기</a>
+	    	<a href="DiaryDetail.jsp" class="btn btn-primary">등록하기</a>
 	    </form>
 	</div>
 

@@ -15,21 +15,19 @@
         }
 
         header {
-        	text-align: center;
+            text-align: center;
             padding: 5px;
         }
 
         form {
             text-align: center;
             margin: 20px 0;
-        
-		}
-		
+        }
+
         label {
             display: inline-block;
             text-align: left;
         }
-        
 
         hr {
             border: 1px solid #dee2e6; /* 구분선 스타일 */
@@ -81,6 +79,9 @@
     </div>
 
     <hr/>
+
+    <!-- Button added at the end of the body -->
+   <button onclick="location.href='/diary/view'">다이어리 추가</button>
 
 </body>
 </html>
