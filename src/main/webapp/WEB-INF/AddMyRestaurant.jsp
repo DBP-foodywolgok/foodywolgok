@@ -18,7 +18,7 @@
 		<div class="input-group mb-3">
 			<span class="input-group-text" id="inputGroup-sizing-default">이름</span>
   			<input type="text" class="form-control" placeholder="식당의 이름을 입력하세요." aria-label="Restaurant's Name" aria-describedby="button-addon2">
-  			<button class="btn btn-outline-secondary" type="button" id="button-addon2">검색</button>
+  			<button class="btn btn-outline-secondary" type="button" id="button-addon2" onClick="location.href='${pageContext.request.contextPath}/restaurant/find'">검색</button>
 		</div>
 		<div class="input-group mb-3">
   			<span class="input-group-text" id="inputGroup-sizing-default">위치</span>
@@ -39,7 +39,7 @@
   			<textarea class="form-control" aria-label="Memo" rows="8"></textarea>
 		</div><br>
 		<input class="btn btn-outline-primary" type="button" value="등록"> 
-		<button type="button" class="btn btn-outline-primary">취소</button>
+		<button type="button" class="btn btn-outline-primary" onClick="location.href='${pageContext.request.contextPath}/myRestaurant/list'">취소</button>
 	</div>
 </body>
 </html>

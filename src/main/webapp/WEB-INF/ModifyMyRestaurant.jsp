@@ -39,7 +39,7 @@
   			<textarea class="form-control" aria-label="Memo" rows="8"></textarea>
 		</div><br>
 		<input class="btn btn-outline-primary" type="button" value="수정"> 
-		<button type="button" class="btn btn-outline-primary">취소</button>
+		<button type="button" class="btn btn-outline-primary" onClick="location.href='${pageContext.request.contextPath}/myRestaurant/list'">취소</button>
 	</div>
 </body>
 </html>
