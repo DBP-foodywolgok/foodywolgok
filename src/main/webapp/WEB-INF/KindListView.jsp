@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="model.dao.RestaurantDAO" %>
+<%@ page import="java.util.List" %>
+<%@ page import="model.Restaurant" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,25 +36,33 @@
     </div>
 
     <div class="container mt-4">
-        <div class="restaurant-card">
-            <!-- 음식점 정보를 넣어주세요 -->
-            <img src="restaurant1.jpg" alt="음식점 사진 1">
-            <h4>음식점 이름</h4>
-            <p>음식점 주소</p>
-        </div>
+        <%
+            // 카테고리 파라미터 받아오기
+            String category = request.getParameter("category");
+            if (category != null) {
+                RestaurantDAO restaurantDAO = new RestaurantDAO();
+                List<Restaurant> restaurants = restaurantDAO.getRestaurantsByCategory(category);
 
-        <div class="line"></div>
-
-        <div class="restaurant-card">
-            <!-- 음식점 정보를 넣어주세요 -->
-            <img src="restaurant2.jpg" alt="음식점 사진 2">
-            <h4>음식점 이름</h4>
-            <p>음식점 주소</p>
-        </div>
-
-        <div class="line"></div>
-
-        <!-- 다른 음식점들을 동일한 형식으로 추가하실 수 있습니다. -->
+                // 받아온 음식점 목록을 출력하는 코드 작성
+                if (restaurants != null && !restaurants.isEmpty()) {
+                    for (Restaurant restaurant : restaurants) {
+        %>
+                        <div class="restaurant-card">
+                        <%--<img src="<%= restaurant.getImageURL() %>" alt="<%= restaurant.getName() %> 사진">--%>
+                            <h4><%= restaurant.getName() %></h4>
+                            <p><%= restaurant.getAddress() %></p>
+                        </div>
+                        <div class="line"></div>
+        <%
+                    }
+                } else {
+        %>
+                    <!-- 해당 카테고리에 속하는 음식점이 없을 때 처리하는 부분 -->
+                    <p>해당하는 음식점이 없습니다.</p>
+        <%
+                }
+            }
+        %>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>

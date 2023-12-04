@@ -38,6 +38,12 @@ public class RequestMapping {
         mappings.put("/diary/update", new ForwardController("/EditDiary.jsp"));
         mappings.put("/diary/list", new ForwardController("/DiaryList.jsp"));
         
+        mappings.put("/restaurant/search", new ForwardController("/MapSearchView.jsp"));
+        mappings.put("/restaurant/view", new ForwardController("/MapDetailsView.jsp"));
+        mappings.put("/wishlist/view", new ForwardController("/WishList.jsp"));
+        
+        
+        
     //    mappings.put("/customer/register", new customerController());
     	//mappings.put("/customer", new customerController());
    

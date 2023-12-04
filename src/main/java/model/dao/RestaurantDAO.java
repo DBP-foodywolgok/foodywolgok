@@ -53,9 +53,9 @@ public class RestaurantDAO {
         Restaurant restaurant = null;
         
         StringBuilder query = new StringBuilder();
-        query.append("SELECT restaurant_id, category_id, introduction, name, adress ");
+        query.append("SELECT restaurant_id, category_id, introduction, name, address ");
         query.append("FROM restaurant ");
-        query.append("WHERE latitude = ?, longitude = ?");
+        query.append("WHERE latitude = ? AND longitude = ?");
         
         try {
             jdbcUtil.setSqlAndParameters(query.toString(), new Object[]{latitude, longitude}); // JDBCUtil에 질의문과 파라미터 설정
@@ -84,9 +84,10 @@ public class RestaurantDAO {
         List<Restaurant> restaurants = new ArrayList<>();
         
         StringBuilder query = new StringBuilder();
-        query.append("SELECT r.restaurant_id, r.category_id, r.introduction, r.latitude, r.longitude, r.name, r.adress FROM restaurant r");
+        query.append("SELECT r.restaurant_id, r.category_id, r.introduction, r.latitude, r.longitude, r.name, r.address FROM restaurant r ");
         query.append("INNER JOIN restaurant_wishlist rw ON r.restaurant_id = rw.restaurant_id ");
         query.append("WHERE rw.wishlist_id = ?");
+
 
         try {
             jdbcUtil.setSqlAndParameters(query.toString(), new Object[]{wishlistId}); // JDBCUtil에 질의문과 파라미터 설정
@@ -118,11 +119,12 @@ public class RestaurantDAO {
         String insert = "INSERT INTO restaurant_wishlist (wishlist_id, restaurant_id) VALUES (?, ?)";
         try {
         jdbcUtil.setSqlAndParameters(insert.toString(), new Object[]{wishlistId, restaurantId}); // JDBCUtil에 질의문과 파라미터 설정
+        jdbcUtil.executeUpdate(); // Insert 쿼리 실행
+        jdbcUtil.commit(); // 커밋
         } catch (Exception ex) {
             jdbcUtil.rollback();
             ex.printStackTrace();
         } finally {
-            jdbcUtil.commit();
             jdbcUtil.close();       // ResultSet, PreparedStatement, Connection 등 해제
         }
     }
@@ -132,13 +134,47 @@ public class RestaurantDAO {
         String delete = "DELETE FROM restaurant_wishlist WHERE wishlist_id = ? AND restaurant_id = ?";
         try {
             jdbcUtil.setSqlAndParameters(delete.toString(), new Object[]{wishlistId, restaurantId}); // JDBCUtil에 질의문과 파라미터 설정
-             } catch (Exception ex) {
+            jdbcUtil.executeUpdate(); // Delete 쿼리 실행
+            jdbcUtil.commit(); // 커밋
+        } catch (Exception ex) {
                  jdbcUtil.rollback();
                  ex.printStackTrace();
              } finally {
-                 jdbcUtil.commit();
                  jdbcUtil.close();       // ResultSet, PreparedStatement, Connection 등 해제
              }
+    }
+    
+    public List<Restaurant> getRestaurantsByCategory(String category_name) {
+        ResultSet rs = null;
+        List<Restaurant> restaurants = new ArrayList<>();
+
+        StringBuilder query = new StringBuilder();
+
+        query.append("SELECT r.restaurant_id, r.category_id, r.introduction, r.latitude, r.longitude, r.name, r.address FROM restaurant r ");
+        query.append("INNER JOIN category c ON r.category_id = c.category_id ");
+        query.append("WHERE c.name = ?");
+
+        try {
+            jdbcUtil.setSqlAndParameters(query.toString(), new Object[]{category_name}); // 검색어를 포함하는 음식점 검색
+            rs = jdbcUtil.executeQuery();
+            while (rs.next()) {
+                int restaurantId = rs.getInt("restaurant_id");
+                int categoryId = rs.getInt("category_id");
+                String introduction = rs.getString("introduction");
+                float latitude = rs.getFloat("latitude");
+                float longitude = rs.getFloat("longitude");
+                String name = rs.getString("name");
+                String address = rs.getString("address");
+
+                Restaurant restaurant = new Restaurant(restaurantId, categoryId, introduction, latitude, longitude, name, address);
+                restaurants.add(restaurant);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            jdbcUtil.close(); // ResultSet, PreparedStatement, Connection 등 해제
+        }
+        return restaurants;
     }
     
 }

@@ -16,33 +16,33 @@
             </button>
             <input type="text" class="form-control border-0 rounded-start" placeholder="음식점, 주소를 검색하세요" aria-label="Search" aria-describedby="basic-addon2">
             <div class="input-group-append">
-                <button class="btn btn-primary rounded-end" type="button">검색</button>
+	             <a href="/restaurant/search" class="btn btn-primary rounded-end">검색</a>
             </div>
         </div>
     </div>
 
-    <div class="container text-center">
-        <div class="row">
-            <div class="col-md-2 mx-auto"> <!-- col 클래스로 간격을 조절하고 mx-auto로 가운데 정렬 -->
-                <button class="btn btn-primary" type="button">한식</button>
-            </div>
-            <div class="col-md-2 mx-auto">
-                <button class="btn btn-primary" type="button">양식</button>
-            </div>
-            <div class="col-md-2 mx-auto">
-                <button class="btn btn-primary" type="button">아시아</button>
-            </div>
-            <div class="col-md-2 mx-auto">
-                <button class="btn btn-primary" type="button">양식</button>
-            </div>
-            <div class="col-md-2 mx-auto">
-                <button class="btn btn-primary" type="button">중식</button>
-            </div>
-            <div class="col-md-2 mx-auto">
-                <button class="btn btn-primary" type="button">분식</button>
-            </div>
-        </div>
-    </div>
+   <div class="container text-center">
+	    <div class="row">
+	        <div class="col-md-2 mx-auto"> <!-- col 클래스로 간격을 조절하고 mx-auto로 가운데 정렬 -->
+	            <a href="/kindlist?category=한식" class="btn btn-primary" role="button">한식</a>
+	        </div>
+	        <div class="col-md-2 mx-auto">
+	            <a href="/kindlist?category=양식" class="btn btn-primary" role="button">양식</a>
+	        </div>
+	        <div class="col-md-2 mx-auto">
+	            <a href="/kindlist?category=아시아" class="btn btn-primary" role="button">아시아</a>
+	        </div>
+	        <div class="col-md-2 mx-auto">
+	            <a href="/kindlist?category=일식" class="btn btn-primary" role="button">일식</a>
+	        </div>
+	        <div class="col-md-2 mx-auto">
+	            <a href="/kindlist?category=중식" class="btn btn-primary" role="button">중식</a>
+	        </div>
+	        <div class="col-md-2 mx-auto">
+	            <a href="/kindlist?category=분식" class="btn btn-primary" role="button">분식</a>
+        	</div>
+    	</div>
+	</div>
     <!-- 지도를 표시할 div 추가 -->
     <div id="map" style="height: 600px;"></div>
 
