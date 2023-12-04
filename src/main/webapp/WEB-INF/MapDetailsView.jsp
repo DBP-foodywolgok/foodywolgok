@@ -48,27 +48,27 @@
     </div>
 
     <div class="container text-center">
-        <div class="row">
-            <div class="col-md-2 mx-auto"> <!-- col 클래스로 간격을 조절하고 mx-auto로 가운데 정렬 -->
-                <button class="btn btn-primary" type="button">한식</button>
-            </div>
-            <div class="col-md-2 mx-auto">
-                <button class="btn btn-primary" type="button">양식</button>
-            </div>
-            <div class="col-md-2 mx-auto">
-                <button class="btn btn-primary" type="button">아시아</button>
-            </div>
-            <div class="col-md-2 mx-auto">
-                <button class="btn btn-primary" type="button">양식</button>
-            </div>
-            <div class="col-md-2 mx-auto">
-                <button class="btn btn-primary" type="button">중식</button>
-            </div>
-            <div class="col-md-2 mx-auto">
-                <button class="btn btn-primary" type="button">분식</button>
-            </div>
-        </div>
-    </div>
+	    <div class="row">
+	        <div class="col-md-2 mx-auto"> <!-- col 클래스로 간격을 조절하고 mx-auto로 가운데 정렬 -->
+	            <a href="/kindlist?category=한식" class="btn btn-primary" role="button">한식</a>
+	        </div>
+	        <div class="col-md-2 mx-auto">
+	            <a href="/kindlist?category=양식" class="btn btn-primary" role="button">양식</a>
+	        </div>
+	        <div class="col-md-2 mx-auto">
+	            <a href="/kindlist?category=아시아" class="btn btn-primary" role="button">아시아</a>
+	        </div>
+	        <div class="col-md-2 mx-auto">
+	            <a href="/kindlist?category=일식" class="btn btn-primary" role="button">일식</a>
+	        </div>
+	        <div class="col-md-2 mx-auto">
+	            <a href="/kindlist?category=중식" class="btn btn-primary" role="button">중식</a>
+	        </div>
+	        <div class="col-md-2 mx-auto">
+	            <a href="/kindlist?category=분식" class="btn btn-primary" role="button">분식</a>
+        	</div>
+    	</div>
+	</div>
 
     <div class="container-fluid d-flex align-items-end justify-content-center fixed-bottom">
         <div class="restaurant-info">
