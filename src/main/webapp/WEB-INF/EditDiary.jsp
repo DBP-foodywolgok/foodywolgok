@@ -96,7 +96,8 @@
 	        <label for="input_content" class="form-label">내용</label>
 	        <textarea class="form-control" id="input_content" rows="7" placeholder="월곡의 모든 맛집은 푸디 월곡에.."></textarea><br/>
 	
-	        <button type="submit" class="btn btn-primary">수정하기</button>
+	        <!--  <button type="submit" class="btn btn-primary">수정하기</button>-->
+	        <a href="/diary/list" class="btn btn-primary">수정하기</a>
 	    </form>
 	</div>
 

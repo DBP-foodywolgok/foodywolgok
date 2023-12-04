@@ -163,7 +163,8 @@
 
     <!-- 다이어리 수정하기, 삭제하기 버튼 -->
     <div class="diary-buttons">
-        <button type="button" class="btn btn-info">다이어리 수정하기</button>
+        <!-- <button type="button" class="btn btn-info">다이어리 수정하기</button>-->
+        <a href="/diary/update" class="btn btn-info">다이어리 수정하기</a>
         <button type="button" class="btn btn-danger">다이어리 삭제하기</button>
     </div>
 </div>
