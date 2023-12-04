@@ -25,12 +25,12 @@
 <body>
     <div class="container mt-4 text-center">
         <button class="btn btn-primary mb-4">종류별 찾기</button>
-        <div class="category-button">한식</div>
-        <div class="category-button">양식</div>
-        <div class="category-button">아시아</div>
-        <div class="category-button">일식</div>
-        <div class="category-button">중식</div>
-        <div class="category-button">분식</div>
+        <a href="kindlist?category=한식" class="category-button">한식</a>
+		<a href="kindlist?category=양식" class="category-button">양식</a>
+		<a href="kindlist?category=아시아" class="category-button">아시아</a>
+		<a href="kindlist?category=일식" class="category-button">일식</a>
+		<a href="kindlist?category=중식" class="category-button">중식</a>
+		<a href="kindlist?category=분식" class="category-button">분식</a>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>

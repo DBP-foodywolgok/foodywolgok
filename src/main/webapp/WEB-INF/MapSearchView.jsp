@@ -39,11 +39,11 @@
                 <hr>
                 <div class="result-list" id="resultList">
                     <!-- 검색 결과가 여기에 동적으로 추가됩니다 -->
-                    <div class="restaurant-info">음식점 이름: [음식점 이름]<br>주소: [음식점 주소]</div>
+                    <div class="restaurant-info" onclick="showDetails('음식점 이름', '음식점 주소')">음식점 이름: [음식점 이름]<br>주소: [음식점 주소]</div>
                     <hr>
-                    <div class="restaurant-info">음식점 이름: [음식점 이름]<br>주소: [음식점 주소]</div>
+                    <div class="restaurant-info" onclick="showDetails('음식점 이름', '음식점 주소')">음식점 이름: [음식점 이름]<br>주소: [음식점 주소]</div>
                     <hr>
-                    <div class="restaurant-info">음식점 이름: [음식점 이름]<br>주소: [음식점 주소]</div>
+                    <div class="restaurant-info" onclick="showDetails('음식점 이름', '음식점 주소')">음식점 이름: [음식점 이름]<br>주소: [음식점 주소]</div>
                     <hr>
                 </div>
             </div>
@@ -60,6 +60,10 @@
 
             // 여기에 검색 결과를 받아와서 동적으로 추가하는 코드를 작성합니다.
             // 예시: resultList.innerHTML += '<div class="restaurant-info">음식점 이름: [음식점 이름]<br>주소: [음식점 주소]</div>';
+        }
+        function showDetails(name, address) {
+            // 해당 음식점의 디테일한 정보를 보여주는 페이지로 이동
+            window.location.href = '/restaurant/view?name=' + encodeURIComponent(name) + '&address=' + encodeURIComponent(address);
         }
     </script>
 </body>

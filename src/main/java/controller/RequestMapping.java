@@ -39,13 +39,16 @@ public class RequestMapping {
         mappings.put("/diary/update", new ForwardController("/EditDiary.jsp"));
         mappings.put("/diary/list", new ForwardController("/DiaryList.jsp"));
         
+        mappings.put("/restaurant/search", new ForwardController("/MapSearchView.jsp"));
+        mappings.put("/restaurant/view", new ForwardController("/MapDetailsView.jsp"));
+        mappings.put("/wishlist/view", new ForwardController("/WishList.jsp"));
+        
         mappings.put("/myRestaurant/list", new ForwardController("/MyRestaurantList.jsp"));
         mappings.put("/myRestaurant/register", new ForwardController("/AddMyRestaurant.jsp"));
         mappings.put("/restaurant/find", new ForwardController("/FindRestaurant.jsp"));
         mappings.put("/myRestaurant/update", new ForwardController("/ModifyMyRestaurant.jsp"));
         mappings.put("/myRestaurant/view", new ForwardController("/MyRestaurantDetail.jsp"));
 
-   
     //    mappings.put("/customer/register", new customerController());
     	//mappings.put("/customer", new customerController());
    
