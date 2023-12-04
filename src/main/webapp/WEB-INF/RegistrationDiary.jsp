@@ -83,7 +83,7 @@
 	        <input type="text" class="form-control" id="input_title" placeholder="제목을 입력하세요" required><br/>
 			
 			<label for="input_place" class="form-label">장소</label>
-	  		<input type="submit" class="form-control" id="input_place" value="장소찾기" required><br/> 
+	  		<input type="submit" class="form-control" id="input_place" value="장소찾기" ><br/> 
 	  		
 	  		<label for="input_picture" class="form-lbel">사진</label>
 	  		<input type="file" class="form-control" id="input_picture" value="사진찾기" name="file"><br/>
@@ -103,7 +103,8 @@
 	        <textarea class="form-control" id="input_content" rows="7" placeholder="내용을 작성하세요" required></textarea><br/>
 	        
 	
-	        <button type="submit" class="btn btn-primary">등록하기</button>
+	        <!--  <button type="submit" class="btn btn-primary">등록하기</button>-->
+	    	<a href="/diary/view" class="btn btn-primary">등록하기</a>
 	    </form>
 	</div>
 

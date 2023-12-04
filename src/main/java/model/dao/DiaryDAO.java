@@ -4,9 +4,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane.SystemMenuBar;
-
 import model.Diary;
 /**
 * 사용자 관리를 위해 데이터베이스 작업을 전담하는 DAO 클래스
