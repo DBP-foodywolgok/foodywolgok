@@ -17,14 +17,22 @@ public class CommentsDAO {
 	 * comments 새로운 댓글 생성
 	 */
 	public int create(Comments comment) throws SQLException {
-		String sql = "INSERT INTO Comments VALUES (?, ?, ?, ?)";
+		String sql = "INSERT INTO Comments VALUES (comments_seq.nextval, ?, ?, ?)";
 		// 파라미터 값 가져오기 //
-		Object[] param = new Object[] {comment.getComment_id(),
+		Object[] param = new Object[] {
 				comment.getDiary_id(),
 				comment.getCustomer_id(), comment.getContent()};
 		jdbcUtil.setSqlAndParameters(sql, param); // JDBCUtil 에 insert문과 매개 변수 설정
+		String key[] = {"comment_id"};
 		try {
-			int result = jdbcUtil.executeUpdate(); // insert 문 실행
+			int result = jdbcUtil.executeUpdate(key); // insert 문 실행
+			ResultSet rs = jdbcUtil.getGeneratedKeys();
+		   	int generatedKey = 0;
+		   	if(rs.next()) {
+		   		generatedKey = rs.getInt(1);     //  PK 컬럼 값(들)을 읽음
+		   		comment.setComment_id(generatedKey); 	// id필드에 저장  
+
+		   	}
 			return result;
 		} catch (Exception ex) {
 			jdbcUtil.rollback();
@@ -37,9 +45,9 @@ public class CommentsDAO {
 	}
 	/**
 	 * 기존의 댓글을 수정. */
-	public int update(Comments comment) throws SQLException {
+	public int update(Comments comment, int comment_id) throws SQLException {
 		String sql = "UPDATE COMMENTS " + "SET content=? " + "WHERE comment_id=?";
-		Object[] param = new Object[] {comment.getContent()};
+		Object[] param = new Object[] {comment.getContent(), comment_id};
 		jdbcUtil.setSqlAndParameters(sql, param); // JDBCUtil에 update문과 매개 변수 설정
 		try {
 			int result = jdbcUtil.executeUpdate(); // update 문 실행
