@@ -49,7 +49,7 @@
 
     <div class="container text-center">
 	    <div class="row">
-	        <div class="col-md-2 mx-auto"> <!-- col 클래스로 간격을 조절하고 mx-auto로 가운데 정렬 -->
+	        <div class="col-md-2 mx-auto">
 	            <a href="/kindlist?category=한식" class="btn btn-primary" role="button">한식</a>
 	        </div>
 	        <div class="col-md-2 mx-auto">

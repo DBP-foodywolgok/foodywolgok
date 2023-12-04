@@ -307,7 +307,6 @@
         </div><!-- /.col-lg-3 -->
     </div><!-- /.row -->
 </div><!-- /.container -->
-
     <!-- START THE FEATURETTES -->
 
    
