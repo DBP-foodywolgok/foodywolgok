@@ -8,6 +8,7 @@ import model.Comments;
 * 사용자 관리를 위해 데이터베이스 작업을 전담하는 DAO 클래스
 * Comments 테이블에 사용자 정보를 추가, 수정, 삭제, 검색 수행
 */
+//테스트!!
 public class CommentsDAO {
 	private JDBCUtil jdbcUtil = null;
 	public CommentsDAO() {
