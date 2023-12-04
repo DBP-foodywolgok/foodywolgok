@@ -13,11 +13,13 @@
 	<hr>
     
     <div class="list-group">
-  		<a href="#" class="list-group-item list-group-item-action">맛집 A</a>
+  		<a href="${pageContext.request.contextPath}/myRestaurant/view" class="list-group-item list-group-item-action">맛집 A</a>
   		<a href="#" class="list-group-item list-group-item-action">맛집 B</a>
   		<a href="#" class="list-group-item list-group-item-action">맛집 C</a>
   		<a href="#" class="list-group-item list-group-item-action">맛집 D</a>
   		<a href="#" class="list-group-item list-group-item-action">맛집 E</a>
 	</div>
+	<br>
+	<input class="btn btn-outline-primary" type="button" value="등록" onClick="location.href='${pageContext.request.contextPath}/myRestaurant/register'"> 
 </body>
 </html>
