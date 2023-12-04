@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 import model.dao.CustomerDAO;
 import model.service.CustomerService;
 
-import controller.customer.customerController;
+//import controller.customer.customerController;
 
 public class RequestMapping {
     private static final Logger logger = LoggerFactory.getLogger(DispatcherServlet.class);
@@ -32,6 +32,7 @@ public class RequestMapping {
         mappings.put("/customer/memberInformation", new ForwardController("/MemberInformation.jsp"));
         mappings.put("/customer/changePassword", new ForwardController("/ChangePassword.jsp"));
         mappings.put("/customer/findFriendList", new ForwardController("/FriendList.jsp"));
+   
         
         mappings.put("/diary/register", new ForwardController("/RegistrationDiary.jsp"));
         mappings.put("/diary/view", new ForwardController("/DiaryDetail.jsp"));
@@ -42,8 +43,12 @@ public class RequestMapping {
         mappings.put("/restaurant/view", new ForwardController("/MapDetailsView.jsp"));
         mappings.put("/wishlist/view", new ForwardController("/WishList.jsp"));
         
-        
-        
+        mappings.put("/myRestaurant/list", new ForwardController("/MyRestaurantList.jsp"));
+        mappings.put("/myRestaurant/register", new ForwardController("/AddMyRestaurant.jsp"));
+        mappings.put("/restaurant/find", new ForwardController("/FindRestaurant.jsp"));
+        mappings.put("/myRestaurant/update", new ForwardController("/ModifyMyRestaurant.jsp"));
+        mappings.put("/myRestaurant/view", new ForwardController("/MyRestaurantDetail.jsp"));
+
     //    mappings.put("/customer/register", new customerController());
     	//mappings.put("/customer", new customerController());
    
