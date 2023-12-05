@@ -116,6 +116,7 @@
 </head>
 <body>
 
+
 <!-- 부트스트랩 캐러셀 내용 -->
 <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
     <!-- 캐러셀 내용 -->
@@ -219,10 +220,30 @@
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Login</a> <!-- 추가: Login 링크 -->
+            <c:choose>
+              <c:when test="${empty sessionScope.customerName}">
+                <a class="nav-link" href="#" id="loginBtn">Login</a>
+              </c:when>
+              <c:otherwise>
+                <a class="nav-link" href="/customer/logout" id="logoutBtn">Logout</a>
+              </c:otherwise>
+            </c:choose>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Join</a> <!-- 추가: Join 링크 -->
+            <c:choose>
+              <c:when test="${empty sessionScope.customerName}">
+                <a class="nav-link" href="#" id="joinBtn">Join</a>
+              </c:when>
+              <c:otherwise>
+                <a class="nav-link" href="/customer/mypage" id="mypageBtn">MyPage</a>
+              </c:otherwise>
+            </c:choose>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="${pageContext.request.contextPath}/myRestaurant/list" id="mrestaurantBtn">
+              My Restaurant 
+              <span id="customerName">${sessionScope.customerName}</span>
+            </a>
           </li>
         </ul>
         <form class="d-flex" role="search">
@@ -267,48 +288,32 @@
   ================================================== -->
   <!-- Wrap the rest of the page in another container to center all the content. -->
 
- <div class="container marketing text-center">
-    <div class="row">
-        <div class="col-lg-3">
-            <!-- 첫 번째 동그라미 -->
-            <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
-            </svg>
-            <h4 class="fw-normal">나만의 맛집 다이어리</h4>
-            <p><a class="btn btn-secondary" href="#">View details »</a></p>
-        </div><!-- /.col-lg-3 -->
-        <div class="col-lg-3">
-            <!-- 두 번째 동그라미 -->
-            <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
-            </svg>
-            <h4 class="fw-normal">음식 추천</h4>
-            <p><a class="btn btn-secondary" href="#">View details »</a></p>
-        </div><!-- /.col-lg-3 -->
-        <div class="col-lg-3">
-            <!-- 세 번째 동그라미 -->
-            <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
-            </svg>
-            <h4 class="fw-normal">친구 리스트</h4>
-            <p><a class="btn btn-secondary" href="#">View details »</a></p>
-        </div><!-- /.col-lg-3 -->
-        <div class="col-lg-3">
-            <!-- 네 번째 동그라미 -->
-            <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
-            </svg>
-            <h4 class="fw-normal">월곡 지도</h4>
-            <p><a class="btn btn-secondary" href="/restaurant/map">View details »</a></p>
-        </div><!-- /.col-lg-3 -->
-    </div><!-- /.row -->
+<div class="container marketing text-center">
+  <!-- text-center 클래스 추가 -->
+  <!-- Four columns of text -->
+  <div class="row">
+    <div class="col-lg-3">
+      <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>
+      <h4 class="fw-normal">나만의 맛집 다이어리</h4>
+      <p><a class="btn btn-secondary" href="/customer/diaryList">View details »</a></p>
+    </div><!-- /.col-lg-3 -->
+    <div class="col-lg-3">
+      <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>
+      <h4 class="fw-normal">음식 추천</h4>
+      <p><a class="btn btn-secondary" href="/customer/recommendation">View details »</a></p>
+    </div><!-- /.col-lg-3 -->
+    <div class="col-lg-3">
+      <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>
+      <h4 class="fw-normal">친구 리스트</h4>
+      <p><a class="btn btn-secondary" href="/customer/friendlist">View details »</a></p>
+    </div><!-- /.col-lg-3 -->
+    <div class="col-lg-3">
+      <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>
+      <h4 class="fw-normal">음식 지도</h4>
+      <p><a class="btn btn-secondary" href="/restaurant/map">View details »</a></p>
+    </div><!-- /.col-lg-3 -->
+  </div><!-- /.row -->
 </div><!-- /.container -->
-
-    
 
 
     <!-- START THE FEATURETTES -->
@@ -329,8 +334,24 @@
   </footer>
 </main>
 <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-
+    <script>
+  document.getElementById('joinBtn').addEventListener('click', function(event) {
+    event.preventDefault(); // 기본 이벤트 방지 (링크의 기본 동작인 페이지 이동을 막음)
     
+    // MemberJoin.jsp 페이지로 이동
+    window.location.href = '/customer/join';
+  });
+</script>
+
+  <script>
+  document.getElementById('loginBtn').addEventListener('click', function(event) {
+    event.preventDefault(); // 기본 이벤트 방지 (링크의 기본 동작인 페이지 이동을 막음)
+    
+    // MemberJoin.jsp 페이지로 이동
+    window.location.href = '/customer/loginPage';
+  });
+</script>
+
 
 </body>
 </html>

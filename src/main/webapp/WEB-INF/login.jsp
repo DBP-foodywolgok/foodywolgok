@@ -49,19 +49,19 @@
 </head>
 <body>
 <div class="container">
-    <form class="form-signin">
+  <form class="form-signin" method="post" action="/customer/login">
         <h4 class="form-signin-heading">푸디 월곡에 오신 것을 환영합니다.</h4>
         <label for="inputEmail" class="sr-only">이메일</label>
         <!-- placeholder 속성에 원하는 플레이스홀더 텍스트를 넣으세요 -->
-        <input type="email" id="inputEmail" class="form-control" placeholder="사용자의 이메일 주소가 표시됩니다" required autofocus>
+        <input type="text" id="inputEmail" name="inputEmail" class="form-control" placeholder="사용자의 이메일 주소가 표시됩니다" required autofocus>
         <label for="inputPassword" class="sr-only">비밀번호</label>
         <!-- placeholder 속성에 원하는 플레이스홀더 텍스트를 넣으세요 -->
-        <input type="password" id="inputPassword" class="form-control" placeholder="사용자의 비밀번호가 표시됩니다" required>
+        <input type="text" id="inputPassword" name="inputPassword" class="form-control" placeholder="사용자의 비밀번호가 표시됩니다" required>
         <button class="btn btn-lg btn-darkpurple btn-block" type="submit">로그인하기</button>
        <a href="/customer/findPassword" class="btn btn-lg btn-darkpurple btn-block">비밀번호 찾기</a>
     </form>
 </div>
- 
+
 
     <!-- 부트스트랩 및 자바스크립트 라이브러리 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
