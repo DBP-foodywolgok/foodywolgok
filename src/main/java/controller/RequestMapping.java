@@ -25,11 +25,12 @@ public class RequestMapping {
     	// 각 uri에 대응되는 controller 객체를 생성 및 저장
         mappings.put("/customer/register", new CustomerRegisterController());
         mappings.put("/customer/loginPage", new ForwardController("/login.jsp"));
-    	mappings.put("/", new ForwardController("index.jsp"));
+    	mappings.put("/", new ForwardController("/Main.jsp"));
         mappings.put("/customer/join", new ForwardController("/MemberJoin.jsp"));
         mappings.put("/customer/main", new ForwardController("/Main.jsp"));
         mappings.put("/customer/login",new CustomerLoginController());
         mappings.put("/customer/logout", new CustomerLogoutController());
+        
         
         
         

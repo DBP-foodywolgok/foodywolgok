@@ -225,7 +225,7 @@
                 <a class="nav-link" href="#" id="loginBtn">Login</a>
               </c:when>
               <c:otherwise>
-                <a class="nav-link" href="#" id="logoutBtn">Logout</a>
+                <a class="nav-link" href="/customer/logout" id="logoutBtn">Logout</a>
               </c:otherwise>
             </c:choose>
           </li>
@@ -255,8 +255,6 @@
   </nav>
 </header>
 <main>
-
-
 
   <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
     <div class="carousel-indicators">
@@ -353,7 +351,6 @@
     window.location.href = '/customer/loginPage';
   });
 </script>
-
 
 
 </body>

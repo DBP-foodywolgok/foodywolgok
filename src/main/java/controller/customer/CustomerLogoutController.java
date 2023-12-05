@@ -28,7 +28,7 @@ public class CustomerLogoutController implements Controller {
 		session.removeAttribute(UserSessionUtils.USER_SESSION_KEY);
 		session.invalidate();		
         
-        return "redirect:/customer/loginPage";
+		   return "redirect:/customer/loginPage"; // 로그아웃 후 리디렉션할 URL
     }
 }
 
