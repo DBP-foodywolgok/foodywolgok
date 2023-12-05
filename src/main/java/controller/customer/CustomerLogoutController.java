@@ -20,7 +20,6 @@ import org.slf4j.LoggerFactory;
 import controller.Controller;
 
 
-
 public class CustomerLogoutController implements Controller {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
