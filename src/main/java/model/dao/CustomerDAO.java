@@ -7,6 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
+import controller.customer.UserSessionUtils;
 import model.Customer;
 
 
@@ -56,7 +59,71 @@ public class CustomerDAO {
 	    return customerId;
 	}
 	
+	public String getCustomerNameById(int customerId) throws SQLException {
+	    String customerName = "";
+	    String sql = "SELECT name FROM Customer WHERE customer_id = ?";
+	    jdbcUtil.setSqlAndParameters(sql, new Object[]{customerId});
+
+	    try {
+	        ResultSet rs = jdbcUtil.executeQuery();
+	        if (rs.next()) {
+	            customerName = rs.getString("name");
+	        }
+	    } catch (Exception ex) {
+	        jdbcUtil.rollback();
+	        ex.printStackTrace();
+	    } finally {
+	        jdbcUtil.commit();
+	        jdbcUtil.close();
+	    }
+	    return customerName;
+	}
 	
+	public Customer getCustomerByEmail(String email) throws SQLException {
+	    Customer customer = null;
+	    String sql = "SELECT * FROM Customer WHERE email = ?";
+	    jdbcUtil.setSqlAndParameters(sql, new Object[]{email});
+
+	    try {
+	        ResultSet rs = jdbcUtil.executeQuery();
+	        if (rs.next()) {
+	            customer = new Customer();
+	            customer.setCustomer_id(rs.getInt("customer_id"));
+	            customer.setEmail(rs.getString("email"));
+	            customer.setPassword(rs.getString("password"));
+	            customer.setName(rs.getString("name"));
+	            // Add more attributes if there are others in the Customer class
+	        }
+	    } catch (Exception ex) {
+	        jdbcUtil.rollback();
+	        ex.printStackTrace();
+	    } finally {
+	        jdbcUtil.commit();
+	        jdbcUtil.close();
+	    }
+	    return customer;
+	}
+	
+	public int getCustomerIdByEmail(String email) throws SQLException {
+	    int customerId = 0;
+	    String sql = "SELECT customer_id FROM Customer WHERE email = ?";
+	    jdbcUtil.setSqlAndParameters(sql, new Object[]{email});
+
+	    try {
+	        ResultSet rs = jdbcUtil.executeQuery();
+	        if (rs.next()) {
+	            customerId = rs.getInt("customer_id");
+	        }
+	        return customerId;
+	    } catch (Exception ex) {
+	        jdbcUtil.rollback();
+	        ex.printStackTrace();
+	    } finally {
+	        jdbcUtil.commit();
+	        jdbcUtil.close();
+	    }
+	    return customerId;
+	}
 	
 	// 회원정보 수정 
 	   public int update(Customer customer, String email) throws SQLException {
@@ -79,25 +146,26 @@ public class CustomerDAO {
 	
 	
 	// 로그인 구현 
-	public boolean login(String email, String password) throws SQLException {
-	    boolean isValid = false;
-	    String sql = "SELECT * FROM Customer WHERE email = ? AND password = ?";
-	    jdbcUtil.setSqlAndParameters(sql, new Object[]{email, password});
+	// CustomerDAO 클래스의 login 메서드 내용 수정
+	    public boolean login(String email, String password) throws SQLException {
+	        boolean isValid = false;
+	        String sql = "SELECT customer_id FROM Customer WHERE email = ? AND password = ?";
+	        jdbcUtil.setSqlAndParameters(sql, new Object[]{email, password});
 
-	    try {
-	        ResultSet rs = jdbcUtil.executeQuery();
-	        if (rs.next()) {
-	            isValid = true;
+	        try {
+	            ResultSet rs = jdbcUtil.executeQuery();
+	            isValid = rs.next(); // 결과가 있으면 로그인 성공
+	        } catch (Exception ex) {
+	            System.out.println("로그인 중 에러 발생: " + ex.getMessage()); // 에러 메시지 출력
+	            jdbcUtil.rollback();
+	            ex.printStackTrace();
+	        } finally {
+	            jdbcUtil.commit();
+	            jdbcUtil.close();
 	        }
-	    } catch (Exception ex) {
-	    	jdbcUtil.rollback();
-	        ex.printStackTrace();
-	    } finally {
-	    	jdbcUtil.commit();
-	        jdbcUtil.close();
+	        return isValid;
 	    }
-	    return isValid;
-	}
+
 	
 	// 비밀번호 찾기 
 	public String findPasswordByEmail(String email) throws SQLException {
@@ -119,27 +187,7 @@ public class CustomerDAO {
 	}
 	
 	// 회원정보 조회 
-	public Customer getCustomerByEmail(String email) throws SQLException {
-	    Customer customer = null;
-	    String sql = "SELECT * FROM Customer WHERE email = ?";
-	    jdbcUtil.setSqlAndParameters(sql, new Object[]{email});
-
-	    try {
-	        ResultSet rs = jdbcUtil.executeQuery();
-	        if (rs.next()) {
-	            customer = new Customer();
-	            customer.setCustomer_id(rs.getInt("customer_id"));
-	            customer.setEmail(rs.getString("email"));
-	            customer.setPassword(rs.getString("password"));
-	            customer.setName(rs.getString("name"));
-	        }
-	    } catch (Exception ex) {
-	        ex.printStackTrace();
-	    } finally {
-	        jdbcUtil.close();
-	    }
-	    return customer;
-	}
+	
 	
 	// 비밀번호 변경 
 	

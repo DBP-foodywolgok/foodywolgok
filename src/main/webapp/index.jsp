@@ -232,10 +232,16 @@
           <a class="nav-link" href="/customer/mypage" id="mypageBtn">MyPage</a>
           </li>
           
+          
           <li class="nav-item">
           <a class="nav-link" href="${pageContext.request.contextPath}/myRestaurant/list" id="mrestaurantBtn">My Restaurant</a>
           </li>
           
+             <li>
+          <li class="nav-item">
+          <a class="nav-link" href="/customer/logout" id="logoutBtn">Logout</a>
+          </li>
+       
         </ul>
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -279,24 +285,30 @@
   ================================================== -->
   <!-- Wrap the rest of the page in another container to center all the content. -->
 
-  <div class="container marketing text-center"> <!-- text-center 클래스 추가 -->
-  <!-- Three columns of text below the carousel -->
+<div class="container marketing text-center">
+  <!-- text-center 클래스 추가 -->
+  <!-- Four columns of text -->
   <div class="row">
-    <div class="col-lg-4">
+    <div class="col-lg-3">
       <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>
       <h4 class="fw-normal">나만의 맛집 다이어리</h4>
       <p><a class="btn btn-secondary" href="/customer/diaryList">View details »</a></p>
-    </div><!-- /.col-lg-4 -->
-    <div class="col-lg-4">
+    </div><!-- /.col-lg-3 -->
+    <div class="col-lg-3">
       <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>
       <h4 class="fw-normal">음식 추천</h4>
       <p><a class="btn btn-secondary" href="/customer/recommendation">View details »</a></p>
-    </div><!-- /.col-lg-4 -->
-    <div class="col-lg-4">
+    </div><!-- /.col-lg-3 -->
+    <div class="col-lg-3">
       <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>
-      <h4 class="fw-normal">친구 리스트 </h4>
+      <h4 class="fw-normal">친구 리스트</h4>
       <p><a class="btn btn-secondary" href="/customer/friendlist">View details »</a></p>
-    </div><!-- /.col-lg-4 -->
+    </div><!-- /.col-lg-3 -->
+    <div class="col-lg-3">
+      <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>
+      <h4 class="fw-normal">음식 지도</h4>
+      <p><a class="btn btn-secondary" href="/restaurant/map">View details »</a></p>
+    </div><!-- /.col-lg-3 -->
   </div><!-- /.row -->
 </div><!-- /.container -->
 
@@ -324,7 +336,7 @@
     event.preventDefault(); // 기본 이벤트 방지 (링크의 기본 동작인 페이지 이동을 막음)
     
     // MemberJoin.jsp 페이지로 이동
-    window.location.href = '/customer';
+    window.location.href = '/customer/join';
   });
 </script>
 
@@ -333,7 +345,7 @@
     event.preventDefault(); // 기본 이벤트 방지 (링크의 기본 동작인 페이지 이동을 막음)
     
     // MemberJoin.jsp 페이지로 이동
-    window.location.href = '/customer/login';
+    window.location.href = '/customer/loginPage';
   });
 </script>
 

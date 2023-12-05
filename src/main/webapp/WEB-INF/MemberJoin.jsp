@@ -56,7 +56,8 @@
 <body>
 <div class="container">
 
-<form class="form-signin" method="post" action="<c:url value='/customer/register' />">
+<!-- <form class="form-signin" method="post" action="<c:url value='/customer/register' />">  -->
+<form class="form-signin" method="post" action="/customer/register">
         <h2 class="form-signin-heading text-center">회원 가입</h2>
 
       <!-- 이름 입력 필드 -->
