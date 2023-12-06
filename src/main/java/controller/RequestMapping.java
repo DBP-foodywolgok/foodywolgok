@@ -5,6 +5,7 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import controller.customer.CustomerInformationController;
 import controller.customer.CustomerLoginController;
 import controller.customer.CustomerLogoutController;
 import controller.customer.CustomerRegisterController;
@@ -30,7 +31,7 @@ public class RequestMapping {
         mappings.put("/customer/main", new ForwardController("/Main.jsp"));
         mappings.put("/customer/login",new CustomerLoginController());
         mappings.put("/customer/logout", new CustomerLogoutController());
-        
+        mappings.put("/customer/memberInformation", new CustomerInformationController());
         
         
         
@@ -39,7 +40,7 @@ public class RequestMapping {
         mappings.put("/customer/recommendation", new ForwardController("/Recommendation.jsp"));
         mappings.put("/customer/friendlist", new ForwardController("/FriendList.jsp"));
         mappings.put("/customer/mypage", new ForwardController("/MyPage.jsp"));
-        mappings.put("/customer/memberInformation", new ForwardController("/MemberInformation.jsp"));
+      
         mappings.put("/customer/changePassword", new ForwardController("/ChangePassword.jsp"));
         mappings.put("/customer/findFriendList", new ForwardController("/FriendList.jsp"));
         mappings.put("/diary/register", new ForwardController("/RegistrationDiary.jsp"));

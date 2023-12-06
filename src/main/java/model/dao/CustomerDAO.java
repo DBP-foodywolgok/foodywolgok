@@ -39,6 +39,50 @@ public class CustomerDAO {
 	    return 0;
 	}
 	
+	// 카테고리 추가 
+	public void addCustomerCategory(int categoryId, int customerId) {
+	    String sql = "INSERT INTO Customer_Category VALUES (?, ?)";
+	    Object[] param = new Object[] { categoryId, customerId };
+	    jdbcUtil.setSqlAndParameters(sql, param);
+	    try {
+	        jdbcUtil.executeUpdate();
+	    } catch (Exception ex) {
+	        jdbcUtil.rollback();
+	        ex.printStackTrace();
+	    } finally {
+	        jdbcUtil.commit();
+	        jdbcUtil.close();
+	    }
+	}
+	
+	// id 로 customer 객체 찾기 
+	public Customer getCustomerById(int customerId) throws SQLException {
+	    Customer customer = null;
+
+	    String sql = "SELECT * FROM Customer WHERE customer_id = ?";
+	    jdbcUtil.setSqlAndParameters(sql, new Object[]{customerId});
+
+	    try {
+	        ResultSet rs = jdbcUtil.executeQuery();
+	        if (rs.next()) {
+	            customer = new Customer();
+	            customer.setCustomer_id(rs.getInt("customer_id"));
+	            
+	            customer.setEmail(rs.getString("email"));
+	            customer.setPassword(rs.getString("password"));
+	            customer.setName(rs.getString("name"));
+	            // Add more attributes if there are others in the Customer class
+	        }
+	    } catch (Exception ex) {
+	        jdbcUtil.rollback();
+	        ex.printStackTrace();
+	    } finally {
+	        jdbcUtil.commit();
+	        jdbcUtil.close();
+	    }
+	    return customer;
+	}
+	
 	// 회원 이름으로 아이디 가져오기 
 	public int getCustomerIdByName(String customerName) throws SQLException {
 	    int customerId = 0;

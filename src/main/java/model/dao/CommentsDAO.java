@@ -31,7 +31,6 @@ public class CommentsDAO {
 		   	if(rs.next()) {
 		   		generatedKey = rs.getInt(1);     //  PK 컬럼 값(들)을 읽음
 		   		comment.setComment_id(generatedKey); 	// id필드에 저장  
-
 		   	}
 			return result;
 		} catch (Exception ex) {
