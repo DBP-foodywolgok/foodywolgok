@@ -44,6 +44,7 @@ public class CustomerLoginController implements Controller {
                 // 사용자 정보를 세션에 저장
                 session.setAttribute(UserSessionUtils.USER_SESSION_KEY, customerId);
              
+               
                 
                 String csName = customerDAO.getCustomerNameById(customerId);
                 
