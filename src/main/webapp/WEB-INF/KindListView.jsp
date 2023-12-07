@@ -27,6 +27,16 @@ margin: 10px 0;
 </style>
 	</head>
 	<body>
+	<% 
+        String customerName = (String) session.getAttribute("customerName");
+        if (customerName != null) {
+    %>
+            <div class="container">
+                <p><%= customerName %>!</p>
+            </div>
+    <% 
+        }
+    %>
 		<div class="container mt-4">
 		<a href="/restaurant/kindview" class="btn btn-primary">종류별 찾기</a>
 		<button class="btn btn-outline-secondary rounded" type="button" id="backButton">

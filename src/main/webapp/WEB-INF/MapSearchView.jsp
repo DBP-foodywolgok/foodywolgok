@@ -23,6 +23,17 @@
 </head>
 
 <body>
+<% 
+        String customerName = (String) session.getAttribute("customerName");
+        if (customerName != null) {
+    %>
+            <div class="container">
+                <p><%= customerName %>!</p>
+            </div>
+    <% 
+        }
+    %>
+    
     <div class="container mt-4">
  	   <form class="form-signin" method="post" action="/restaurant/search">
 	        <div class="input-group mb-3 rounded">

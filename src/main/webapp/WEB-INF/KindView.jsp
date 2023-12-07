@@ -23,6 +23,16 @@
 </head>
 
 <body>
+<% 
+        String customerName = (String) session.getAttribute("customerName");
+        if (customerName != null) {
+    %>
+            <div class="container">
+                <p><%= customerName %>!</p>
+            </div>
+    <% 
+        }
+    %>
     <div class="container mt-4 text-center">
     <button class="btn btn-outline-secondary rounded" type="button" id="backButton">
     <i class="fas fa-arrow-left"></i>
