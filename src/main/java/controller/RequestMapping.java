@@ -8,7 +8,10 @@ import org.slf4j.LoggerFactory;
 import controller.customer.CustomerLoginController;
 import controller.customer.CustomerLogoutController;
 import controller.customer.CustomerRegisterController;
+import controller.restaurant.CategoryController;
+import controller.restaurant.SearchController;
 import model.dao.CustomerDAO;
+import model.dao.RestaurantDAO;
 import model.service.CustomerService;
 
 //import controller.customer.customerController;
@@ -31,9 +34,6 @@ public class RequestMapping {
         mappings.put("/customer/login",new CustomerLoginController());
         mappings.put("/customer/logout", new CustomerLogoutController());
         
-        
-        
-        
         mappings.put("/customer/findPassword", new ForwardController("/FindPassword.jsp"));
         mappings.put("/customer/diaryList", new ForwardController("/DiaryList.jsp"));
         mappings.put("/customer/recommendation", new ForwardController("/Recommendation.jsp"));
@@ -47,9 +47,11 @@ public class RequestMapping {
         mappings.put("/diary/update", new ForwardController("/EditDiary.jsp"));
         mappings.put("/diary/list", new ForwardController("/DiaryList.jsp"));
    
-        
+        //map
         mappings.put("/restaurant/map", new ForwardController("/MapMainView.jsp"));
-        mappings.put("/restaurant/search", new ForwardController("/MapSearchView.jsp"));
+        mappings.put("/restaurant/search", new SearchController()); //검색버튼 누르면
+        mappings.put("/kindlist", new CategoryController());
+        mappings.put("/restaurant/kindview", new ForwardController("/KindView.jsp"));
         mappings.put("/restaurant/view", new ForwardController("/MapDetailsView.jsp"));
         mappings.put("/wishlist/view", new ForwardController("/WishList.jsp"));
         

@@ -29,7 +29,7 @@ public class RestaurantTest {
         float latitude = 37.1234f;
         float longitude = 127.5678f;
         try{
-            Restaurant restaurantInWishlist = restaurantDAO.getRestaurantsInWishlist(latitude, longitude);
+            Restaurant restaurantInWishlist = restaurantDAO.getRestaurantByLocation(latitude, longitude);
         
             if (restaurantInWishlist != null) {
                 System.out.println("음식점 이름: " + restaurantInWishlist.getName());
