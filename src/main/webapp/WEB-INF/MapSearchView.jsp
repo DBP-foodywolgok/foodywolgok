@@ -49,12 +49,11 @@
             <hr>
             <div class="result-list" id="resultList">
                 <%
-List<Restaurant> searchedRestaurants = (List<Restaurant>)request.getAttribute("searchedRestaurants");
-if(searchedRestaurants != null && !searchedRestaurants.isEmpty()) {
-    for (Restaurant restaurant : searchedRestaurants) {
-%>
-
-                <form class="restaurant-info" method="post" action="/restaurant/view">
+		List<Restaurant> searchedRestaurants = (List<Restaurant>)request.getAttribute("searchedRestaurants");
+		if(searchedRestaurants != null && !searchedRestaurants.isEmpty()) {
+   		for (Restaurant restaurant : searchedRestaurants) {
+				%>
+				<form class="restaurant-info" method="post" action="/restaurant/view">
                     <input type="hidden" name="name" value="<%= restaurant.getName() %>">
                     <input type="hidden" name="address" value="<%= restaurant.getAddress() %>">
                     <input type="hidden" name="latitude" value="<%= restaurant.getLatitude() %>">
@@ -82,11 +81,5 @@ if(searchedRestaurants != null && !searchedRestaurants.isEmpty()) {
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     
-    <script>
-        function showDetails(name, address) {
-            // 해당 음식점의 디테일한 정보를 보여주는 페이지로 이동
-            window.location.href = '/restaurant/view?name=' + encodeURIComponent(name) + '&address=' + encodeURIComponent(address);
-        }
-    </script>
 </body>
 </html>
