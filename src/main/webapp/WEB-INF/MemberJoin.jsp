@@ -53,77 +53,90 @@
         }
     </style>
 </head>
+
 <body>
 <div class="container">
 
-<!-- <form class="form-signin" method="post" action="<c:url value='/customer/register' />">  -->
-<form class="form-signin" method="post" action="/customer/register">
-        <h2 class="form-signin-heading text-center">회원 가입</h2>
+<form class="form-signin" method="post" action="/customer/register" id="registrationForm">
+    <h2 class="form-signin-heading text-center">회원 가입</h2>
 
-      <!-- 이름 입력 필드 -->
-<label for="inputName" class="visually-hidden">이름</label>
-<input type="text" id="inputName" name="inputName" class="form-control" placeholder="이름" required autofocus>
+    <label for="inputName" class="visually-hidden">이름</label>
+    <input type="text" id="inputName" name="inputName" class="form-control" placeholder="이름" required autofocus>
 
-<!-- 이메일 입력 필드 -->
-<label for="inputEmail" class="visually-hidden">이메일 주소</label>
-<input type="email" id="inputEmail" name="inputEmail" class="form-control" placeholder="이메일 주소" required>
+    <label for="inputEmail" class="visually-hidden">이메일 주소</label>
+    <input type="email" id="inputEmail" name="inputEmail" class="form-control" placeholder="이메일 주소" required>
 
-<!-- 비밀번호 입력 필드 -->
-<label for="inputPassword" class="visually-hidden">비밀번호</label>
-<input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="비밀번호" required>
+    <label for="inputPassword" class="visually-hidden">비밀번호</label>
+    <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="비밀번호" required>
 
-<!-- 비밀번호 재입력 필드 -->
-<label for="inputConfirmPassword" class="visually-hidden">비밀번호 확인</label>
-<input type="password" id="inputConfirmPassword" name="inputConfirmPassword" class="form-control" placeholder="비밀번호 확인" required>
+    <label for="inputConfirmPassword" class="visually-hidden">비밀번호 확인</label>
+    <input type="password" id="inputConfirmPassword" name="inputConfirmPassword" class="form-control" placeholder="비밀번호 확인" required>
 
-        <!-- 선호하는 음식 종류 선택 -->
-        <label class="visually-hidden">선호하는 음식 종류</label>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="foodType1" value="한식">
-            <label class="form-check-label" for="foodType1">한식</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="foodType2" value="중식">
-            <label class="form-check-label" for="foodType2">중식</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="foodType3" value="양식">
-            <label class="form-check-label" for="foodType3">양식</label>
-        </div>
-        <!-- 나머지 음식 종류 체크박스 추가 -->
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="foodType4" value="퓨전요리">
-            <label class="form-check-label" for="foodType4">퓨전요리</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="foodType5" value="태국식">
-            <label class="form-check-label" for="foodType5">태국식</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="foodType6" value="샐러드">
-            <label class="form-check-label" for="foodType6">샐러드</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="foodType7" value="죽">
-            <label class="form-check-label" for="foodType7">죽</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="foodType8" value="디저트">
-            <label class="form-check-label" for="foodType8">디저트</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="foodType9" value="음료">
-            <label class="form-check-label" for="foodType9">음료</label>
-        </div>
+    <!-- 선호하는 음식 종류 선택 -->
+    <label class="visually-hidden">선호하는 음식 종류</label>
+    <div class="form-check">
+        <input class="form-check-input" name="foodType" type="checkbox" id="foodType1" value="한식">
+        <label class="form-check-label" for="foodType1">한식</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" name="foodType" type="checkbox" id="foodType2" value="중식">
+        <label class="form-check-label" for="foodType2">중식</label>
+    </div>
+    <!-- 나머지 음식 종류 체크박스들 -->
+    <div class="form-check">
+        <input class="form-check-input" name="foodType" type="checkbox" id="foodType3" value="양식">
+        <label class="form-check-label" for="foodType3">양식</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" name="foodType" type="checkbox" id="foodType4" value="퓨전요리">
+        <label class="form-check-label" for="foodType4">퓨전요리</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" name="foodType" type="checkbox" id="foodType5" value="태국식">
+        <label class="form-check-label" for="foodType5">태국식</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" name="foodType" type="checkbox" id="foodType6" value="샐러드">
+        <label class="form-check-label" for="foodType6">샐러드</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" name="foodType" type="checkbox" id="foodType7" value="죽">
+        <label class="form-check-label" for="foodType7">죽</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" name="foodType" type="checkbox" id="foodType8" value="디저트">
+        <label class="form-check-label" for="foodType8">디저트</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" name="foodType" type="checkbox" id="foodType9" value="음료">
+        <label class="form-check-label" for="foodType9">음료</label>
+    </div>
 
-        <!-- 회원 가입 버튼 -->
-        <button class="btn btn-lg btn-primary btn-block btn-purple" type="submit">회원 가입</button>
-    </form>
+    <!-- 선택한 카테고리들을 저장할 hidden input -->
+    <input type="hidden" id="selectedCategoriesInput" name="selectedCategories" value="">
+
+    <button class="btn btn-lg btn-primary btn-block btn-purple" type="button" onclick="submitForm()">회원 가입</button>
+</form>
 </div>
 
-<!-- 부트스트랩 및 자바스크립트 라이브러리 로드 -->
 <script src="https://getbootstrap.kr/docs/5.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>
+
+<script>
+function submitForm() {
+    let selectedCategories = [];
+    let checkboxes = document.querySelectorAll('input[name="foodType"]:checked');
+    checkboxes.forEach((checkbox) => {
+        selectedCategories.push(checkbox.value);
+    });
+
+    // 여러 체크박스의 값을 콤마로 구분하여 하나의 문자열로 만들어 hidden input에 저장
+    let selectedCategoriesInput = document.getElementById('selectedCategoriesInput');
+    selectedCategoriesInput.value = selectedCategories.join(',');
+
+    document.getElementById('registrationForm').submit();
+}
+</script>
 </body>
 </html>
