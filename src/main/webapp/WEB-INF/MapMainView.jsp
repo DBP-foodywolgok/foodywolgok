@@ -10,18 +10,26 @@
 
 <body>
     <div class="container mt-4">
-        <div class="input-group mb-3 rounded">
-            <button class="btn btn-outline-secondary rounded" type="button" id="backButton">
-                <i class="fas fa-arrow-left"></i>
-            </button>
-            <input type="text" class="form-control border-0 rounded-start" placeholder="음식점, 주소를 검색하세요" aria-label="Search" aria-describedby="basic-addon2">
-            <div class="input-group-append">
-	             <a href="/restaurant/search" class="btn btn-primary rounded-end">검색</a>
-            </div>
-        </div>
+ 	   <form class="form-signin" method="post" action="/restaurant/search">
+	        <div class="input-group mb-3 rounded">
+	            <button class="btn btn-outline-secondary rounded" type="button" id="backButton">
+				    <i class="fas fa-arrow-left"></i>
+				</button>
+				<script>
+				    document.getElementById("backButton").addEventListener("click", function() {
+				        window.history.back(); // 브라우저의 뒤로 가기 기능 실행
+				    });
+				</script>
+	            <input type="text" class="form-control border-0 rounded-start" name="searchKeyword" placeholder="음식점, 주소를 검색하세요" aria-label="Search" aria-describedby="basic-addon2">
+	            <div class="input-group-append">
+		             <button type="submit" class="btn btn-primary rounded-end">검색</button>
+	            </div>
+	        </div>
+	        </form>
     </div>
 
-   <div class="container text-center">
+
+  <div class="container text-center">
 	    <div class="row">
 	        <div class="col-md-2 mx-auto"> <!-- col 클래스로 간격을 조절하고 mx-auto로 가운데 정렬 -->
 	            <a href="/kindlist?category=한식" class="btn btn-primary" role="button">한식</a>
@@ -43,6 +51,7 @@
         	</div>
     	</div>
 	</div>
+
     <!-- 지도를 표시할 div 추가 -->
     <div id="map" style="height: 600px;"></div>
 
@@ -61,4 +70,4 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
-</html>
+</html> 

@@ -24,13 +24,21 @@
 
 <body>
     <div class="container mt-4 text-center">
-        <button class="btn btn-primary mb-4">종류별 찾기</button>
-        <a href="kindlist?category=한식" class="category-button">한식</a>
-		<a href="kindlist?category=양식" class="category-button">양식</a>
-		<a href="kindlist?category=아시아" class="category-button">아시아</a>
-		<a href="kindlist?category=일식" class="category-button">일식</a>
-		<a href="kindlist?category=중식" class="category-button">중식</a>
-		<a href="kindlist?category=분식" class="category-button">분식</a>
+    <button class="btn btn-outline-secondary rounded" type="button" id="backButton">
+    <i class="fas fa-arrow-left"></i>
+    </button>
+    <script>
+    document.getElementById("backButton").addEventListener("click", function() {
+    	window.history.back(); // 브라우저의 뒤로 가기 기능 실행
+    	});
+    </script>
+    <button class="btn btn-primary mb-4">종류별 찾기</button>
+        <a href="/kindlist?category=한식" class="category-button">한식</a>
+		<a href="/kindlist?category=양식" class="category-button">양식</a>
+		<a href="/kindlist?category=아시아" class="category-button">아시아</a>
+		<a href="/kindlist?category=일식" class="category-button">일식</a>
+		<a href="/kindlist?category=중식" class="category-button">중식</a>
+		<a href="/kindlist?category=분식" class="category-button">분식</a>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>

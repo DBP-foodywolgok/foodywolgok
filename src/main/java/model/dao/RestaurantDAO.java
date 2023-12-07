@@ -46,19 +46,49 @@ public class RestaurantDAO {
     }
 
    
-    //음식점 상세정보 조회
-    //Restaurant 기본생성자 추가
-    public Restaurant getRestaurantsInWishlist(float latitude,float longitude){
+//    //음식점 상세정보 조회
+//    //Restaurant 기본생성자 추가
+//    public Restaurant getRestaurantsInWishlist(float latitude,float longitude){
+//        ResultSet rs = null;
+//        Restaurant restaurant = null;
+//        
+//        StringBuilder query = new StringBuilder();
+//        query.append("SELECT restaurant_id, category_id, introduction, name, address ");
+//        query.append("FROM restaurant ");
+//        query.append("WHERE latitude = ? AND longitude = ?");
+//        
+//        try {
+//            jdbcUtil.setSqlAndParameters(query.toString(), new Object[]{latitude, longitude}); // JDBCUtil에 질의문과 파라미터 설정
+//            rs = jdbcUtil.executeQuery();
+//            if (rs.next()) {
+//                int restaurantId = rs.getInt("restaurant_id");
+//                int categoryId = rs.getInt("category_id");
+//                String introduction = rs.getString("introduction");
+//                String name = rs.getString("name");
+//                String address = rs.getString("address");
+//
+//                restaurant = new Restaurant(restaurantId, categoryId, introduction, latitude, longitude, name, address);
+//                }
+//            } catch (Exception ex) {
+//                ex.printStackTrace();
+//            } finally {
+//                jdbcUtil.close();       // ResultSet, PreparedStatement, Connection 등 해제
+//            }
+//        return restaurant;        
+//    }
+    
+  //음식점 상세정보 조회
+    public Restaurant getRestaurantByLocation(float latitude, float longitude) {
         ResultSet rs = null;
         Restaurant restaurant = null;
-        
+
         StringBuilder query = new StringBuilder();
-        query.append("SELECT restaurant_id, category_id, introduction, name, address ");
+        query.append("SELECT restaurant_id, category_id, introduction, latitude, longitude, name, address ");
         query.append("FROM restaurant ");
         query.append("WHERE latitude = ? AND longitude = ?");
-        
+
         try {
-            jdbcUtil.setSqlAndParameters(query.toString(), new Object[]{latitude, longitude}); // JDBCUtil에 질의문과 파라미터 설정
+            jdbcUtil.setSqlAndParameters(query.toString(), new Object[]{latitude, longitude});
             rs = jdbcUtil.executeQuery();
             if (rs.next()) {
                 int restaurantId = rs.getInt("restaurant_id");
@@ -68,14 +98,16 @@ public class RestaurantDAO {
                 String address = rs.getString("address");
 
                 restaurant = new Restaurant(restaurantId, categoryId, introduction, latitude, longitude, name, address);
-                }
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            } finally {
-                jdbcUtil.close();       // ResultSet, PreparedStatement, Connection 등 해제
             }
-        return restaurant;        
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            jdbcUtil.close();
+        }
+        return restaurant;
     }
+
+
     
     //Wishlist 조회
     //Restaurant dto 수정함
