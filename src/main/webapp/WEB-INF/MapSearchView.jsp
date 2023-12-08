@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="model.Restaurant" %>
+<%@ page import="java.util.List" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,51 +23,74 @@
 </head>
 
 <body>
-    <div class="container mt-4">
-        <div class="input-group mb-3 rounded">
-            <button class="btn btn-outline-secondary rounded" type="button" id="backButton">
-                <i class="fas fa-arrow-left"></i>
-            </button>
-            <input type="text" class="form-control border-0 rounded-start" placeholder="음식점, 주소를 검색하세요" aria-label="Search" aria-describedby="basic-addon2" id="searchInput">
-            <div class="input-group-append">
-                <button class="btn btn-primary rounded-end" type="button" onclick="searchRestaurants()">검색</button>
+<% 
+        String customerName = (String) session.getAttribute("customerName");
+        if (customerName != null) {
+    %>
+            <div class="container">
+                <p><%= customerName %>!</p>
             </div>
-        </div>
+    <% 
+        }
+    %>
+    
+    <div class="container mt-4">
+ 	   <form class="form-signin" method="post" action="/restaurant/search">
+	        <div class="input-group mb-3 rounded">
+	             <button class="btn btn-outline-secondary rounded" type="button" id="backButton">
+				    <i class="fas fa-arrow-left"></i>
+				</button>
+				<script>
+				    document.getElementById("backButton").addEventListener("click", function() {
+				        window.history.back(); // 브라우저의 뒤로 가기 기능 실행
+				    });
+				</script>
+	            <input type="text" class="form-control border-0 rounded-start" name="searchKeyword" placeholder="음식점, 주소를 검색하세요" aria-label="Search" aria-describedby="basic-addon2">
+	            <div class="input-group-append">
+		             <button type="submit" class="btn btn-primary rounded-end">검색</button>
+	            </div>
+	        </div>
+	        </form>
     </div>
 
-    <div class="container mt-4">
-        <div class="row">
-            <div class="col-md-12">
-                <h3>검색 결과</h3>
-                <hr>
-                <div class="result-list" id="resultList">
-                    <!-- 검색 결과가 여기에 동적으로 추가됩니다 -->
-                    <div class="restaurant-info" onclick="showDetails('음식점 이름', '음식점 주소')">음식점 이름: [음식점 이름]<br>주소: [음식점 주소]</div>
-                    <hr>
-                    <div class="restaurant-info" onclick="showDetails('음식점 이름', '음식점 주소')">음식점 이름: [음식점 이름]<br>주소: [음식점 주소]</div>
-                    <hr>
-                    <div class="restaurant-info" onclick="showDetails('음식점 이름', '음식점 주소')">음식점 이름: [음식점 이름]<br>주소: [음식점 주소]</div>
-                    <hr>
+   <div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <h3>검색 결과</h3>
+            <hr>
+            <div class="result-list" id="resultList">
+                <%
+		List<Restaurant> searchedRestaurants = (List<Restaurant>)request.getAttribute("searchedRestaurants");
+		if(searchedRestaurants != null && !searchedRestaurants.isEmpty()) {
+   		for (Restaurant restaurant : searchedRestaurants) {
+				%>
+				<form class="restaurant-info" method="post" action="/restaurant/view">
+                    <input type="hidden" name="name" value="<%= restaurant.getName() %>">
+                    <input type="hidden" name="address" value="<%= restaurant.getAddress() %>">
+                    <input type="hidden" name="latitude" value="<%= restaurant.getLatitude() %>">
+                    <input type="hidden" name="longitude" value="<%= restaurant.getLongitude() %>">
+                    <button type="submit" style="background: none; border: none; cursor: pointer;">
+                        음식점 이름: <%= restaurant.getName() %><br>주소: <%= restaurant.getAddress() %>
+                    </button>
+                </form>
+                <%
+                    }
+                } else {
+                %>
+                <div class="no-result">
+                    검색 결과가 없습니다.
                 </div>
+                <%
+                }
+                %>
             </div>
         </div>
     </div>
+</div>
+
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     
-    <script>
-        function searchRestaurants() {
-            var searchInput = document.getElementById('searchInput').value;
-            var resultList = document.getElementById('resultList');
-            resultList.innerHTML = '';
-
-            // 여기에 검색 결과를 받아와서 동적으로 추가하는 코드를 작성합니다.
-            // 예시: resultList.innerHTML += '<div class="restaurant-info">음식점 이름: [음식점 이름]<br>주소: [음식점 주소]</div>';
-        }
-        function showDetails(name, address) {
-            // 해당 음식점의 디테일한 정보를 보여주는 페이지로 이동
-            window.location.href = '/restaurant/view?name=' + encodeURIComponent(name) + '&address=' + encodeURIComponent(address);
-        }
-    </script>
 </body>
 </html>

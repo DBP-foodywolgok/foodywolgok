@@ -8,7 +8,7 @@ public class Restaurant {
     private int category_id;
     private String introduction;
     private float latitude;
-    private float longtitude;
+    private float longitude;
     private String name;
     private String address;
     
@@ -17,7 +17,7 @@ public class Restaurant {
     @Override
     public String toString() {
         return "Restaurant [restaurant_id=" + restaurant_id + ", cateogry=" + category_id + ", introduction="
-                + introduction + ", latitude=" + latitude + ", longtitude=" + longtitude + ", name=" + name
+                + introduction + ", latitude=" + latitude + ", longtitude=" + longitude + ", name=" + name
                 + ", address=" + address + /* ", restuarnat_wishlists=" + restuarnat_wishlists + */ "]";
     }
 
@@ -53,12 +53,12 @@ public class Restaurant {
         this.latitude = latitude;
     }
 
-    public Float getLongtitude() {
-        return longtitude;
+    public Float getLongitude() {
+        return longitude;
     }
 
-    public void setLongtitude(Float longtitude) {
-        this.longtitude = longtitude;
+    public void setLongitude(Float longitude) {
+        this.longitude = longitude;
     }
 
     public String getName() {
@@ -78,14 +78,14 @@ public class Restaurant {
     }
 
     
-    public Restaurant(int restaurant_id, int category_id, String introduction, float latitude, float longtitude,
+    public Restaurant(int restaurant_id, int category_id, String introduction, float latitude, float longitude,
             String name, String address) {
         super();
         this.restaurant_id = restaurant_id;
         this.category_id = category_id;
         this.introduction = introduction;
         this.latitude = latitude;
-        this.longtitude = longtitude;
+        this.longitude = longitude;
         this.name = name;
         this.address = address;
     }

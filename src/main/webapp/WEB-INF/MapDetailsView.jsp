@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="model.Restaurant" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,11 +36,27 @@
 </head>
 
 <body>
+<% 
+        String customerName = (String) session.getAttribute("customerName");
+        if (customerName != null) {
+    %>
+            <div class="container">
+                <p><%= customerName %>!</p>
+            </div>
+    <% 
+        }
+    %>
+    
     <div class="container mt-4">
         <div class="input-group mb-3 rounded">
-            <button class="btn btn-outline-secondary rounded" type="button" id="backButton">
-                <i class="fas fa-arrow-left"></i>
-            </button>
+             <button class="btn btn-outline-secondary rounded" type="button" id="backButton">
+				    <i class="fas fa-arrow-left"></i>
+				</button>
+				<script>
+				    document.getElementById("backButton").addEventListener("click", function() {
+				        window.history.back(); // 브라우저의 뒤로 가기 기능 실행
+				    });
+				</script>
             <input type="text" class="form-control border-0 rounded-start" placeholder="음식점, 주소를 검색하세요" aria-label="Search" aria-describedby="basic-addon2">
             <div class="input-group-append">
                 <button class="btn btn-primary rounded-end" type="button">검색</button>
@@ -69,15 +86,21 @@
         	</div>
     	</div>
 	</div>
-
+    
     <div class="container-fluid d-flex align-items-end justify-content-center fixed-bottom">
         <div class="restaurant-info">
-            <div class="restaurant-name">식당 이름</div>
-            <div class="restaurant-intro">음식점 한 줄 소개</div>
-            <div class="restaurant-photos">
-                <img src="restaurant1.jpg" alt="음식점 사진 1">
-                <img src="restaurant2.jpg" alt="음식점 사진 2">
+            <% 
+            Restaurant restaurant = (Restaurant)request.getAttribute("restaurant");
+            if(restaurant != null) {
+            %>
+            <div class="restaurant-name"><%= restaurant.getName() %></div>
+            <div class="restaurant-intro"><%= restaurant.getIntroduction() %></div>
+            <div class="restaurant-name"><%= restaurant.getAddress() %></div>
+            <% } else { %>
+            <div class="no-result">
+                음식점 정보를 불러올 수 없습니다.
             </div>
+            <% } %>
         </div>
     </div>
 
