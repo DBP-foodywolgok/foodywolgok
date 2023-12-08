@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import controller.customer.CustomerLoginController;
 import controller.customer.CustomerLogoutController;
 import controller.customer.CustomerRegisterController;
+import controller.diary.RegisterDiaryController;
 import model.dao.CustomerDAO;
 import model.service.CustomerService;
 
@@ -42,7 +43,9 @@ public class RequestMapping {
         mappings.put("/customer/memberInformation", new ForwardController("/MemberInformation.jsp"));
         mappings.put("/customer/changePassword", new ForwardController("/ChangePassword.jsp"));
         mappings.put("/customer/findFriendList", new ForwardController("/FriendList.jsp"));
-        mappings.put("/diary/register", new ForwardController("/RegistrationDiary.jsp"));
+        
+        mappings.put("/diary/register", new RegisterDiaryController());
+        mappings.put("/diary/register/form", new ForwardController("/RegistrationDiary.jsp"));
         mappings.put("/diary/view", new ForwardController("/DiaryDetail.jsp"));
         mappings.put("/diary/update", new ForwardController("/EditDiary.jsp"));
         mappings.put("/diary/list", new ForwardController("/DiaryList.jsp"));

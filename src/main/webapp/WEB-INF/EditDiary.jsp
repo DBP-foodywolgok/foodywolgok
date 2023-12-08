@@ -97,7 +97,7 @@
 	        <textarea class="form-control" id="input_content" rows="7" placeholder="월곡의 모든 맛집은 푸디 월곡에.."></textarea><br/>
 	
 	        <!--  <button type="submit" class="btn btn-primary">수정하기</button>-->
-	        <a href="/diary/list" class="btn btn-primary">수정하기</a>
+	        <a href="/diary/view" class="btn btn-primary">수정하기</a>
 	    </form>
 	</div>
 

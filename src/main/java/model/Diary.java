@@ -1,8 +1,6 @@
 package model;
 
-import java.sql.Blob;
 import java.util.Date;
-import java.util.List;
 
 public class Diary {
 
@@ -10,24 +8,24 @@ public class Diary {
 	private String title;
 	private int isShared;
 	private Date nowDate;
-	private Blob photo;
 	private String content;
 	private int restaurant_id;
 	private int customer_id;
+	private String picture;
 	
 	public Diary() {}
 
-	public Diary(int diary_id, String title, int isShared, Date nowDate, Blob photo, String content, int restaurant_id,
-			int customer_id) {
+	public Diary(int diary_id, String title, int isShared, Date nowDate, String content, int restaurant_id,
+			int customer_id, String picture) {
 		super();
 		this.diary_id = diary_id;
 		this.title = title;
 		this.isShared = isShared;
 		this.nowDate = nowDate;
-		this.photo = photo;
 		this.content = content;
 		this.restaurant_id = restaurant_id;
 		this.customer_id = customer_id;
+		this.setPicture(picture);
 	}
 
 	public int getDiary_id() {
@@ -62,14 +60,6 @@ public class Diary {
 		this.nowDate = nowDate;
 	}
 
-	public Blob getPhoto() {
-		return photo;
-	}
-
-	public void setPhoto(Blob photo) {
-		this.photo = photo;
-	}
-
 	public String getContent() {
 		return content;
 	}
@@ -94,14 +84,21 @@ public class Diary {
 		this.customer_id = customer_id;
 	}
 
+
+	public String getPicture() {
+		return picture;
+	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+
 	@Override
 	public String toString() {
 		return "Diary [diary_id=" + diary_id + ", title=" + title + ", isShared=" + isShared + ", nowDate=" + nowDate
-				+ ", photo=" + photo + ", content=" + content + ", restaurant_id=" + restaurant_id + ", customer_id="
-				+ customer_id + "]";
-	};
-	
-	
+				+ ", content=" + content + ", restaurant_id=" + restaurant_id + ", customer_id=" + customer_id
+				+ ", picture=" + picture + "]";
+	}
 	
 	
 }

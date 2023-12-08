@@ -2,8 +2,6 @@ package model.dao;
 import java.sql.Blob;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import model.Diary;
 /**
 * 사용자 관리를 위해 데이터베이스 작업을 전담하는 DAO 클래스
@@ -19,12 +17,11 @@ public class DiaryDAO {
 	 */
 	public int create(Diary diary) throws SQLException {
 		String sql = "INSERT INTO DIARY VALUES (diary_seq.nextval, ?, ?, TO_DATE(SYSDATE, 'YYYY-MM-DD'), ?, ?, ?, ?)";
-		Blob photoBlob = (diary.getPhoto() != null) ? diary.getPhoto() : null;
 		// 파라미터 값 가져오기 //
 		
 		Object[] param = new Object[] {diary.getTitle(),
-				diary.getIsShared(), photoBlob, diary.getContent(),
-				diary.getRestaurant_id(), diary.getCustomer_id()};
+				diary.getIsShared(), diary.getContent(),
+				diary.getRestaurant_id(), diary.getCustomer_id(), diary.getPicture()};
 	
 		jdbcUtil.setSqlAndParameters(sql, param); // JDBCUtil 에 insert문과 매개 변수 설정
 		
@@ -55,10 +52,10 @@ public class DiaryDAO {
 	 * 
 	 * 기존의 다이어리를 수정. */
 	public int update(Diary diary, int diary_id) throws SQLException {
-		String sql = "UPDATE DIARY " + "SET title=?, isshared=?, photo=?, content=? " + "WHERE diary_id= ?";
-		Blob photoBlob = (diary.getPhoto() != null) ? diary.getPhoto() : null;
+		String sql = "UPDATE DIARY " + "SET title=?, isshared=?, picture=?, content=? " + "WHERE diary_id= ?";
+	
 		Object[] param = new Object[] {diary.getTitle(), diary.getIsShared(),
-				photoBlob, diary.getContent(), diary_id};
+				diary.getPicture(), diary.getContent(), diary_id};
 		jdbcUtil.setSqlAndParameters(sql, param); // JDBCUtil에 update문과 매개 변수 설정
 		try {
 			int result = jdbcUtil.executeUpdate(); // update 문 실행
@@ -77,20 +74,23 @@ public class DiaryDAO {
 	 * 주어진 다이어리 ID에 해당하는 다이어리 정보를 데이터베이스에서 찾아 Diary도메인 클래스에
 	 * 저장하여 반환. */
 	public Diary findDiary(int diary_id) throws SQLException {
-		String sql = "SELECT title, isshared, nowdate, photo, content, restaurant_id, customer_id "
+		String sql = "SELECT title, isshared, nowdate, content, restaurant_id, customer_id, picture "
 				+ "FROM DIARY " + "WHERE diary_id=? ";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {diary_id}); //JDBCUtil에 query문과 매개 변수 설정
 		try {
 			ResultSet rs = jdbcUtil.executeQuery(); // query실행
+			
 			if (rs.next()) { //다이어리 정보 발견
+				java.sql.Date nowDate = rs.getDate("nowdate");  // DATE 타입 컬럼 --> java.sql.Date
+				java.util.Date utilDate = new java.util.Date(nowDate.getTime());   // java.sql.Date --> java.util.Date 
 				Diary diary = new Diary( // Diary객체를 생성하여 다이어리 정보를 저장
 						diary_id, rs.getString("title"),
 						rs.getInt("isshared"),
-						rs.getDate("nowdate"),
-						rs.getBlob("photo"),
+						utilDate,				
 						rs.getString("content"),
 						rs.getInt("restaurant_id"),
-						rs.getInt("customer_id"));
+						rs.getInt("customer_id"),
+						rs.getString("picture"));
 				return diary;
 			}
 		} catch (Exception ex) {
@@ -103,6 +103,7 @@ public class DiaryDAO {
 	/**
 	 * 특정 customer가 작성한 다이어리를 검색하여 List에 저장 및 반환, 날짜 순
 	 */
+	/*
 	public List<Diary> findDiarysByCustomer(int customer_id) throws SQLException {
 		String sql = "SELECT diary_id, title, isshared, nowdate, photo, content, restaurant_id, customer_id FROM DIARY "
 				+ "WHERE customer_id = ? "
@@ -130,10 +131,11 @@ public class DiaryDAO {
 			jdbcUtil.close(); // resource 반환
 		}	
 		return null;
-	}
+	}*/
 	/**
 	 * 특정 customer가 작성한 다이어리 수를 count하여 반환
 	 */
+	/*
 	public int getNumberOfDiarysByCustomer(int customer_id) {
 		String sql = "SELECT COUNT(diary_id) FROM DIARY "	
 				+ "WHERE customer_id = ?";
@@ -149,4 +151,6 @@ public class DiaryDAO {
 		}
 		return 0;
 	}
+	*/
+	
 }

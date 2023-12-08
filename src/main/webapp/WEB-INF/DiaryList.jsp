@@ -56,7 +56,9 @@
     </style>
 </head>
 <body>
-
+	<!-- 다이어리 추가 버튼  -->
+	<button onclick="location.href='/diary/register/form'">다이어리 추가</button>
+    
     <header>
         <h1>다이어리</h1>
     </header>
@@ -81,7 +83,7 @@
     <hr/>
 
     <!-- Button added at the end of the body -->
-   <button onclick="location.href='/diary/view'">다이어리 추가</button>
+   
 
 </body>
 </html>
