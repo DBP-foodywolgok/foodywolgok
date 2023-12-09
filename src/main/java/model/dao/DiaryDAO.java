@@ -1,7 +1,9 @@
 package model.dao;
-import java.sql.Blob;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+
 import model.Diary;
 /**
 * 사용자 관리를 위해 데이터베이스 작업을 전담하는 DAO 클래스
@@ -16,11 +18,15 @@ public class DiaryDAO {
 	* 다이어리 새로운 글 생성
 	 */
 	public int create(Diary diary) throws SQLException {
-		String sql = "INSERT INTO DIARY VALUES (diary_seq.nextval, ?, ?, TO_DATE(SYSDATE, 'YYYY-MM-DD'), ?, ?, ?, ?)";
-		// 파라미터 값 가져오기 //
+		String sql = "INSERT INTO DIARY VALUES (diary_seq.nextval, ?, ?, ?, ?, ?, ?, ?)";
 		
+		// 현재 날짜와 시간을 LocalDateTime을 사용하여 가져옴
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        // LocalDateTime을 Date로 변환하여 바인딩
+        Date date = Date.valueOf(currentDateTime.toLocalDate());
+        
 		Object[] param = new Object[] {diary.getTitle(),
-				diary.getIsShared(), diary.getContent(),
+				diary.getIsShared(), date, diary.getContent(),
 				diary.getRestaurant_id(), diary.getCustomer_id(), diary.getPicture()};
 	
 		jdbcUtil.setSqlAndParameters(sql, param); // JDBCUtil 에 insert문과 매개 변수 설정
