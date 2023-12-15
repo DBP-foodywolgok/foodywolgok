@@ -3,6 +3,8 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import model.Diary;
 /**
@@ -109,25 +111,28 @@ public class DiaryDAO {
 	/**
 	 * 특정 customer가 작성한 다이어리를 검색하여 List에 저장 및 반환, 날짜 순
 	 */
-	/*
+	
 	public List<Diary> findDiarysByCustomer(int customer_id) throws SQLException {
-		String sql = "SELECT diary_id, title, isshared, nowdate, photo, content, restaurant_id, customer_id FROM DIARY "
+		String sql = "SELECT diary_id, title, isshared, nowdate, content, restaurant_id, customer_id, picture FROM DIARY "
 				+ "WHERE customer_id = ? "
-				+ "ORDER BY nowdate";
+				+ "ORDER BY diary_id DESC";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {customer_id}); //JDBCUtil에 query문과 매개 변수 설정
 		try {
 			ResultSet rs = jdbcUtil.executeQuery(); // query실행
 			List<Diary> diaryList = new ArrayList<Diary>(); // 다이어리리스트 생성
+			
 			while (rs.next()) {
+				java.sql.Date nowDate = rs.getDate("nowdate");  // DATE 타입 컬럼 --> java.sql.Date
+				java.util.Date utilDate = new java.util.Date(nowDate.getTime());   // java.sql.Date --> java.util.Date 
 				Diary diary = new Diary( // Diary 객체를 생성하여 현재 행의 정보를 저장
-						rs.getInt("diart_id"),
+						rs.getInt("diary_id"),
 						rs.getString("title"),
 						rs.getInt("isshared"),
-						rs.getDate("nowdate"),
-						rs.getBlob("photo"),
+						utilDate,
 						rs.getString("content"),
 						rs.getInt("restaurant_id"),
-						rs.getInt(customer_id));
+						rs.getInt("customer_id"),
+						rs.getString("picture"));
 				diaryList.add(diary); // List에 diary 객체 저장
 			}
 			return diaryList;
@@ -137,7 +142,7 @@ public class DiaryDAO {
 			jdbcUtil.close(); // resource 반환
 		}	
 		return null;
-	}*/
+	}
 	/**
 	 * 특정 customer가 작성한 다이어리 수를 count하여 반환
 	 */
