@@ -5,6 +5,9 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import controller.customer.CustomerFriendAddController;
+import controller.customer.CustomerFriendDeleteController;
+import controller.customer.CustomerFriendSearchController;
 import controller.customer.CustomerInformationController;
 import controller.customer.CustomerLoginController;
 import controller.customer.CustomerLogoutController;
@@ -29,6 +32,8 @@ public class RequestMapping {
     private Map<String, Controller> mappings = new HashMap<String, Controller>();
 
     public void initMapping() {
+    	
+    	
     	// 각 uri에 대응되는 controller 객체를 생성 및 저장
         mappings.put("/customer/register", new CustomerRegisterController());
         mappings.put("/customer/loginPage", new ForwardController("/login.jsp"));
@@ -38,15 +43,16 @@ public class RequestMapping {
         mappings.put("/customer/login",new CustomerLoginController());
         mappings.put("/customer/logout", new CustomerLogoutController());
         mappings.put("/customer/memberInformation", new CustomerInformationController());
-        
         mappings.put("/customer/findPassword", new ForwardController("/FindPassword.jsp"));
         mappings.put("/customer/diaryList", new ForwardController("/DiaryList.jsp"));
         mappings.put("/customer/recommendation", new ForwardController("/Recommendation.jsp"));
         mappings.put("/customer/friendlist", new ForwardController("/FriendList.jsp"));
         mappings.put("/customer/mypage", new ForwardController("/MyPage.jsp"));
-      
         mappings.put("/customer/changePassword", new ForwardController("/ChangePassword.jsp"));
         mappings.put("/customer/findFriendList", new ForwardController("/FriendList.jsp"));
+        mappings.put("/customer/registerFriend", new CustomerFriendAddController());
+        mappings.put("/customer/FriendList", new CustomerFriendSearchController()); 
+        mappings.put("/customer/deleteFriend", new CustomerFriendDeleteController());
         
         mappings.put("/diary/register", new RegisterDiaryController());
         mappings.put("/diary/register/form", new ForwardController("/RegistrationDiary.jsp"));

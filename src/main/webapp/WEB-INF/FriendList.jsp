@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+    <%@ page import="java.util.List" %>
+    <%@ page import="model.Customer" %>
+<%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html>
 
@@ -112,74 +115,46 @@
 </head>
 
 <body>
-<div class="container mt-5">
-    <center>
-        <h2 class="mb-4">模备 府胶飘</h2>
-    </center>
-    <div class="list-group">
-        <label class="list-group-item d-flex gap-2">
-            <input class="form-check-input flex-shrink-0" type="checkbox" value="" checked="">
-            <span>
-                    霉 锅掳 模备
-                    <small class="d-block text-body-secondary">With support text underneath to add more detail</small>
-                </span>
-        </label>
-        <!-- 唱赣瘤 模备 格废 眠啊 -->
-        <label class="list-group-item d-flex gap-2">
-            <input class="form-check-input flex-shrink-0" type="checkbox" value="">
-            <span>
-                    滴 锅掳 模备
-                    <small class="d-block text-body-secondary">Some other text goes here</small>
-                </span>
-        </label>
-        <label class="list-group-item d-flex gap-2">
-            <input class="form-check-input flex-shrink-0" type="checkbox" value="">
-            <span>
-                    技 锅掳 模备
-                    <small class="d-block text-body-secondary">And we end with another snippet of text</small>
-                </span>
-        </label>
-        <label class="list-group-item d-flex gap-2">
-            <input class="form-check-input flex-shrink-0" type="checkbox" value="">
-            <span>
-                    匙 锅掳 模备
-                    <small class="d-block text-body-secondary">With support text underneath to add more detail</small>
-                </span>
-        </label>
-        <label class="list-group-item d-flex gap-2">
-            <input class="form-check-input flex-shrink-0" type="checkbox" value="">
-            <span>
-                    促几 锅掳 模备
-                    <small class="d-block text-body-secondary">Some other text goes here</small>
-                </span>
-        </label>
-        <label class="list-group-item d-flex gap-2">
-            <input class="form-check-input flex-shrink-0" type="checkbox" value="">
-            <span>
-                    咯几 锅掳 模备
-                    <small class="d-block text-body-secondary">And we end with another snippet of text</small>
-                </span>
-        </label>
-        <label class="list-group-item d-flex gap-2">
-            <input class="form-check-input flex-shrink-0" type="checkbox" value="" checked="">
-            <span>
-                    老蚌 锅掳 模备
-                    <small class="d-block text-body-secondary">With support text underneath to add more detail</small>
-                </span>
-        </label>
-        <label class="list-group-item d-flex gap-2">
-            <input class="form-check-input flex-shrink-0" type="checkbox" value="">
-            <span>
-                    咯袋 锅掳 模备
-                    <small class="d-block text-body-secondary">Some other text goes here</small>
-                </span>
-        </label>
-    </div>
-    <div class="mt-4 d-flex justify-content-between">
-        <button class="btn btn-primary">模备 眠啊</button>
-        <button class="btn btn-primary">模备 昏力</button>
-    </div> 
-</div>
+    <div class="container mt-5">
+        <center>
+            <h2 class="mb-4">模备 格废</h2>
+        </center>
+  
+   <form id="deleteFriendForm" method="post" action="/customer/deleteFriend" id="deleteCustomer">
+  
+            <div class="list-group">
+                <% 
+                    List<Customer> friendList = (List<Customer>) request.getAttribute("friendList");
+                    for (Customer friend : friendList) { 
+                %>
+                    <label class="list-group-item d-flex gap-2">
+                        <input class="form-check-input flex-shrink-0" type="checkbox" name="selectedFriends" value="<%= friend.getCustomer_id() %>">
+                        <span><%= friend.getName() %></span>
+                    </label>
+                <% } %>
+            </div>
+            <div class="mt-4 d-flex justify-content-between">
+                <button class="btn btn-primary" onclick="addFriend()">模备 眠啊</button>
+                      <button class="btn btn-primary" type="button" onclick="deleteFriend()">模备 昏力</button>
+            </div>
+        </form>
+
+<script>
+   
+        function deleteFriend() {
+          
+            
+            document.getElementById('registrationForm').submit();
+        }
+
+       
+    
+</script>
+
 </body>
+
+
+
+
 
 </html>
