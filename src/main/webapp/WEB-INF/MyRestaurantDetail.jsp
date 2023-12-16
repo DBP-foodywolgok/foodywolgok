@@ -40,9 +40,9 @@
   			<span class="input-group-text">메모</span>
   			<textarea class="form-control" placeholder="여기 맛있다~" aria-label="Memo" rows="8"></textarea>
 		</div><br>
-		<input class="btn btn-outline-primary" type="button" value="수정" onClick="location.href='${pageContext.request.contextPath}/myRestaurant/update'"> 
+		<input class="btn btn-outline-primary" type="button" value="수정" onClick="location.href='/myRestaurant/update'"> 
 		<button type="button" class="btn btn-outline-primary">삭제</button>
-		<button type="button" class="btn btn-outline-primary" onClick="location.href='${pageContext.request.contextPath}/myRestaurant/list'">목록</button>
+		<button type="button" class="btn btn-outline-primary" onClick="location.href='/myRestaurant/list'">목록</button>
 		
 	</div>
 </body>

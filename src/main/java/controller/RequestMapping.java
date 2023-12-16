@@ -5,6 +5,9 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import controller.customer.CustomerFriendAddController;
+import controller.customer.CustomerFriendDeleteController;
+import controller.customer.CustomerFriendSearchController;
 import controller.customer.CustomerInformationController;
 import controller.customer.CustomerLoginController;
 import controller.customer.CustomerLogoutController;
@@ -14,6 +17,14 @@ import controller.restaurant.CategoryController;
 import controller.restaurant.SearchController;
 import controller.restaurant.ViewRestaurantController;
 import controller.restaurant.ViewWishlistListController;
+import controller.diary.RegisterDiaryController;
+import controller.diary.UpdateDiaryController;
+import controller.diary.ViewDiaryController;
+import controller.diary.DeleteDiaryController;
+import controller.diary.ListDiaryController;
+import controller.restaurant.CategoryController;
+import controller.restaurant.SearchController;
+import controller.myrestaurant.RegisterMyRestaurantController;
 import model.dao.CustomerDAO;
 import model.dao.RestaurantDAO;
 import model.service.CustomerService;
@@ -22,13 +33,15 @@ import model.service.CustomerService;
 
 public class RequestMapping {
     private static final Logger logger = LoggerFactory.getLogger(DispatcherServlet.class);
-    
+    	
   
     
     // 각 요청 uri에 대한 controller 객체를 저장할 HashMap 생성
     private Map<String, Controller> mappings = new HashMap<String, Controller>();
 
     public void initMapping() {
+    	
+    	
     	// 각 uri에 대응되는 controller 객체를 생성 및 저장
         mappings.put("/customer/register", new CustomerRegisterController());
         mappings.put("/customer/loginPage", new ForwardController("/login.jsp"));
@@ -38,20 +51,29 @@ public class RequestMapping {
         mappings.put("/customer/login",new CustomerLoginController());
         mappings.put("/customer/logout", new CustomerLogoutController());
         mappings.put("/customer/memberInformation", new CustomerInformationController());
+
         
-        mappings.put("/customer/findPassword", new ForwardController("/FindPassword.jsp"));
-        mappings.put("/customer/diaryList", new ForwardController("/DiaryList.jsp"));
+        mappings.put("/customer/findPassword", new ForwardController("/FindPassword.jsp")); 
+        mappings.put("/customer/diaryList", new ListDiaryController());
+
         mappings.put("/customer/recommendation", new ForwardController("/Recommendation.jsp"));
-        mappings.put("/customer/friendlist", new ForwardController("/FriendList.jsp"));
+     //   mappings.put("/customer/friendlist", new ForwardController("/FriendList.jsp"));
         mappings.put("/customer/mypage", new ForwardController("/MyPage.jsp"));
-      
         mappings.put("/customer/changePassword", new ForwardController("/ChangePassword.jsp"));
         mappings.put("/customer/findFriendList", new ForwardController("/FriendList.jsp"));
-        mappings.put("/diary/register", new ForwardController("/RegistrationDiary.jsp"));
-        mappings.put("/diary/view", new ForwardController("/DiaryDetail.jsp"));
-        mappings.put("/diary/update", new ForwardController("/EditDiary.jsp"));
-        mappings.put("/diary/list", new ForwardController("/DiaryList.jsp"));
-   
+        mappings.put("/customer/enrollFriend", new CustomerFriendAddController());
+        
+        mappings.put("/customer/FriendList", new CustomerFriendSearchController()); 
+        mappings.put("/customer/deleteFriends", new CustomerFriendDeleteController());
+        
+        //다이어리
+        mappings.put("/diary/register/form", new ForwardController("/RegistrationDiary.jsp"));
+        mappings.put("/diary/register", new RegisterDiaryController());
+        mappings.put("/diary/update", new UpdateDiaryController());
+        mappings.put("/diary/delete", new DeleteDiaryController());
+        mappings.put("/diary/list", new ListDiaryController());
+        mappings.put("/diary/view", new ViewDiaryController()); 
+        
         //map
         mappings.put("/restaurant/map", new ForwardController("/MapMainView.jsp"));
         mappings.put("/restaurant/search", new SearchController()); //검색버튼 누르면
@@ -64,7 +86,7 @@ public class RequestMapping {
         
         
         mappings.put("/myRestaurant/list", new ForwardController("/MyRestaurantList.jsp"));
-        mappings.put("/myRestaurant/register", new ForwardController("/AddMyRestaurant.jsp"));
+        mappings.put("/myRestaurant/register", new RegisterMyRestaurantController());
         mappings.put("/restaurant/find", new ForwardController("/FindRestaurant.jsp"));
         mappings.put("/myRestaurant/update", new ForwardController("/ModifyMyRestaurant.jsp"));
         mappings.put("/myRestaurant/view", new ForwardController("/MyRestaurantDetail.jsp"));

@@ -23,6 +23,8 @@ public class ResourceFilter implements Filter {
         resourcePrefixs.add("/js");
         resourcePrefixs.add("/fonts");
         resourcePrefixs.add("/images");
+        // form 폴더 추가 코드 
+        resourcePrefixs.add("/upload");
     }
 
     private RequestDispatcher defaultRequestDispatcher;

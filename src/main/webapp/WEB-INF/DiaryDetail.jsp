@@ -1,5 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="model.*" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>     
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	// java.util.Date -> String  
+	//System.out.println(System.currentTimeMillis());
+
+	Diary diary = (Diary)request.getAttribute("diary");
+
+%>
+
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -130,16 +142,27 @@
             background-color: #005fa6;
         }
     </style>
+    <script>
+ 	//삭제하기 누르면 질문 
+   	function diaryRemove() {
+   		return confirm("정말 삭제하시겠습니까?");		
+   	}
+	</script>
+    
 </head>
 <body>
 
-<div class="diary-entry">
-    <h4 class="diary-date">2023년 9월 25일</h4>
-    <h2 class="diary-title">푸디 월곡 최고 맛집</h2>
+<div class="diary-entry"> 
+    <h4 class="diary-date"><fmt:formatDate value="${diary.nowDate}" pattern="yyyy.MM.dd" /></h4>
+    <h2 class="diary-title"><%=diary.getTitle() %></h2> 
     <p class="diary-place">토라카츠</p>
-    <img src="https://i.namu.wiki/i/l_6dm5qRYU1uu24fnGveMGaeHP-RtuJ5SLPxtC7ilHMiv9fnu-IZyyht_k4G26T6PQNDmfvotEaLVQoYk_0FwskeoOwawaeI-NDeXCKV5RupLawYCyOMvMe4uGxQrxA02xDZkSjc-VBJFuCWIYl_xw.webp" alt="다이어리 이미지" class="diary-image">
+    
+    <c:if test="${not empty diary.picture}">
+    <img src="<c:url value='/upload/${diary.picture}'/>" />
+	</c:if>
+    
     <div class="diary-content">
-        <p>월곡의 모든 맛집은 푸디 월곡에 있다. </p>
+        <p><%=diary.getContent()%></p>
     </div>
 
     <!-- 댓글 섹션 -->
@@ -163,9 +186,18 @@
 
     <!-- 다이어리 수정하기, 삭제하기 버튼 -->
     <div class="diary-buttons">
-        <!-- <button type="button" class="btn btn-info">다이어리 수정하기</button>-->
-        <a href="/diary/update" class="btn btn-info">다이어리 수정하기</a>
-        <button type="button" class="btn btn-danger">다이어리 삭제하기</button>
+       
+        <a href="<c:url value='/diary/update'>
+			<c:param name='diaryId' value='${diary.diary_id}'/>
+			</c:url>" class="btn btn-info">
+			수정하기
+		</a>
+        <a href="<c:url value='/diary/delete'>
+			<c:param name='diaryId' value='${diary.diary_id}'/>
+			</c:url>" onclick="return diaryRemove();" class="btn btn-danger">
+			삭제하기
+		</a>
+        <a href="<c:url value='/diary/list'/>" class="btn btn-info">다이어리</a> 
     </div>
 </div>
 

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -72,23 +73,29 @@
         }
        
     </style>
+    <script>
+    function userCreate() {
+    	
+    	form.submit();
+    }
+    </script>
 </head>
 <body>
 
 	<div class="mb-3 center-form">
-	      <form action="Registration-Diary" method="post">  
+	      <form method="post" action="/diary/register" enctype="multipart/form-data">  
 	
 	
 	        <h3>다이어리 작성</h3>
 	
 	        <label for="input_title" class="form-label">제목</label>
-	        <input type="text" class="form-control" id="input_title" placeholder="제목을 입력하세요" required><br/>
+	        <input type="text" class="form-control" id="input_title" name="diary_title" placeholder="제목을 입력하세요" required><br/>
 			
 			<label for="input_place" class="form-label">장소</label>
-	  		<input type="submit" class="form-control" id="input_place" value="장소찾기" ><br/> 
+	  		<input type="submit" class="form-control" id="input_place" name="diary_place" value="장소찾기" ><br/> 
 	  		
 	  		<label for="input_picture" class="form-lbel">사진</label>
-	  		<input type="file" class="form-control" id="input_picture" value="사진찾기" name="file"><br/>
+	  		<input type="file" class="form-control" id="input_picture" name="diary_picture" value="사진찾기" name="file"/><br/>
 	  		
 	  		<label for="input-friend" class="form-label">친구</label>
 	        <!--  <input class="form-check-input" type="checkbox" value="" id="input-friend" checked><br/><br/> -->
@@ -96,17 +103,17 @@
 	        
 	       	<div class="form-check-label">
             <div style="display: flex; align-items: center;">
-                <input class="form-control" type="checkbox" value="친구공유" id="input-friend" checked required>
+                <input class="form-control" type="checkbox" value="1" id="input_friend" name="diary_friend" >
                 
             </div>
         </div><br/>
         
 	  		<label for="input_content" class="form-label">내용</label>
-	        <textarea class="form-control" id="input_content" rows="7" placeholder="내용을 작성하세요" required></textarea><br/>
+	        <textarea class="form-control" id="input_content" name="diary_content" rows="7" placeholder="내용을 작성하세요" required></textarea><br/>
 	        
 	
-	        <!--  <button type="submit" class="btn btn-primary">등록하기</button>-->
-	    	<a href="DiaryDetail.jsp" class="btn btn-primary">등록하기</a>
+	       	<button type="submit" class="btn btn-primary">등록하기</button>
+	    	<!--  <a href="/diary/view" class="btn btn-primary">등록하기</a>-->
 	    </form>
 	</div>
 
