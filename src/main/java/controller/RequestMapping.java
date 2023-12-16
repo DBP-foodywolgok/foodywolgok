@@ -14,6 +14,7 @@ import controller.customer.CustomerLogoutController;
 import controller.customer.CustomerRegisterController;
 
 import controller.diary.RegisterDiaryController;
+import controller.diary.ListDiaryController;
 import controller.restaurant.CategoryController;
 import controller.restaurant.SearchController;
 
@@ -43,8 +44,11 @@ public class RequestMapping {
         mappings.put("/customer/login",new CustomerLoginController());
         mappings.put("/customer/logout", new CustomerLogoutController());
         mappings.put("/customer/memberInformation", new CustomerInformationController());
-        mappings.put("/customer/findPassword", new ForwardController("/FindPassword.jsp"));
-        mappings.put("/customer/diaryList", new ForwardController("/DiaryList.jsp"));
+
+        
+        mappings.put("/customer/findPassword", new ForwardController("/FindPassword.jsp")); 
+        mappings.put("/customer/diaryList", new ListDiaryController());
+
         mappings.put("/customer/recommendation", new ForwardController("/Recommendation.jsp"));
         mappings.put("/customer/friendlist", new ForwardController("/FriendList.jsp"));
         mappings.put("/customer/mypage", new ForwardController("/MyPage.jsp"));
@@ -54,11 +58,12 @@ public class RequestMapping {
         mappings.put("/customer/FriendList", new CustomerFriendSearchController()); 
         mappings.put("/customer/deleteFriend", new CustomerFriendDeleteController());
         
+        //다이어리
         mappings.put("/diary/register", new RegisterDiaryController());
         mappings.put("/diary/register/form", new ForwardController("/RegistrationDiary.jsp"));
         mappings.put("/diary/view", new ForwardController("/DiaryDetail.jsp"));
         mappings.put("/diary/update", new ForwardController("/EditDiary.jsp"));
-        mappings.put("/diary/list", new ForwardController("/DiaryList.jsp"));
+        mappings.put("/diary/list", new ListDiaryController());
    
         //map
         mappings.put("/restaurant/map", new ForwardController("/MapMainView.jsp"));
