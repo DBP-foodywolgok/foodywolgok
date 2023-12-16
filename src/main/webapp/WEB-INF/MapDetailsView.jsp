@@ -87,39 +87,41 @@
     	</div>
 	</div>
     
-    <div class="container-fluid d-flex align-items-end justify-content-center fixed-bottom">
-        <div class="restaurant-info">
-            <% 
-            Restaurant restaurant = (Restaurant)request.getAttribute("restaurant");
-            if(restaurant != null) {
-            %>
-            <div class="restaurant-name"><%= restaurant.getName() %></div>
-            <div class="restaurant-intro"><%= restaurant.getIntroduction() %></div>
-            <div class="restaurant-name"><%= restaurant.getAddress() %></div>
-            <% } else { %>
-            <div class="no-result">
-                음식점 정보를 불러올 수 없습니다.
-            </div>
-            <% } %>
-        </div>
+	<div class="restaurant-info">
+		<%
+			Restaurant restaurant = (Restaurant) request.getAttribute("restaurant");
+		    Boolean isInWishlist = (Boolean) request.getAttribute("isInWishlist");
+		   
+		    if (isInWishlist != null) {
+		        String starClass = isInWishlist ? "fas" : "far";
+		%>
+		 <% System.out.println("Restaurant: " + restaurant); %> 
+		<a href="/restaurant/wishView?id=<%= restaurant.getRestaurant_id() %>">
+		    <!-- 별표 아이콘 -->
+		    <i class="<%= starClass %> fa-star" id="wishlistStar" data-restaurant-id="<%=restaurant.getRestaurant_id() %>"></i>
+		    <div class="restaurant-name"><%= restaurant.getName() %></div>
+		    <div class="restaurant-intro"><%= restaurant.getIntroduction() %></div>
+		    <div class="restaurant-name"><%= restaurant.getAddress() %></div>
+		</a>
+		<% 
+		    } else { %>
+		<div class="no-result">
+		    음식점 정보를 불러올 수 없습니다.
+		</div>
+		<% 
+		    } 
+		%>
+	</div>
+
+
+   <!-- 지도를 표시할 div 추가 -->
+    <div id="map" style="height: 600px; margin: 0 auto; text-align: center;">
+    	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3160.8019231069825!2d127.03980290993829!3d37.60682052170297!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357cbb7f99870231%3A0x385ba8fa17b75534!2z64-Z642V7Jes7J6Q64yA7ZWZ6rWQ!5e0!3m2!1sko!2skr!4v1702763149423!5m2!1sko!2skr" width="700" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
-
-    <!-- 지도를 표시할 div 추가 -->
-    <div id="map" style="height: 600px;"></div>
-
+    
     <!-- Bootstrap JS 추가 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
-    <!-- 네이버 지도 API 추가 -->
-    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=YOUR_CLIENT_ID"></script>
-
-    <!-- 지도를 표시하는 스크립트 추가 -->
-    <script>
-      var map = new naver.maps.Map('map', {
-    center: new naver.maps.LatLng(37.600231, 127.048681), // 하월곡동과 상월곡동 중심
-    zoom: 14 // 확대 수준
-});
-    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -8,17 +8,14 @@ public class Wishlist {
 	private int wishlist_id;
 	private String color;
 	private Date created_at;
-	private Customer customer;
+	private int customer_id;
 	private String name;
 	private String memo;
-	private List<Restaurant_Wishlist> restaurant_wishlists;
-	@Override
-	public String toString() {
-		return "Wishlist [wishlist_id=" + wishlist_id + ", color=" + color + ", created_at=" + created_at
-				+ ", customer=" + customer + ", name=" + name + ", memo=" + memo + ", restaurant_wishlists="
-				+ restaurant_wishlists + "]";
-	}
-	public int getWishlist_id() {
+
+	public Wishlist() {
+        super();
+    }
+    public int getWishlist_id() {
 		return wishlist_id;
 	}
 	public void setWishlist_id(int wishlist_id) {
@@ -36,11 +33,11 @@ public class Wishlist {
 	public void setCreated_at(Date created_at) {
 		this.created_at = created_at;
 	}
-	public Customer getCustomer() {
-		return customer;
+	public int getCustomer_id() {
+		return customer_id;
 	}
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
+	public void setCustomer_id(int customer_id) {
+		this.customer_id = customer_id;
 	}
 	public String getName() {
 		return name;
@@ -54,21 +51,14 @@ public class Wishlist {
 	public void setMemo(String memo) {
 		this.memo = memo;
 	}
-	public List<Restaurant_Wishlist> getRestaurant_wishlists() {
-		return restaurant_wishlists;
-	}
-	public void setRestaurant_wishlists(List<Restaurant_Wishlist> restaurant_wishlists) {
-		this.restaurant_wishlists = restaurant_wishlists;
-	}
-	public Wishlist(int wishlist_id, String color, Date created_at, Customer customer, String name, String memo,
-			List<Restaurant_Wishlist> restaurant_wishlists) {
+	
+	public Wishlist(int wishlist_id, String color, Date created_at, int customer_id, String name, String memo) {
 		super();
 		this.wishlist_id = wishlist_id;
 		this.color = color;
 		this.created_at = created_at;
-		this.customer = customer;
+		this.customer_id = customer_id;
 		this.name = name;
 		this.memo = memo;
-		this.restaurant_wishlists = restaurant_wishlists;
 	}
 }
