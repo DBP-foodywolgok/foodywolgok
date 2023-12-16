@@ -12,6 +12,7 @@ import controller.customer.CustomerRegisterController;
 
 import controller.diary.RegisterDiaryController;
 import controller.diary.ViewDiaryController;
+import controller.diary.DeleteDiaryController;
 import controller.diary.ListDiaryController;
 import controller.restaurant.CategoryController;
 import controller.restaurant.SearchController;
@@ -53,10 +54,11 @@ public class RequestMapping {
         //다이어리
         mappings.put("/diary/register", new RegisterDiaryController());
         mappings.put("/diary/register/form", new ForwardController("/RegistrationDiary.jsp"));
-        mappings.put("/diary/view", new ViewDiaryController()); 
         mappings.put("/diary/update", new ForwardController("/EditDiary.jsp"));
+        mappings.put("/diary/delete", new DeleteDiaryController());
         mappings.put("/diary/list", new ListDiaryController());
-   
+        mappings.put("/diary/view", new ViewDiaryController()); 
+        
         //map
         mappings.put("/restaurant/map", new ForwardController("/MapMainView.jsp"));
         mappings.put("/restaurant/search", new SearchController()); //검색버튼 누르면
