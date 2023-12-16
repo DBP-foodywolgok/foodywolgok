@@ -13,8 +13,9 @@
             font-family: 'Nanum Gothic', sans-serif;
             background-color: #f8f9fa;
             color: #495057;
-            margin: 0;
             padding: 0;
+            width: 60%; /* 폭 조절 */
+            margin: 0 auto; /* 양쪽 조절 */
         }
 
         header {
@@ -66,6 +67,12 @@
             font-size: 0.8em; /* 작게 */
             margin-top: 2px; /* 상단 간격 조절 */
         }
+        
+        /* 링크에 밑줄 제거 */
+    	a {
+        	text-decoration: none;
+    	}
+        
     </style>
 </head>
 <body>
@@ -97,7 +104,13 @@
                             <c:if test="${not empty diary.picture}">
                                 <img src="<c:url value='/upload/${diary.picture}'/>" class="card-img-top diary-image" alt="다이어리 이미지">
                             </c:if>
-                            <h5 class="card-title diary-title">${diary.title}</h5>
+                            
+                            <p><a href="<c:url value='/diary/view'>
+					   			<c:param name='diaryId' value='${diary.diary_id}'/>
+			 		 		</c:url>" class="card-title diary-title">
+								${diary.title}
+							</a></p>
+               
                             <p class="card-text diary-content">${diary.content}</p>
                         </div>
                     </div>
@@ -109,5 +122,21 @@
     </div>
 
     <!-- Bootstrap JS 및 Popper.js 추가 -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY0iD70B9B5PHL2QFjvqE+6qZ8rWHinI586d5" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY0iD70B9B5PHL2QFjvqE+6qZ8rWHinI586d5" crossorigin="anonymous">
+    
+    <!--id onClick-->
+    <!--document.addEventListener('DOMContentLoaded', function() {
+        // 다이어리 카드 클릭 이벤트 핸들러
+        document.querySelectorAll('.diary-entry').forEach(function(card) {
+            card.addEventListener('click', function() {
+                // 클릭된 다이어리의 ID 가져오기
+                var diaryId = card.getAttribute('data-diary-id');
+                
+                // 다이어리 상세 페이지로 이동
+                window.location.href = '/diary/view?id=' + diaryId;
+            });
+        });
+    });-->
+    
+    </script>
     
