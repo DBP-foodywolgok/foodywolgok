@@ -118,22 +118,22 @@
     <div class="container mt-5">
         <h2 class="text-center mb-4">模备 格废</h2>
 
-        <form id="deleteFriendForm" method="post" action="/customer/deleteFriends">
-            <div class="list-group">
-                <% 
-                    List<Customer> friendList = (List<Customer>) request.getAttribute("friendList");
-                    for (Customer friend : friendList) { 
-                %>
-                <label class="list-group-item d-flex gap-2">
-                    <input class="form-check-input flex-shrink-0" type="checkbox" name="selectedFriends" value="<%= friend.getCustomer_id() %>">
-                    <span><%= friend.getName() %></span>
-                </label>
-                <% } %>
-            </div>
-            <div class="mt-4">
-                <button class="btn btn-primary" type="submit">模备 昏力</button>
-            </div>
-        </form>
+        <form id="deleteFriendForm" method="post" action="/customer/deleteFriends"> <!-- 咀记 荐沥 -->
+    <div class="list-group">
+        <% 
+            List<Customer> friendList = (List<Customer>) request.getAttribute("friendList");
+            for (Customer friend : friendList) { 
+        %>
+        <label class="list-group-item d-flex gap-2">
+            <input class="form-check-input flex-shrink-0" type="checkbox" name="selectedFriends" value="<%= friend.getCustomer_id() %>">
+            <span><%= friend.getName() %></span>
+        </label>
+        <% } %>
+    </div>
+    <div class="mt-4">
+        <button class="btn btn-primary" type="submit">模备 昏力</button>
+    </div>
+</form>
 
         <div class="mt-4">
             <form method="post" action="/customer/enrollFriend">

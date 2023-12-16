@@ -314,25 +314,26 @@ public class CustomerDAO {
 	 
 // 친구 삭제 
 	 public boolean deleteFriend(int customerId, int friendId) throws SQLException {
-		    boolean isSuccess = false;
-		    String sql = "DELETE FROM FriendList WHERE (cust_id = ? AND friend_id = ?) OR (cust_id = ? AND friend_id = ?)";
-		    
-		    jdbcUtil.setSqlAndParameters(sql, new Object[]{customerId, friendId, friendId, customerId});
-		    
-		    try {
-		        int result = jdbcUtil.executeUpdate();
-		        if (result > 0) {
-		            isSuccess = true;
-		        }
-		    } catch (Exception ex) {
-		        jdbcUtil.rollback();
-		        ex.printStackTrace();
-		    } finally {
-		        jdbcUtil.commit();
-		        jdbcUtil.close();
-		    }
-		    return isSuccess;
-		}
-  }
+	        boolean isSuccess = false;
+	        String sql = "DELETE FROM FriendList WHERE (cust_id = ? AND friend_id = ?) OR (cust_id = ? AND friend_id = ?)";
+
+	        try {
+	            jdbcUtil.setSqlAndParameters(sql, new Object[]{customerId, friendId, friendId, customerId});
+	            int result = jdbcUtil.executeUpdate();
+
+	            if (result > 0) {
+	                isSuccess = true;
+	            }
+	        } catch (Exception ex) {
+	            jdbcUtil.rollback();
+	            ex.printStackTrace();
+	        } finally {
+	            jdbcUtil.commit();
+	            jdbcUtil.close();
+	        }
+	        return isSuccess;
+	    }
+	}
+  
 	
 
