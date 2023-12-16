@@ -256,7 +256,7 @@ public class CustomerDAO {
 	 // 친구 추가 
 	 public boolean addFriend(int customerId1, String email) throws SQLException {
 		    boolean isSuccess = false;
-		    int friendId = -1; // 초기값 설정
+		//    int friendId = -1; // 초기값 설정
 
 		    try {
 		        // 입력된 이메일로 사용자 찾기
@@ -264,7 +264,7 @@ public class CustomerDAO {
 		        
 		        if (friend_Id != 0) {
 		       
-		            String sql = "INSERT INTO FriendList(custId, friendId) VALUES (?, ?)";
+		            String sql = "INSERT INTO FriendList(cust_id, friend_id) VALUES (?, ?)";
 		            
 		            // 첫 번째 고객이 두 번째 고객을 친구로 추가
 		            jdbcUtil.setSqlAndParameters(sql, new Object[]{customerId1, friend_Id});

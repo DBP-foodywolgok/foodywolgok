@@ -50,11 +50,12 @@ public class RequestMapping {
         mappings.put("/customer/diaryList", new ListDiaryController());
 
         mappings.put("/customer/recommendation", new ForwardController("/Recommendation.jsp"));
-        mappings.put("/customer/friendlist", new ForwardController("/FriendList.jsp"));
+     //   mappings.put("/customer/friendlist", new ForwardController("/FriendList.jsp"));
         mappings.put("/customer/mypage", new ForwardController("/MyPage.jsp"));
         mappings.put("/customer/changePassword", new ForwardController("/ChangePassword.jsp"));
         mappings.put("/customer/findFriendList", new ForwardController("/FriendList.jsp"));
-        mappings.put("/customer/registerFriend", new CustomerFriendAddController());
+        mappings.put("/customer/enrollFriend", new CustomerFriendAddController());
+        
         mappings.put("/customer/FriendList", new CustomerFriendSearchController()); 
         mappings.put("/customer/deleteFriend", new CustomerFriendDeleteController());
         

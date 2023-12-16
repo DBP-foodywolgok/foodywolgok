@@ -116,45 +116,35 @@
 
 <body>
     <div class="container mt-5">
-        <center>
-            <h2 class="mb-4">친구 목록</h2>
-        </center>
-  
-   <form id="deleteFriendForm" method="post" action="/customer/deleteFriend" id="deleteCustomer">
-  
+        <h2 class="text-center mb-4">친구 목록</h2>
+
+        <form id="deleteFriendForm" method="post" action="/customer/registerFriends">
             <div class="list-group">
                 <% 
                     List<Customer> friendList = (List<Customer>) request.getAttribute("friendList");
                     for (Customer friend : friendList) { 
                 %>
-                    <label class="list-group-item d-flex gap-2">
-                        <input class="form-check-input flex-shrink-0" type="checkbox" name="selectedFriends" value="<%= friend.getCustomer_id() %>">
-                        <span><%= friend.getName() %></span>
-                    </label>
+                <label class="list-group-item d-flex gap-2">
+                    <input class="form-check-input flex-shrink-0" type="checkbox" name="selectedFriends" value="<%= friend.getCustomer_id() %>">
+                    <span><%= friend.getName() %></span>
+                </label>
                 <% } %>
             </div>
-            <div class="mt-4 d-flex justify-content-between">
-                <button class="btn btn-primary" onclick="addFriend()">친구 추가</button>
-                      <button class="btn btn-primary" type="button" onclick="deleteFriend()">친구 삭제</button>
+            <div class="mt-4">
+                <button class="btn btn-primary" type="submit">친구 삭제</button>
             </div>
         </form>
 
-<script>
-   
-        function deleteFriend() {
-          
-            
-            document.getElementById('registrationForm').submit();
-        }
-
-       
-    
-</script>
+        <div class="mt-4">
+            <form method="post" action="/customer/enrollFriend">
+                <!-- 이메일 입력을 받을 input 요소 -->
+                <input type="text" id="friendEmail" name="friendEmail" placeholder="이메일을 입력하세요">
+                <!-- 친구 추가를 위한 버튼 -->
+                <button class="btn btn-primary" type="submit">친구 추가</button>
+            </form>
+        </div>
+     </div> 
+    <!-- 필요한 스크립트 등 추가 -->
 
 </body>
-
-
-
-
-
 </html>
