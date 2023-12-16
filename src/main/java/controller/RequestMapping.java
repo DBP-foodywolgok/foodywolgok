@@ -11,6 +11,7 @@ import controller.customer.CustomerLogoutController;
 import controller.customer.CustomerRegisterController;
 
 import controller.diary.RegisterDiaryController;
+import controller.diary.UpdateDiaryController;
 import controller.diary.ViewDiaryController;
 import controller.diary.DeleteDiaryController;
 import controller.diary.ListDiaryController;
@@ -52,9 +53,9 @@ public class RequestMapping {
         mappings.put("/customer/findFriendList", new ForwardController("/FriendList.jsp"));
         
         //다이어리
-        mappings.put("/diary/register", new RegisterDiaryController());
         mappings.put("/diary/register/form", new ForwardController("/RegistrationDiary.jsp"));
-        mappings.put("/diary/update", new ForwardController("/EditDiary.jsp"));
+        mappings.put("/diary/register", new RegisterDiaryController());
+        mappings.put("/diary/update", new UpdateDiaryController());
         mappings.put("/diary/delete", new DeleteDiaryController());
         mappings.put("/diary/list", new ListDiaryController());
         mappings.put("/diary/view", new ViewDiaryController()); 

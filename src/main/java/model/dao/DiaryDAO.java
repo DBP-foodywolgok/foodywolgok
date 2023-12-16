@@ -60,10 +60,10 @@ public class DiaryDAO {
 	 * 
 	 * 기존의 다이어리를 수정. */
 	public int update(Diary diary, int diary_id) throws SQLException {
-		String sql = "UPDATE DIARY " + "SET title=?, isshared=?, picture=?, content=? " + "WHERE diary_id= ?";
+		String sql = "UPDATE DIARY " + "SET title=?, isshared=?, content=? " + "WHERE diary_id= ?";
 	
 		Object[] param = new Object[] {diary.getTitle(), diary.getIsShared(),
-				diary.getPicture(), diary.getContent(), diary_id};
+				 diary.getContent(), diary_id};
 		jdbcUtil.setSqlAndParameters(sql, param); // JDBCUtil에 update문과 매개 변수 설정
 		try {
 			int result = jdbcUtil.executeUpdate(); // update 문 실행
