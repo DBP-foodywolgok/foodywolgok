@@ -256,28 +256,20 @@ public class CustomerDAO {
 	 // 친구 추가 
 	 public boolean addFriend(int customerId1, String email) throws SQLException {
 		    boolean isSuccess = false;
-		//    int friendId = -1; // 초기값 설정
+		    int friendId = getCustomerIdByEmail(email);
+
+		    String sql1 = "INSERT INTO FriendList(cust_id, friend_id) VALUES (?, ?)";
+		    String sql2 = "INSERT INTO FriendList(cust_id, friend_id) VALUES (?, ?)";
 
 		    try {
-		        // 입력된 이메일로 사용자 찾기
-		        int  friend_Id = getCustomerIdByEmail(email);
-		        
-		        if (friend_Id != 0) {
-		       
-		            String sql = "INSERT INTO FriendList(cust_id, friend_id) VALUES (?, ?)";
-		            
-		            // 첫 번째 고객이 두 번째 고객을 친구로 추가
-		            jdbcUtil.setSqlAndParameters(sql, new Object[]{customerId1, friend_Id});
-		            int result = jdbcUtil.executeUpdate();
-		            
-		            // 두 번째 고객도 첫 번째 고객을 친구로 추가 (양방향 관계로 설정)
-		            jdbcUtil.setSqlAndParameters(sql, new Object[]{friend_Id, customerId1});
-		            int result2 = jdbcUtil.executeUpdate();
-		            
-		            // 두 쿼리 모두 정상적으로 실행되었을 때만 성공 처리
-		            if (result > 0 && result2 > 0) {
-		                isSuccess = true;
-		            }
+		        jdbcUtil.setSqlAndParameters(sql1, new Object[]{customerId1, friendId});
+		        int result1 = jdbcUtil.executeUpdate();
+
+		        jdbcUtil.setSqlAndParameters(sql2, new Object[]{friendId, customerId1});
+		        int result2 = jdbcUtil.executeUpdate();
+
+		        if (result1 > 0 && result2 > 0) {
+		            isSuccess = true;
 		        }
 		    } catch (Exception ex) {
 		        jdbcUtil.rollback();
@@ -288,6 +280,8 @@ public class CustomerDAO {
 		    }
 		    return isSuccess;
 		}
+	 
+	
 	    // 친구 조회 
 
 	 public List<Customer> getFriends(int customerId) throws SQLException {

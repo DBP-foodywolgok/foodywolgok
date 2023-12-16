@@ -27,12 +27,12 @@ public class CustomerFriendAddController implements Controller {
 	    @Override
 	    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 	    	
-	        String email = request.getParameter("email");
+	        String email = request.getParameter("friendEmail");
+	        System.out.println("Received friendEmail: " + email);
+
 	        
 	        HttpSession session = request.getSession();
 	        int customerId = (int) session.getAttribute(UserSessionUtils.USER_SESSION_KEY);
-
-	  
 
 	        try {
 	           

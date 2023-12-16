@@ -59,7 +59,7 @@ public class RequestMapping {
         mappings.put("/customer/enrollFriend", new CustomerFriendAddController());
         
         mappings.put("/customer/FriendList", new CustomerFriendSearchController()); 
-        mappings.put("/customer/deleteFriend", new CustomerFriendDeleteController());
+        mappings.put("/customer/deleteFriends", new CustomerFriendDeleteController());
         
         //다이어리
         mappings.put("/diary/register", new RegisterDiaryController());

@@ -118,7 +118,7 @@
     <div class="container mt-5">
         <h2 class="text-center mb-4">친구 목록</h2>
 
-        <form id="deleteFriendForm" method="post" action="/customer/registerFriends">
+        <form id="deleteFriendForm" method="post" action="/customer/deleteFriends">
             <div class="list-group">
                 <% 
                     List<Customer> friendList = (List<Customer>) request.getAttribute("friendList");
