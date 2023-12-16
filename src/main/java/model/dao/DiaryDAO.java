@@ -78,6 +78,28 @@ public class DiaryDAO {
 		}
 		return 0;
 	}
+	
+	/**
+	 * 다이어리 ID에 해당하는 다이어리를 삭제.
+	 */
+	public int remove(int diary_id) throws SQLException {
+		String sql = "DELETE FROM DIARY WHERE diary_id=?";		
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {diary_id});	// JDBCUtil에 delete문과 매개 변수 설정
+
+		try {				
+			int result = jdbcUtil.executeUpdate();	// delete 문 실행
+			return result;
+		} catch (Exception ex) {
+			jdbcUtil.rollback();
+			ex.printStackTrace();
+		}
+		finally {
+			jdbcUtil.commit();
+			jdbcUtil.close();	// resource 반환
+		}		
+		return 0;
+	}
+	
 	/**
 	 * 주어진 다이어리 ID에 해당하는 다이어리 정보를 데이터베이스에서 찾아 Diary도메인 클래스에
 	 * 저장하여 반환. */

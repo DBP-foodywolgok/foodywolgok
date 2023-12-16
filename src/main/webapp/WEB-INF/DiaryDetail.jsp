@@ -142,6 +142,13 @@
             background-color: #005fa6;
         }
     </style>
+    <script>
+ 	//삭제하기 누르면 질문 
+   	function diaryRemove() {
+   		return confirm("정말 삭제하시겠습니까?");		
+   	}
+	</script>
+    
 </head>
 <body>
 
@@ -181,7 +188,12 @@
     <div class="diary-buttons">
         <!-- <button type="button" class="btn btn-info">다이어리 수정하기</button>-->
         <a href="/diary/update" class="btn btn-info">다이어리 수정하기</a>
-        <button type="button" class="btn btn-danger">다이어리 삭제하기</button>
+        <!--  <button type="button" class="btn btn-danger">다이어리 삭제하기</button>-->
+        <a href="<c:url value='/diary/delete'>
+			<c:param name='diaryId' value='${diary.diary_id}'/>
+			</c:url>" onclick="return diaryRemove();" class="btn btn-danger">
+			삭제하기
+		</a>
         <a href="<c:url value='/diary/list'/>" class="btn btn-info">다이어리</a> 
     </div>
 </div>
