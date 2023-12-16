@@ -11,6 +11,7 @@ import controller.customer.CustomerLogoutController;
 import controller.customer.CustomerRegisterController;
 
 import controller.diary.RegisterDiaryController;
+import controller.myrestaurant.RegisterMyRestaurantController;
 import controller.restaurant.CategoryController;
 import controller.restaurant.SearchController;
 
@@ -22,7 +23,7 @@ import model.service.CustomerService;
 
 public class RequestMapping {
     private static final Logger logger = LoggerFactory.getLogger(DispatcherServlet.class);
-    
+    	
   
     
     // 각 요청 uri에 대한 controller 객체를 저장할 HashMap 생성
@@ -63,7 +64,7 @@ public class RequestMapping {
         mappings.put("/wishlist/view", new ForwardController("/WishList.jsp"));
         
         mappings.put("/myRestaurant/list", new ForwardController("/MyRestaurantList.jsp"));
-        mappings.put("/myRestaurant/register", new ForwardController("/AddMyRestaurant.jsp"));
+        mappings.put("/myRestaurant/register", new RegisterMyRestaurantController());
         mappings.put("/restaurant/find", new ForwardController("/FindRestaurant.jsp"));
         mappings.put("/myRestaurant/update", new ForwardController("/ModifyMyRestaurant.jsp"));
         mappings.put("/myRestaurant/view", new ForwardController("/MyRestaurantDetail.jsp"));
