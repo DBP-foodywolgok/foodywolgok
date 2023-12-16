@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+    <%@ page import="java.util.List" %>
+    <%@ page import="model.Customer" %>
+<%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html>
 
@@ -112,74 +115,36 @@
 </head>
 
 <body>
-<div class="container mt-5">
-    <center>
-        <h2 class="mb-4">친구 리스트</h2>
-    </center>
-    <div class="list-group">
-        <label class="list-group-item d-flex gap-2">
-            <input class="form-check-input flex-shrink-0" type="checkbox" value="" checked="">
-            <span>
-                    첫 번째 친구
-                    <small class="d-block text-body-secondary">With support text underneath to add more detail</small>
-                </span>
-        </label>
-        <!-- 나머지 친구 목록 추가 -->
-        <label class="list-group-item d-flex gap-2">
-            <input class="form-check-input flex-shrink-0" type="checkbox" value="">
-            <span>
-                    두 번째 친구
-                    <small class="d-block text-body-secondary">Some other text goes here</small>
-                </span>
-        </label>
-        <label class="list-group-item d-flex gap-2">
-            <input class="form-check-input flex-shrink-0" type="checkbox" value="">
-            <span>
-                    세 번째 친구
-                    <small class="d-block text-body-secondary">And we end with another snippet of text</small>
-                </span>
-        </label>
-        <label class="list-group-item d-flex gap-2">
-            <input class="form-check-input flex-shrink-0" type="checkbox" value="">
-            <span>
-                    네 번째 친구
-                    <small class="d-block text-body-secondary">With support text underneath to add more detail</small>
-                </span>
-        </label>
-        <label class="list-group-item d-flex gap-2">
-            <input class="form-check-input flex-shrink-0" type="checkbox" value="">
-            <span>
-                    다섯 번째 친구
-                    <small class="d-block text-body-secondary">Some other text goes here</small>
-                </span>
-        </label>
-        <label class="list-group-item d-flex gap-2">
-            <input class="form-check-input flex-shrink-0" type="checkbox" value="">
-            <span>
-                    여섯 번째 친구
-                    <small class="d-block text-body-secondary">And we end with another snippet of text</small>
-                </span>
-        </label>
-        <label class="list-group-item d-flex gap-2">
-            <input class="form-check-input flex-shrink-0" type="checkbox" value="" checked="">
-            <span>
-                    일곱 번째 친구
-                    <small class="d-block text-body-secondary">With support text underneath to add more detail</small>
-                </span>
-        </label>
-        <label class="list-group-item d-flex gap-2">
-            <input class="form-check-input flex-shrink-0" type="checkbox" value="">
-            <span>
-                    여덟 번째 친구
-                    <small class="d-block text-body-secondary">Some other text goes here</small>
-                </span>
-        </label>
-    </div>
-    <div class="mt-4 d-flex justify-content-between">
-        <button class="btn btn-primary">친구 추가</button>
-        <button class="btn btn-primary">친구 삭제</button>
-    </div> 
-</div>
-</body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">친구 목록</h2>
 
+        <form id="deleteFriendForm" method="post" action="/customer/deleteFriends"> <!-- 액션 수정 -->
+    <div class="list-group">
+        <% 
+            List<Customer> friendList = (List<Customer>) request.getAttribute("friendList");
+            for (Customer friend : friendList) { 
+        %>
+        <label class="list-group-item d-flex gap-2">
+            <input class="form-check-input flex-shrink-0" type="checkbox" name="selectedFriends" value="<%= friend.getCustomer_id() %>">
+            <span><%= friend.getName() %></span>
+        </label>
+        <% } %>
+    </div>
+    <div class="mt-4">
+        <button class="btn btn-primary" type="submit">친구 삭제</button>
+    </div>
+</form>
+
+        <div class="mt-4">
+            <form method="post" action="/customer/enrollFriend">
+                <!-- 이메일 입력을 받을 input 요소 -->
+                <input type="text" id="friendEmail" name="friendEmail" placeholder="이메일을 입력하세요">
+                <!-- 친구 추가를 위한 버튼 -->
+                <button class="btn btn-primary" type="submit">친구 추가</button>
+            </form>
+        </div>
+     </div> 
+    <!-- 필요한 스크립트 등 추가 -->
+
+</body>
 </html>

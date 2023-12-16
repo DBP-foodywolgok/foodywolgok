@@ -254,14 +254,73 @@ public class CustomerDAO {
 	    }
 	 
 	 // 친구 추가 
-	    public boolean addFriend(int customerId1, int customerId2) throws SQLException {
+	 public boolean addFriend(int customerId1, String email) throws SQLException {
+		    boolean isSuccess = false;
+		    int friendId = getCustomerIdByEmail(email);
+
+		    String sql1 = "INSERT INTO FriendList(cust_id, friend_id) VALUES (?, ?)";
+		    String sql2 = "INSERT INTO FriendList(cust_id, friend_id) VALUES (?, ?)";
+
+		    try {
+		        jdbcUtil.setSqlAndParameters(sql1, new Object[]{customerId1, friendId});
+		        int result1 = jdbcUtil.executeUpdate();
+
+		        jdbcUtil.setSqlAndParameters(sql2, new Object[]{friendId, customerId1});
+		        int result2 = jdbcUtil.executeUpdate();
+
+		        if (result1 > 0 && result2 > 0) {
+		            isSuccess = true;
+		        }
+		    } catch (Exception ex) {
+		        jdbcUtil.rollback();
+		        ex.printStackTrace();
+		    } finally {
+		        jdbcUtil.commit();
+		        jdbcUtil.close();
+		    }
+		    return isSuccess;
+		}
+	 
+	
+	    // 친구 조회 
+
+	 public List<Customer> getFriends(int customerId) throws SQLException {
+		    List<Customer> friends = new ArrayList<>();
+		    String sql = "SELECT c.customer_id, c.name, c.email " +
+		                 "FROM Customer c " +
+		                 "INNER JOIN FriendList f ON c.customer_id = f.friend_id " +
+		                 "WHERE f.cust_id = ?";
+		    jdbcUtil.setSqlAndParameters(sql, new Object[]{customerId});
+
+		    try {
+		        ResultSet rs = jdbcUtil.executeQuery();
+		        while (rs.next()) {
+		            Customer friend = new Customer();
+		            friend.setCustomer_id(rs.getInt("customer_id"));
+		            friend.setName(rs.getString("name"));
+		            friend.setEmail(rs.getString("email"));
+		            friends.add(friend);
+		        }
+		    } catch (Exception ex) {
+		        jdbcUtil.rollback();
+		        ex.printStackTrace();
+		    } finally {
+		        jdbcUtil.commit();
+		        jdbcUtil.close();
+		    }
+
+		    return friends;
+		}
+	 
+// 친구 삭제 
+	 public boolean deleteFriend(int customerId, int friendId) throws SQLException {
 	        boolean isSuccess = false;
-	        String sql = "INSERT INTO FriendList VALUES (?, ?)";
-	        
-	        jdbcUtil.setSqlAndParameters(sql, new Object[]{customerId1, customerId2});
-	        
+	        String sql = "DELETE FROM FriendList WHERE (cust_id = ? AND friend_id = ?) OR (cust_id = ? AND friend_id = ?)";
+
 	        try {
+	            jdbcUtil.setSqlAndParameters(sql, new Object[]{customerId, friendId, friendId, customerId});
 	            int result = jdbcUtil.executeUpdate();
+
 	            if (result > 0) {
 	                isSuccess = true;
 	            }
@@ -274,54 +333,7 @@ public class CustomerDAO {
 	        }
 	        return isSuccess;
 	    }
-	    
-	    // 친구 조회 
-
-
-public List<Integer> getFriendList(int customerId) throws SQLException {
-    List<Integer> friendList = new ArrayList<>();
-    String sql = "SELECT friend_id FROM FriendList WHERE cust_id = ?";
-    
-    jdbcUtil.setSqlAndParameters(sql, new Object[]{customerId});
-    
-    try {
-        ResultSet rs = jdbcUtil.executeQuery();
-        while (rs.next()) {
-            int friendId = rs.getInt("friend_id");
-            friendList.add(friendId);
-        }
-    } catch (Exception ex) {
-        jdbcUtil.rollback();
-        ex.printStackTrace();
-    } finally {
-    	jdbcUtil.commit();
-        jdbcUtil.close();
-    }
-    return friendList;
-}
-
-// 친구 삭제 
-public boolean removeFriend(int customerId1, int customerId2) throws SQLException {
-    boolean isSuccess = false;
-    String sql = "DELETE FROM FriendList WHERE (cust_id = ? AND friend_id = ?) OR (cust_id = ? AND friend_id = ?)";
-    
-    jdbcUtil.setSqlAndParameters(sql, new Object[]{customerId1, customerId2, customerId2, customerId1});
-    
-    try {
-        int result = jdbcUtil.executeUpdate();
-        if (result > 0) {
-            isSuccess = true;
-        }
-    } catch (Exception ex) {
-        jdbcUtil.rollback();
-        ex.printStackTrace();
-    } finally {
-        jdbcUtil.commit();
-        jdbcUtil.close();
-    }
-    return isSuccess;
-}
-	
-  }
+	}
+  
 	
 
