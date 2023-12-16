@@ -53,7 +53,7 @@
 	        </form>
     </div>
 
-   <div class="container mt-4">
+ <div class="container mt-4">
     <div class="row">
         <div class="col-md-12">
             <h3>검색 결과</h3>
@@ -65,14 +65,12 @@
    		for (Restaurant restaurant : searchedRestaurants) {
 				%>
 				<form class="restaurant-info" method="post" action="/restaurant/view">
-                    <input type="hidden" name="name" value="<%= restaurant.getName() %>">
-                    <input type="hidden" name="address" value="<%= restaurant.getAddress() %>">
-                    <input type="hidden" name="latitude" value="<%= restaurant.getLatitude() %>">
-                    <input type="hidden" name="longitude" value="<%= restaurant.getLongitude() %>">
-                    <button type="submit" style="background: none; border: none; cursor: pointer;">
-                        음식점 이름: <%= restaurant.getName() %><br>주소: <%= restaurant.getAddress() %>
-                    </button>
-                </form>
+				    <input type="hidden" name="id" value="<%= restaurant.getRestaurant_id() %>">
+				    <button type="submit" style="background: none; border: none; cursor: pointer;">
+				        <%= restaurant.getName() %> <i class="bi bi-star-fill text-warning"></i><br>주소: <%= restaurant.getAddress() %>
+				    </button>
+				</form>
+
                 <%
                     }
                 } else {
@@ -87,7 +85,6 @@
         </div>
     </div>
 </div>
-
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
