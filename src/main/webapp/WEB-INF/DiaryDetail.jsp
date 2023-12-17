@@ -184,21 +184,23 @@
         </form>
     </div>
 
-    <!-- 다이어리 수정하기, 삭제하기 버튼 -->
-    <div class="diary-buttons">
-       
-        <a href="<c:url value='/diary/update'>
-			<c:param name='diaryId' value='${diary.diary_id}'/>
-			</c:url>" class="btn btn-info">
-			수정하기
-		</a>
-        <a href="<c:url value='/diary/delete'>
-			<c:param name='diaryId' value='${diary.diary_id}'/>
-			</c:url>" onclick="return diaryRemove();" class="btn btn-danger">
-			삭제하기
-		</a>
-        <a href="<c:url value='/diary/list'/>" class="btn btn-info">다이어리</a> 
-    </div>
+	<c:if test="${diary.customer_id eq sessionScope.customer_id}">
+	    <!-- 다이어리 수정하기, 삭제하기 버튼 -->
+	    <div class="diary-buttons">
+	       
+	        <a href="<c:url value='/diary/update'>
+				<c:param name='diaryId' value='${diary.diary_id}'/>
+				</c:url>" class="btn btn-info">
+				수정하기
+			</a>
+	        <a href="<c:url value='/diary/delete'>
+				<c:param name='diaryId' value='${diary.diary_id}'/>
+				</c:url>" onclick="return diaryRemove();" class="btn btn-danger">
+				삭제하기
+			</a>
+	        <a href="<c:url value='/diary/list'/>" class="btn btn-info">다이어리</a> 
+	    </div>
+	 </c:if>
 </div>
 
 </body>
