@@ -88,16 +88,17 @@
 </head>
 <body>
     <div class="container center-container">
-        <form class="form-signin">
+        <form class="form-signin" method="post" action="/customer/findPasswordByEmail">
             <h4 class="form-signin-heading text-center top-aligned-text">가입하신 이메일을 입력해주세요</h4>
             <label for="inputEmail" class="sr-only">이메일</label>
-            <input type="email" id="inputEmail" class="form-control rounded-input" placeholder="이메일 주소" required="" autofocus="">
+            <input type="text" id="findPasswordByEmail" name="findPasswordByEmail" class="form-control rounded-input" placeholder="이메일 주소" required="" autofocus="">
+               <%   String password = (String) request.getAttribute("resultEmail"); %>
             <label for="inputPassword" class="sr-only">사용자의 비밀번호</label>
-            <input type="email" id="inputEmail" class="form-control rounded-input" placeholder="비밀번호가 표시됩니다"  autofocus="">
+        <input type="text" id="resultEmail" name="resultEmail" class="form-control rounded-input" placeholder="비밀번호가 표시됩니다" value="<%= password %>" autofocus="">
             <div class="checkbox">
                 <div style="margin-bottom: 20px;"></div>
                 <label>
-                    <a href="#" class="btn btn-lg btn-primary btn-block btn-purple">비밀번호 찾기</a>
+                          <button class="btn btn-primary" type="submit">비밀번호 찾기</button>
                 </label>
             </div>
         </form>

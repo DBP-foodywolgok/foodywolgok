@@ -235,23 +235,26 @@ public class CustomerDAO {
 	
 	// 비밀번호 변경 
 	
-	 public int updatePassword(int customerId, String newPassword) throws SQLException {
-	        String sql = "UPDATE Customer SET password=? WHERE customer_id=?";
-	        Object[] param = new Object[]{newPassword, customerId};
-	        jdbcUtil.setSqlAndParameters(sql, param); // JDBCUtil에 update문과 매개 변수 설정
+	public String updatePassword(int customerId, String newPassword) throws SQLException {
+	    String sql = "UPDATE Customer SET password=? WHERE customer_id=?";
+	    Object[] param = new Object[]{newPassword, customerId};
+	    jdbcUtil.setSqlAndParameters(sql, param); // JDBCUtil에 update문과 매개 변수 설정
 
-	        try {
-	            int result = jdbcUtil.executeUpdate(); // update 문 실행
-	            return result;
-	        } catch (Exception ex) {
-	            jdbcUtil.rollback();
-	            ex.printStackTrace();
-	        } finally {
-	            jdbcUtil.commit();
-	            jdbcUtil.close(); // resource 반환
+	    try {
+	        int result = jdbcUtil.executeUpdate(); // update 문 실행
+	        if (result > 0) {
+	            // 비밀번호가 성공적으로 업데이트되면 새 비밀번호를 반환
+	            return newPassword;
 	        }
-	        return 0;
+	    } catch (Exception ex) {
+	        jdbcUtil.rollback();
+	        ex.printStackTrace();
+	    } finally {
+	        jdbcUtil.commit();
+	        jdbcUtil.close(); // resource 반환
 	    }
+	    return null; // 업데이트 실패 시 null 반환
+	}
 	 
 	 // 친구 추가 
 	 public boolean addFriend(int customerId1, String email) throws SQLException {
