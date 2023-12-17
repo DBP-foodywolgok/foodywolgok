@@ -32,10 +32,9 @@
         <li><a href="/customer/changePassword">비밀번호 변경</a></li>
         <br> <!-- 줄 바꿈 추가 -->
         <br>
-        <li><a href="/customer/findFriendList">친구 리스트 조회</a></li>
+        <li><a href="/customer/FriendList">친구 리스트 조회</a></li>
         <br> <!-- 줄 바꿈 추가 -->
-        <br>
-        <li><a href="#">로그아웃</a></li>
+      
       </ul>
     </nav>
   </div>

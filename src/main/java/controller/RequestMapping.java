@@ -5,6 +5,7 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import controller.customer.CustomerFindPasswordController;
 import controller.customer.CustomerFriendAddController;
 import controller.customer.CustomerFriendDeleteController;
 import controller.customer.CustomerFriendSearchController;
@@ -54,6 +55,7 @@ public class RequestMapping {
 
         
         mappings.put("/customer/findPassword", new ForwardController("/FindPassword.jsp")); 
+        mappings.put("/customer/findPasswordByEmail", new CustomerFindPasswordController());
         mappings.put("/customer/diaryList", new ListDiaryController());
 
         mappings.put("/customer/recommendation", new ForwardController("/Recommendation.jsp"));
