@@ -88,17 +88,26 @@
 </head>
 <body>
     <div class="container center-container">
-        <form class="form-signin">
+        <form class="form-signin" method="post" action="/customer/changeCustomerPassword">
+  
             <h6 class="form-signin-heading text-center top-aligned-text">변경하고 싶은 비밀번호를 입력하세요</h6>
             <label for="inputEmail" class="sr-only">비밀번호</label>
-            <input type="email" id="inputEmail" class="form-control rounded-input" placeholder="비밀번호" required="" autofocus="">
+
+            <input type="text" id="wantPassword" name="wantPassword" class="form-control rounded-input" placeholder="비밀번호" required="" autofocus="">
             <label for="inputPassword" class="sr-only">비밀번호 재입력</label>
-            <input type="email" id="inputEmail" class="form-control rounded-input" placeholder="비밀번호" required="회원님의 비밀번호입니다" autofocus="">
+            <input type="text" id="inputEmail" class="form-control rounded-input" placeholder="비밀번호" required="회원님의 비밀번호입니다" autofocus="">
+                             <%   String password = (String) request.getAttribute("changedPassword"); %>
+        
+            
             <div class="checkbox">
                 <div style="margin-bottom: 20px;"></div>
                 <label>
-                    <a href="#" class="btn btn-lg btn-primary btn-block btn-purple">비밀번호 변경하기</a>
+                        <button class="btn btn-primary" type="submit">비밀번호 변경하기</button>
                 </label>
+                
+                   <label for="inputEmail" class="sr-only">변경된 비밀번호가 표시됩니다</label>
+                        <input type="text" id="notify" class="form-control rounded-input" placeholder="변경된 비밀번호가 표시됩니다" value="<%= password %>" autofocus="">
+                   
             </div>
         </form>
     </div>
