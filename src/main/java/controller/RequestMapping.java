@@ -12,14 +12,19 @@ import controller.customer.CustomerInformationController;
 import controller.customer.CustomerLoginController;
 import controller.customer.CustomerLogoutController;
 import controller.customer.CustomerRegisterController;
-
+import controller.restaurant.AddWishlistController;
+import controller.restaurant.CategoryController;
+import controller.restaurant.SearchController;
+import controller.restaurant.ViewRestaurantController;
+import controller.restaurant.ViewWishlistListController;
 import controller.diary.RegisterDiaryController;
+import controller.diary.UpdateDiaryController;
 import controller.diary.ViewDiaryController;
 import controller.diary.DeleteDiaryController;
 import controller.diary.ListDiaryController;
 import controller.restaurant.CategoryController;
 import controller.restaurant.SearchController;
-
+import controller.myrestaurant.RegisterMyRestaurantController;
 import model.dao.CustomerDAO;
 import model.dao.RestaurantDAO;
 import model.service.CustomerService;
@@ -28,7 +33,7 @@ import model.service.CustomerService;
 
 public class RequestMapping {
     private static final Logger logger = LoggerFactory.getLogger(DispatcherServlet.class);
-    
+    	
   
     
     // 각 요청 uri에 대한 controller 객체를 저장할 HashMap 생성
@@ -62,9 +67,9 @@ public class RequestMapping {
         mappings.put("/customer/deleteFriends", new CustomerFriendDeleteController());
         
         //다이어리
-        mappings.put("/diary/register", new RegisterDiaryController());
         mappings.put("/diary/register/form", new ForwardController("/RegistrationDiary.jsp"));
-        mappings.put("/diary/update", new ForwardController("/EditDiary.jsp"));
+        mappings.put("/diary/register", new RegisterDiaryController());
+        mappings.put("/diary/update", new UpdateDiaryController());
         mappings.put("/diary/delete", new DeleteDiaryController());
         mappings.put("/diary/list", new ListDiaryController());
         mappings.put("/diary/view", new ViewDiaryController()); 
@@ -72,13 +77,16 @@ public class RequestMapping {
         //map
         mappings.put("/restaurant/map", new ForwardController("/MapMainView.jsp"));
         mappings.put("/restaurant/search", new SearchController()); //검색버튼 누르면
+        mappings.put("/restaurant/view", new ViewRestaurantController()); //해당음식점 누르면
+        mappings.put("/restaurant/wishView", new ViewWishlistListController()); //디테일뷰에서 위시리스트 보여준는
+        mappings.put("/restaurant/addWish", new AddWishlistController()); //위시리스트에 음식점 추가해주는
         mappings.put("/kindlist", new CategoryController());
         mappings.put("/restaurant/kindview", new ForwardController("/KindView.jsp"));
-        mappings.put("/restaurant/view", new ForwardController("/MapDetailsView.jsp"));
         mappings.put("/wishlist/view", new ForwardController("/WishList.jsp"));
         
+        
         mappings.put("/myRestaurant/list", new ForwardController("/MyRestaurantList.jsp"));
-        mappings.put("/myRestaurant/register", new ForwardController("/AddMyRestaurant.jsp"));
+        mappings.put("/myRestaurant/register", new RegisterMyRestaurantController());
         mappings.put("/restaurant/find", new ForwardController("/FindRestaurant.jsp"));
         mappings.put("/myRestaurant/update", new ForwardController("/ModifyMyRestaurant.jsp"));
         mappings.put("/myRestaurant/view", new ForwardController("/MyRestaurantDetail.jsp"));

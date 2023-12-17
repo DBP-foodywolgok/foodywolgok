@@ -74,13 +74,14 @@
     	}
         
     </style>
+ 
 </head>
 <body>
     <div class="container mt-3">
         <button class="btn btn-primary" onclick="location.href='/diary/register/form'">다이어리 추가</button>
 
         <header class="text-center mt-3">
-            <h1>다이어리</h1>
+            <h1>다이어리</h1> 
         </header>
 
         <form class="text-center mt-3" action="Diary-List" method="post">
