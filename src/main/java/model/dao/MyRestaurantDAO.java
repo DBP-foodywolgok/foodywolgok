@@ -23,7 +23,7 @@ public class MyRestaurantDAO {
 						+ "FROM my_restaurant m LEFT OUTER JOIN restaurant r ON m.restaurant_id = r.restaurant_id "
 						+ "JOIN category c ON m.category_id = c.category_id "
 						+ "WHERE customer_id = ? "
-						+ "ORDER BY m.created_at";
+						+ "ORDER BY m.created_at DESC";
 		Object[] param = new Object[] { customerId };
 		jdbcUtil.setSqlAndParameters(allQuery, param);
 		try {
