@@ -11,9 +11,11 @@ import controller.customer.CustomerLogoutController;
 import controller.customer.CustomerRegisterController;
 import controller.restaurant.AddWishlistController;
 import controller.restaurant.CategoryController;
+import controller.restaurant.ChooseWishlistController;
 import controller.restaurant.SearchController;
 import controller.restaurant.ViewRestaurantController;
-import controller.restaurant.ViewWishlistListController;
+import controller.restaurant.ViewWishlistController;
+import controller.restaurant.WishlistUpdateController;
 import model.dao.CustomerDAO;
 import model.dao.RestaurantDAO;
 import model.service.CustomerService;
@@ -54,14 +56,15 @@ public class RequestMapping {
    
         //map
         mappings.put("/restaurant/map", new ForwardController("/MapMainView.jsp"));
+        mappings.put("/restaurant/viewAddWish", new ForwardController("/addWishlist.jsp"));
         mappings.put("/restaurant/search", new SearchController()); //검색버튼 누르면
         mappings.put("/restaurant/view", new ViewRestaurantController()); //해당음식점 누르면
-        mappings.put("/restaurant/wishView", new ViewWishlistListController()); //디테일뷰에서 위시리스트 보여준는
+        mappings.put("/restaurant/chooseWishList", new ChooseWishlistController()); //디테일뷰에서 위시리스트추가
+        mappings.put("/restaurant/viewWishList", new ViewWishlistController());
         mappings.put("/restaurant/addWish", new AddWishlistController()); //위시리스트에 음식점 추가해주는
+        mappings.put("/restaurant/updateWish", new WishlistUpdateController());
         mappings.put("/kindlist", new CategoryController());
         mappings.put("/restaurant/kindview", new ForwardController("/KindView.jsp"));
-        mappings.put("/wishlist/view", new ForwardController("/WishList.jsp"));
-        
         
         mappings.put("/myRestaurant/list", new ForwardController("/MyRestaurantList.jsp"));
         mappings.put("/myRestaurant/register", new ForwardController("/AddMyRestaurant.jsp"));

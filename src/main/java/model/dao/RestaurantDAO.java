@@ -262,6 +262,22 @@ public class RestaurantDAO {
         return isRestaurantInWishlist;
     }
 
+    public void createWishlist(Wishlist wishlist) {
+        String insert = "INSERT INTO wishlist (color, created_at, customer_id, name, memo) VALUES (?, ?, ?, ?, ?)";
+        
+        try {
+            jdbcUtil.setSqlAndParameters(insert.toString(), new Object[]{wishlist.getColor(), wishlist.getCreated_at(), wishlist.getCustomer_id(), wishlist.getName(), wishlist.getMemo()});
+            
+            jdbcUtil.executeUpdate();
+            jdbcUtil.commit(); // 커밋
+        } catch (Exception ex) {
+            jdbcUtil.rollback();
+            ex.printStackTrace();
+        } finally {
+            jdbcUtil.close();
+        }
+    }
+
 
 
 }

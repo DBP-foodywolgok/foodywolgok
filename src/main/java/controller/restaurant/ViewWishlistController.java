@@ -12,7 +12,7 @@ import model.Restaurant;
 import model.Wishlist;
 import model.dao.RestaurantDAO;
 
-public class ViewWishlistListController implements Controller {
+public class ViewWishlistController implements Controller {
     private RestaurantDAO restaurantDAO = new RestaurantDAO();
 
     @Override
@@ -22,14 +22,9 @@ public class ViewWishlistListController implements Controller {
             int customerId = (int) session.getAttribute(UserSessionUtils.USER_SESSION_KEY);
             List<Wishlist> wishlist = restaurantDAO.getWishlistByCustomerId(customerId);
             request.setAttribute("wishlist", wishlist);
-            
-            int restaurant_id = Integer.parseInt(request.getParameter("id")); // 레스토랑 ID 받아오기
-            request.setAttribute("restaurant_id", restaurant_id);
-            
             System.out.println("wishlist: " + wishlist);
-            System.out.println("restaurant_id: " + restaurant_id);
-
-            return "/WishlistView.jsp"; // 위시리스트 리스트를 보여줄 JSP
+            
+            return "/ViewWishlist.jsp"; // 위시리스트 리스트를 보여줄 JSP
         } catch (NumberFormatException e) {
             // 숫자로 변환할 수 없는 경우의 예외 처리
             System.out.println("유효하지 않은 ID입니다: " + e.getMessage());
