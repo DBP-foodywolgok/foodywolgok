@@ -12,23 +12,37 @@
             padding: 20px;
         }
 	</style>
+	<script>
+		function validateForm() {
+			var name = document.getElementById("name").value.trim();
+			var address = document.getElementById("address").value.trim();
+			var score = document.getElementById("score").value;
+			var category = document.getElementById("category").value;
+			
+			if (name === "" || address === "" || score === "0" || category === "0") {
+				alert("이름, 주소, 별점, 카테고리는 필수 항목입니다.");
+				return false;
+			}
+			return true;
+		}
+	</script>
 </head>
 <body>
 	<div class="container">
-	<form action="/myRestaurant/register" method="post">
+	<form action="/myRestaurant/register" method="post" onsubmit="return validateForm()">
 		<div class="input-group mb-3">
 			<span class="input-group-text" id="inputGroup-sizing-default">이름</span>
-  			<input type="text" id="name" name="name" class="form-control" placeholder="식당의 이름을 입력하세요." aria-label="Restaurant's Name" aria-describedby="button-addon2">
-  			<button class="btn btn-outline-secondary" type="button" id="button-addon2" onClick="location.href='${pageContext.request.contextPath}/restaurant/find'">검색</button>
+  			<input type="text" id="name" name="name" value="<%= (request.getParameter("name") != null) ? request.getParameter("name") : "" %>" class="form-control" placeholder="식당의 이름을 입력하세요." aria-label="Restaurant's Name" aria-describedby="button-addon2">
+  			<button class="btn btn-outline-secondary" type="button" id="button-addon2" onClick="location.href='/myRestaurant/find'">검색</button>
 		</div>
 		<div class="input-group mb-3">
   			<span class="input-group-text" id="inputGroup-sizing-default">위치</span>
-  			<input type="text" id="address" name="address" class="form-control" placeholder="식당의 위치를 입력하세요." aria-label="Location" aria-describedby="inputGroup-sizing-default">
+  			<input type="text" id="address" name="address" value="<%= (request.getParameter("address") != null) ? request.getParameter("address") : "" %>" class="form-control" placeholder="식당의 위치를 입력하세요." aria-label="Location" aria-describedby="inputGroup-sizing-default">
 		</div>
 		<div class="input-group mb-3">
   			<label class="input-group-text" for="inputGroupSelect01">별점</label>
   			<select class="form-select" id="score" name="score">
-    			<option selected>별점을 선택하세요.</option>
+    			<option disabled selected>별점을 선택하세요.</option>
     			<option value="1">1</option>
     			<option value="2">2</option>
     			<option value="3">3</option>
@@ -39,26 +53,27 @@
 		<div class="input-group mb-3">
   			<label class="input-group-text" for="inputGroupSelect01">카테고리</label>
   			<select class="form-select" id="category" name="category">
-    			<option selected>식당의 카테고리를 선택하세요.</option>
-    			<option value="1">양식</option>
-    			<option value="2">퓨전요리</option>
-    			<option value="3">태국식</option>
-    			<option value="4">샐러드</option>
-    			<option value="5">죽</option>
-    			<option value="6">디저트</option>
-    			<option value="7">음료</option>
-    			<option value="8">한식</option>
-    			<option value="9">중식</option>
-    			<option value="10">아시아</option>
-    			<option value="11">일식</option>
-    			<option value="12">분식</option>
+    			<option disabled selected>식당의 카테고리를 선택하세요.</option>
+    			<option value="1" ${param.category == '1' ? 'selected' : ''}>양식</option>
+    			<option value="2" ${param.category == '2' ? 'selected' : ''}>퓨전요리</option>
+    			<option value="3" ${param.category == '3' ? 'selected' : ''}>태국식</option>
+    			<option value="4" ${param.category == '4' ? 'selected' : ''}>샐러드</option>
+    			<option value="5" ${param.category == '5' ? 'selected' : ''}>죽</option>
+    			<option value="6" ${param.category == '6' ? 'selected' : ''}>디저트</option>
+    			<option value="7" ${param.category == '7' ? 'selected' : ''}>음료</option>
+    			<option value="8" ${param.category == '8' ? 'selected' : ''}>한식</option>
+    			<option value="9" ${param.category == '9' ? 'selected' : ''}>중식</option>
+    			<option value="10" ${param.category == '10' ? 'selected' : ''}>아시아</option>
+    			<option value="11" ${param.category == '11' ? 'selected' : ''}>일식</option>
+    			<option value="12" ${param.category == '12' ? 'selected' : ''}>분식</option>
   			</select>
 		</div>
 		<div class="input-group">
   			<span class="input-group-text">메모</span>
   			<textarea id="memo" name="memo" class="form-control" aria-label="Memo" rows="8"></textarea>
 		</div><br>
-		<input type="hidden" name="type" value="1">
+		<input type="hidden" name="type" value="<%= (request.getParameter("id") != null) ? 0 : 1 %>">
+		<input type="hidden" name="restaurantId" value="<%= (request.getParameter("id") != null) ? request.getParameter("id") : 0 %>">
 		<input class="btn btn-outline-primary" type="submit" value="등록"> 
 		<button type="button" class="btn btn-outline-primary" onClick="location.href='/myRestaurant/list'">취소</button>
 	</form>

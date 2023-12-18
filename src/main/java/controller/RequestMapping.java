@@ -24,6 +24,7 @@ import controller.diary.DeleteDiaryController;
 import controller.diary.ListDiaryController;
 import controller.restaurant.CategoryController;
 import controller.restaurant.SearchController;
+import controller.myrestaurant.FindRestaurantController;
 import controller.myrestaurant.RegisterMyRestaurantController;
 import model.dao.CustomerDAO;
 import model.dao.RestaurantDAO;
@@ -87,7 +88,7 @@ public class RequestMapping {
         
         mappings.put("/myRestaurant/list", new ForwardController("/MyRestaurantList.jsp"));
         mappings.put("/myRestaurant/register", new RegisterMyRestaurantController());
-        mappings.put("/restaurant/find", new ForwardController("/FindRestaurant.jsp"));
+        mappings.put("/myRestaurant/find", new FindRestaurantController());
         mappings.put("/myRestaurant/update", new ForwardController("/ModifyMyRestaurant.jsp"));
         mappings.put("/myRestaurant/view", new ForwardController("/MyRestaurantDetail.jsp"));
 
