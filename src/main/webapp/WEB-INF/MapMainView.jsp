@@ -13,12 +13,24 @@
         String customerName = (String) session.getAttribute("customerName");
         if (customerName != null) {
     %>
-            <div class="container">
-                <p><%= customerName %>!</p>
+	 <div class="container mt-4">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <p><%= customerName %>님!</p>
             </div>
+            <div class="col-md-6 text-end">
+                <form class="form-signin" method="post" action="/restaurant/viewWishList">
+                    <button class="btn btn-primary rounded" type="submit">
+                        위시리스트 보기
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
     <% 
         }
     %>
+    
     <div class="container mt-4">
  	   <form class="form-signin" method="post" action="/restaurant/search">
 	        <div class="input-group mb-3 rounded">

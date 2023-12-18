@@ -1,8 +1,10 @@
 package test;
 
+import java.sql.Date;
 import java.util.List;
 
 import model.Restaurant;
+import model.Wishlist;
 import model.dao.RestaurantDAO;
 
 public class RestaurantTest {
@@ -63,5 +65,24 @@ public class RestaurantTest {
         System.out.println("\nWishlist에서 음식점 삭제 테스트");
         int removedRestaurantId = 6; // 위에서 추가한 음식점 ID 값
         restaurantDAO.removeRestaurantFromWishlist(wishlistId, removedRestaurantId);
+        
+        
+        System.out.println("\n위시 추가 테스트!!!");
+        Wishlist testWishlist = new Wishlist();
+        testWishlist.setColor("blue");
+        testWishlist.setCreated_at(new java.sql.Date(System.currentTimeMillis())); // 현재 날짜로 설정
+        testWishlist.setCustomer_id(27); // 고객 ID 설정
+        testWishlist.setName("Test Wishlist");
+        testWishlist.setMemo("This is a test wishlist");
+
+        try {
+            restaurantDAO.createWishlist(testWishlist);
+            System.out.println("Test Wishlist successfully created!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Failed to create Test Wishlist");
+        }
+
+
     }
 }

@@ -25,23 +25,30 @@
         }
 
         .wishlist-container {
-            border: 1px solid purple; /* 보더 색상 변경 */
-            padding: 20px; /* 네모박스 안의 여백 설정 */
-            border-radius: 10px;
-            width: 90%; /* 네모박스 가로 크기 조정 */
+            min-width: 500px;
+            border: 1px solid purple;
+            padding: 10px;
+            border-radius: 30px;
             text-align: center;
-            font-size: 1.3em; /* 네모박스 안의 글자 크기 조정 */
-            margin-bottom: 50px; /* 위시리스트 명과 네모박스 사이 여백 설정 */
+            font-size: 1.3em;
+            margin-bottom: 50px;
         }
 
-        button[type="submit"] {
+        button[type="submit"],
+        button.wishlist-add-button {
             width: 100%;
             padding: 10px 15px;
-            background-color: purple; /* 배경색 변경 */
+            background-color: purple;
             color: white;
             border: none;
             border-radius: 10px;
             cursor: pointer;
+            margin-top: 15px;
+        }
+
+        button.wishlist-add-button {
+            background-color: white;
+            color: purple;
         }
 
         /* 체크박스 크기 조정 */
@@ -59,9 +66,9 @@
         </div>
     <% } %>
     <div class="container mt-4">
-        <form method="post" action="/restaurant/addWish">
+        <form id="wishlistForm" method="post" action="/restaurant/addWish">
             <div class="wishlist-container">
-                <p class="wishlist-title">백가은님의 위시리스트</p>
+                <p class="wishlist-title">위시리스트</p>
                 <% RestaurantDAO restaurantDAO = new RestaurantDAO();
                 List<Wishlist> wishlist = (List<Wishlist>) request.getAttribute("wishlist");
                 int restaurantId = (int) request.getAttribute("restaurant_id");
@@ -81,5 +88,11 @@
     </div>
     <!-- Bootstrap 및 기타 스크립트 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+<!-- + 위시리스트 추가 버튼 -->
+	<div class="container mt-4">
+	    <button class="wishlist-add-button" onclick="location.href='/restaurant/viewAddWish'">+ 위시리스트 추가</button>
+	</div>
+
 </body>
 </html>
