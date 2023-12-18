@@ -74,22 +74,40 @@
     	}
         
     </style>
- 
+ 	<script>
+    /*function myDiaryList() {
+    	updateFormAction('/diary/list?command=my');
+    	form.submit();
+    }
+    function friendDiaryList() {
+    	updateFormAction('/diary/list?command=friend');
+    	form.submit();
+    }*/
+    </script>
 </head>
 <body>
     <div class="container mt-3">
         <button class="btn btn-primary" onclick="location.href='/diary/register/form'">다이어리 추가</button>
-
+		<button class="btn btn-primary" onclick="location.href='/customer/main'">메인 페이지</button>
         <header class="text-center mt-3">
             <h1>다이어리</h1> 
         </header>
 
-        <form class="text-center mt-3" action="Diary-List" method="post">
+        <!--  <form class="text-center mt-3" action="Diary-List" method="post">
             <label class="form-check-label">
                 <input type="checkbox" class="form-check-input" value="yes">친구 게시글
             </label>
-        </form>
-
+        </form>-->
+        <!--  <form name="form" method="POST" action="/diary/list">
+        	<button class="btn btn-primary" onClick= "myDiaryList()">내 다이어리 보기</button>
+        	<button class="btn btn-primary" onClick= "friendDiaryList()">친구 다이어리 보기</button>
+		</form>-->
+		<form name="form" method="POST" action="/diary/list?command=my">
+    		<button class="btn btn-primary">내 다이어리 보기</button>
+		</form>
+		<form name="form" method="POST" action="/diary/list?command=friend">
+    		<button class="btn btn-primary">친구 다이어리 보기</button>
+		</form>
         <hr />
 
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">

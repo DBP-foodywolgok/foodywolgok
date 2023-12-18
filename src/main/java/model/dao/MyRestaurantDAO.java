@@ -23,7 +23,7 @@ public class MyRestaurantDAO {
 						+ "FROM my_restaurant m LEFT OUTER JOIN restaurant r ON m.restaurant_id = r.restaurant_id "
 						+ "JOIN category c ON m.category_id = c.category_id "
 						+ "WHERE customer_id = ? "
-						+ "ORDER BY m.created_at";
+						+ "ORDER BY m.created_at DESC";
 		Object[] param = new Object[] { customerId };
 		jdbcUtil.setSqlAndParameters(allQuery, param);
 		try {
@@ -180,7 +180,7 @@ public class MyRestaurantDAO {
 	
 	// 식당 이름 검색어를 통해 Restaurant 테이블에서 식당 검색 (등록 시 필요)
 	public List<String[]> findRestaurant(String keyword) {
-		String findQuery = "SELECT r.name name, r.address address, c.name category "
+		String findQuery = "SELECT r.restaurant_id, r.name name, r.address address, r.category_id, c.name category "
 						+ "FROM restaurant r JOIN category c ON r.category_id = c.category_id "
 						+ "WHERE r.name LIKE '%' || ? || '%'";
 		Object[] param = new Object[] { keyword };
@@ -189,10 +189,14 @@ public class MyRestaurantDAO {
 			ResultSet rs = jdbcUtil.executeQuery();
 			List<String[]> list = new ArrayList<>();
 			while(rs.next()) {
+				int id = rs.getInt("RESTAURANT_ID");
+				String sId = Integer.toString(id);
 				String name = rs.getString("NAME");
 				String address = rs.getString("ADDRESS");
+				int cId = rs.getInt("CATEGORY_ID");
+				String sCId = Integer.toString(cId);
 				String category = rs.getString("CATEGORY");
-				String[] dto = { name, address, category };
+				String[] dto = { sId, name, address, sCId, category };
 				list.add(dto);
 			}
 			return list;
