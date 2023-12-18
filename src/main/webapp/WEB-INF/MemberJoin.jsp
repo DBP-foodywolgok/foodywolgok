@@ -111,6 +111,48 @@
         <input class="form-check-input" name="foodType" type="checkbox" id="foodType9" value="음료">
         <label class="form-check-label" for="foodType9">음료</label>
     </div>
+    
+    <div class="form-check">
+        <input class="form-check-input" name="foodType" type="checkbox" id="foodType10" value="아시아">
+        <label class="form-check-label" for="foodType10">아시아</label>
+    </div>
+    
+    <div class="form-check">
+        <input class="form-check-input" name="foodType" type="checkbox" id="foodType11" value="일식">
+        <label class="form-check-label" for="foodType11">일식</label>
+    
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" name="foodType" type="checkbox" id="foodType12" value="분식">
+        <label class="form-check-label" for="foodType12">분식</label>
+    </div>
+    
+     <div class="form-check">
+        <input class="form-check-input" name="foodType" type="checkbox" id="foodType13" value="치킨">
+        <label class="form-check-label" for="foodType13">치킨</label>
+    </div>
+     <div class="form-check">
+        <input class="form-check-input" name="foodType" type="checkbox" id="foodType14" value="고기">
+        <label class="form-check-label" for="foodType14">고기</label>
+    </div>
+     <div class="form-check">
+        <input class="form-check-input" name="foodType" type="checkbox" id="foodType15" value="패스트푸드">
+        <label class="form-check-label" for="foodType15">패스트푸드</label>
+    </div>
+     <div class="form-check">
+        <input class="form-check-input" name="foodType" type="checkbox" id="foodType16" value="족발">
+        <label class="form-check-label" for="foodType16">족발</label>
+    </div>
+     <div class="form-check">
+        <input class="form-check-input" name="foodType" type="checkbox" id="foodType17" value="야식">
+        <label class="form-check-label" for="foodType17">야식</label>
+    </div>
+        <div class="form-check">
+        <input class="form-check-input" name="foodType" type="checkbox" id="foodType18" value="주점">
+        <label class="form-check-label" for="foodType18">주점</label>
+    </div>
+    
+    
 
     <!-- 선택한 카테고리들을 저장할 hidden input -->
     <input type="hidden" id="selectedCategoriesInput" name="selectedCategories" value="">
