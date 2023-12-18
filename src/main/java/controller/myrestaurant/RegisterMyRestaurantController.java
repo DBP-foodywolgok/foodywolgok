@@ -1,6 +1,7 @@
 package controller.myrestaurant;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -60,7 +61,8 @@ public class RegisterMyRestaurantController implements Controller {
 		String restaurantId = request.getParameter("restaurantId");
 		// 현재 날짜와 시간 구하기
 		LocalDateTime currentDateTime = LocalDateTime.now();
-		Date date = Date.valueOf(currentDateTime.toLocalDate());
+		Timestamp timestamp = Timestamp.valueOf(currentDateTime);
+		Date date = new Date(timestamp.getTime());
 		
 		MyRestaurantDAO MyRestaurantDAO = new MyRestaurantDAO();
 		
