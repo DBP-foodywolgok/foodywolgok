@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -72,15 +73,31 @@
         }
        
     </style>
+    <script>
+    function diaryModify() {
+    	if (form.diary_title.value == "") {
+    		alert("제목을 입력하십시오.");
+    		form.diary_title.focus();
+    		return false;
+    	}
+    	if (form.diary_content.value == ""){
+    		alert("내용을 입력하십시오.");
+    		form.diary_content.focus();
+    		return false;
+    	}
+    	form.submit();
+    }
+    </script>
 </head>
 <body>
 
 	<div class="mb-3 center-form">
-	    <form action="Edit-Diary" method="post">
+	    <form name="form" method="POST" action="/diary/update">
+	    	<input type="hidden" name="diaryId" value="${diary.diary_id}"/>	  
 	        <h3>다이어리 수정</h3>
 	
 	        <label for="input_title" class="form-label">제목</label>
-	        <input type="text" class="form-control" id="input_title" placeholder="푸디 월곡 최고 맛집"><br/>
+	        <input type="text" class="form-control" id="input_title" name="diary_title" value="${diary.title}"><br/>
 	
 	  
 	        <label for="input-friend" class="form-label">친구</label>
@@ -88,16 +105,24 @@
 	        
 	        <div class="form-check-label">
             <div style="display: flex; align-items: center;">
-                <input class="form-control" type="checkbox" value="친구공유" id="input-friend" checked >
-	        
+       			
+       			<input class="form-control" type="checkbox" value="0" id="input-friend" name="diary_friend" 
+       				<c:choose>
+           				<c:when test="${diary.isShared == 1}">
+               				checked
+           				</c:when>
+           				<c:otherwise>
+           				</c:otherwise>
+       				</c:choose>
+       			>
             </div>
-        </div><br/>
+        	</div><br/>
 	
 	        <label for="input_content" class="form-label">내용</label>
-	        <textarea class="form-control" id="input_content" rows="7" placeholder="월곡의 모든 맛집은 푸디 월곡에.."></textarea><br/>
+	        <textarea class="form-control" id="input_content" name="diary_content" rows="7" placeholder="${diary.content}" >${diary.content}</textarea><br/>
 	
+	        <input type="button" value="수정하기" onClick="diaryModify()" class="btn btn-primary"> 
 	        <!--  <button type="submit" class="btn btn-primary">수정하기</button>-->
-	        <a href="/diary/list" class="btn btn-primary">수정하기</a>
 	    </form>
 	</div>
 

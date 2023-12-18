@@ -38,6 +38,18 @@ public class My_restaurant {
 		this.category = category;
 	}
 	
+	// 사용자 직접 등록
+	public My_restaurant(String name, String address, int score, String memo, Date created_at,
+			int customerId, int categoryId) {
+		this.name = name;
+		this.address = address;
+		this.score = score;
+		this.memo = memo;
+		this.created_at = created_at;
+		this.customerId = customerId;
+		this.categoryId = categoryId;
+	}
+	
 	// getter & setter
 	public int getId() {
 		return id;
