@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="model.Restaurant" %>
-<%@ page import="java.util.List" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,79 +13,66 @@
             padding: 10px;
             margin-bottom: 20px;
         }
-
+        
         .result-list hr {
             border-top: 1px solid #ccc;
         }
     </style>
 </head>
-
 <body>
-<% 
-        String customerName = (String) session.getAttribute("customerName");
-        if (customerName != null) {
-    %>
-            <div class="container">
-                <p><%= customerName %>!</p>
-            </div>
-    <% 
-        }
-    %>
-    
+    <c:if test="${not empty sessionScope.customerName}">
+        <div class="container">
+            <p>${sessionScope.customerName}!</p>
+        </div>
+    </c:if>
+
     <div class="container mt-4">
- 	   <form class="form-signin" method="post" action="/restaurant/search">
-	        <div class="input-group mb-3 rounded">
-	             <button class="btn btn-outline-secondary rounded" type="button" id="backButton">
-				    <i class="fas fa-arrow-left"></i>
-				</button>
-				<script>
-				    document.getElementById("backButton").addEventListener("click", function() {
-				        window.history.back(); // 브라우저의 뒤로 가기 기능 실행
-				    });
-				</script>
-	            <input type="text" class="form-control border-0 rounded-start" name="searchKeyword" placeholder="음식점, 주소를 검색하세요" aria-label="Search" aria-describedby="basic-addon2">
-	            <div class="input-group-append">
-		             <button type="submit" class="btn btn-primary rounded-end">검색</button>
-	            </div>
-	        </div>
-	        </form>
+        <form class="form-signin" method="post" action="/restaurant/search">
+            <div class="input-group mb-3 rounded">
+                <button class="btn btn-outline-secondary rounded" type="button" id="backButton">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <script>
+                    document.getElementById("backButton").addEventListener("click", function() {
+                        window.history.back(); // 브라우저의 뒤로 가기 기능 실행
+                    });
+                </script>
+                <input type="text" class="form-control border-0 rounded-start" name="searchKeyword" placeholder="음식점, 주소를 검색하세요" aria-label="Search" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-primary rounded-end">검색</button>
+                </div>
+            </div>
+        </form>
     </div>
 
- <div class="container mt-4">
-    <div class="row">
-        <div class="col-md-12">
-            <h3>검색 결과</h3>
-            <hr>
-            <div class="result-list" id="resultList">
-                <%
-		List<Restaurant> searchedRestaurants = (List<Restaurant>)request.getAttribute("searchedRestaurants");
-		if(searchedRestaurants != null && !searchedRestaurants.isEmpty()) {
-   		for (Restaurant restaurant : searchedRestaurants) {
-				%>
-				<form class="restaurant-info" method="post" action="/restaurant/view">
-				    <input type="hidden" name="id" value="<%= restaurant.getRestaurant_id() %>">
-				    <button type="submit" style="background: none; border: none; cursor: pointer;">
-				        <%= restaurant.getName() %> <i class="bi bi-star-fill text-warning"></i><br>주소: <%= restaurant.getAddress() %>
-				    </button>
-				</form>
-
-                <%
-                    }
-                } else {
-                %>
-                <div class="no-result">
-                    검색 결과가 없습니다.
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>검색 결과</h3>
+                <hr>
+                <div class="result-list" id="resultList">
+                    <c:choose>
+                        <c:when test="${not empty searchedRestaurants}">
+                            <c:forEach items="${searchedRestaurants}" var="restaurant">
+                                <form class="restaurant-info" method="post" action="/restaurant/view">
+                                    <input type="hidden" name="id" value="${restaurant.restaurant_id}">
+                                    <button type="submit" style="background: none; border: none; cursor: pointer;">
+                                        ${restaurant.name} <i class="bi bi-star-fill text-warning"></i><br>주소: ${restaurant.address}
+                                    </button>
+                                </form>
+                            </c:forEach>
+                        </c:when>
+                        <c:otherwise>
+                            <div class="no-result">
+                                검색 결과가 없습니다.
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
-                <%
-                }
-                %>
             </div>
         </div>
     </div>
-</div>
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-    
 </body>
 </html>
