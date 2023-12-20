@@ -30,7 +30,7 @@ public class DiaryDAO {
         
 		Object[] param = new Object[] {diary.getTitle(),
 				diary.getIsShared(), date, diary.getContent(),
-				diary.getRestaurant_id(), diary.getCustomer_id(), diary.getPicture()};
+				diary.getCustomer_id(), diary.getPicture(), diary.getPlace()};
 	
 		jdbcUtil.setSqlAndParameters(sql, param); // JDBCUtil 에 insert문과 매개 변수 설정
 		
@@ -115,7 +115,7 @@ public class DiaryDAO {
 	 * 주어진 다이어리 ID에 해당하는 다이어리 정보를 데이터베이스에서 찾아 Diary도메인 클래스에
 	 * 저장하여 반환. */
 	public Diary findDiary(int diary_id) throws SQLException {
-		String sql = "SELECT title, isshared, nowdate, content, restaurant_id, customer_id, picture "
+		String sql = "SELECT title, isshared, nowdate, content, customer_id, picture, place "
 				+ "FROM DIARY " + "WHERE diary_id=? ";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {diary_id}); //JDBCUtil에 query문과 매개 변수 설정
 		try {
@@ -129,9 +129,9 @@ public class DiaryDAO {
 						rs.getInt("isshared"),
 						utilDate,				
 						rs.getString("content"),
-						rs.getInt("restaurant_id"),
 						rs.getInt("customer_id"),
-						rs.getString("picture"));
+						rs.getString("picture"),
+						rs.getString("place"));
 				return diary;
 			}
 		} catch (Exception ex) {
@@ -146,7 +146,7 @@ public class DiaryDAO {
 	 */
 	
 	public List<Diary> findDiarysByCustomer(int customer_id) throws SQLException {
-		String sql = "SELECT diary_id, title, isshared, nowdate, content, restaurant_id, customer_id, picture FROM DIARY "
+		String sql = "SELECT diary_id, title, isshared, nowdate, content, customer_id, picture, place FROM DIARY "
 				+ "WHERE customer_id = ? "
 				+ "ORDER BY diary_id DESC";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {customer_id}); //JDBCUtil에 query문과 매개 변수 설정
@@ -163,9 +163,9 @@ public class DiaryDAO {
 						rs.getInt("isshared"),
 						utilDate,
 						rs.getString("content"),
-						rs.getInt("restaurant_id"),
 						rs.getInt("customer_id"),
-						rs.getString("picture"));
+						rs.getString("picture"),
+						rs.getString("place"));
 				diaryList.add(diary); // List에 diary 객체 저장
 			}
 			return diaryList;
@@ -194,7 +194,7 @@ public class DiaryDAO {
 	        params[i] = Integer.parseInt(friendIdsArray[i]); // 문자열을 정수로 변환하여 배열에 저장
 	    }
 
-	    String sql = "SELECT diary_id, title, isshared, nowdate, content, restaurant_id, customer_id, picture FROM DIARY "
+	    String sql = "SELECT diary_id, title, isshared, nowdate, content, customer_id, picture, place FROM DIARY "
 	            + "WHERE customer_id IN (" + String.join(",", Collections.nCopies(friendIdsArray.length, "?")) + ") AND isshared=1 "
 	            + "ORDER BY diary_id DESC";
 	    jdbcUtil.setSqlAndParameters(sql, params); // JDBCUtil에 query문과 매개 변수 설정
@@ -213,9 +213,9 @@ public class DiaryDAO {
 						rs.getInt("isshared"),
 						utilDate,
 						rs.getString("content"),
-						rs.getInt("restaurant_id"),
 						rs.getInt("customer_id"),
-						rs.getString("picture"));
+						rs.getString("picture"),
+						rs.getString("place"));
 				diaryList.add(diary); // List에 diary 객체 저장
 			}
 			return diaryList;
