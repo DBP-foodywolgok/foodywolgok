@@ -1,4 +1,4 @@
-package test;
+/*package test;
 
 
 import java.sql.SQLException;
@@ -75,3 +75,4 @@ public class DiaryTest {
     
 }
 
+*/

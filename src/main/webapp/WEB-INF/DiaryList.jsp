@@ -72,6 +72,24 @@
     	a {
         	text-decoration: none;
     	}
+    	
+    	.btn-group-custom {
+            margin-bottom: 20px;
+        }
+
+        .btn-custom {
+            background-color: #0077cc;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .btn-custom:hover {
+            background-color: #005fa6;
+        }
         
     </style>
  	<script>
@@ -87,27 +105,30 @@
 </head>
 <body>
     <div class="container mt-3">
-        <button class="btn btn-primary" onclick="location.href='/diary/register/form'">다이어리 추가</button>
-		<button class="btn btn-primary" onclick="location.href='/customer/main'">메인 페이지</button>
-        <header class="text-center mt-3">
-            <h1>다이어리</h1> 
-        </header>
-
-        <!--  <form class="text-center mt-3" action="Diary-List" method="post">
-            <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" value="yes">친구 게시글
-            </label>
-        </form>-->
-        <!--  <form name="form" method="POST" action="/diary/list">
-        	<button class="btn btn-primary" onClick= "myDiaryList()">내 다이어리 보기</button>
-        	<button class="btn btn-primary" onClick= "friendDiaryList()">친구 다이어리 보기</button>
-		</form>-->
-		<form name="form" method="POST" action="/diary/list?command=my">
-    		<button class="btn btn-primary">내 다이어리 보기</button>
-		</form>
-		<form name="form" method="POST" action="/diary/list?command=friend">
-    		<button class="btn btn-primary">친구 다이어리 보기</button>
-		</form>
+    	<div class="btn-group btn-group-custom" role="group" aria-label="Basic example">
+	        <button class="btn btn-custom" onclick="location.href='/diary/register/form'">다이어리 추가</button>
+			<button class="btn btn-custom" onclick="location.href='/customer/main'">메인 페이지</button>
+	        <header class="text-center mt-3">
+            	<h1>다이어리</h1> 
+        	</header>
+	
+	        <!--  <form class="text-center mt-3" action="Diary-List" method="post">
+	            <label class="form-check-label">
+	                <input type="checkbox" class="form-check-input" value="yes">친구 게시글
+	            </label>
+	        </form>-->
+	        <!--  <form name="form" method="POST" action="/diary/list">
+	        	<button class="btn btn-primary" onClick= "myDiaryList()">내 다이어리 보기</button>
+	        	<button class="btn btn-primary" onClick= "friendDiaryList()">친구 다이어리 보기</button>
+			</form>-->
+			<form name="form" method="POST" action="/diary/list?command=my">
+	    		<button class="btn btn-custom">내 다이어리 보기</button>
+			</form>
+			<form name="form" method="POST" action="/diary/list?command=friend">
+	    		<button class="btn btn-custom">친구 다이어리 보기</button>
+			</form>
+		</div>
+		
         <hr />
 
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
@@ -142,20 +163,6 @@
 
     <!-- Bootstrap JS 및 Popper.js 추가 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY0iD70B9B5PHL2QFjvqE+6qZ8rWHinI586d5" crossorigin="anonymous">
-    
-    <!--id onClick-->
-    <!--document.addEventListener('DOMContentLoaded', function() {
-        // 다이어리 카드 클릭 이벤트 핸들러
-        document.querySelectorAll('.diary-entry').forEach(function(card) {
-            card.addEventListener('click', function() {
-                // 클릭된 다이어리의 ID 가져오기
-                var diaryId = card.getAttribute('data-diary-id');
-                
-                // 다이어리 상세 페이지로 이동
-                window.location.href = '/diary/view?id=' + diaryId;
-            });
-        });
-    });-->
     
     </script>
     

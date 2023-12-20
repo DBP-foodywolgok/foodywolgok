@@ -36,12 +36,13 @@ public class CustomerInformationController implements Controller {
 
             // CustomerDAO를 사용하여 사용자의 정보 가져오기
             Customer customer = customerDAO.getCustomerById(customerId);
-
+            String favorCategoris = customerDAO.getFavoriteCategoriesByCustomerId(customerId);
             // 가져온 정보를 콘솔에 출력
             System.out.println("Customer 정보: " + customer);
 
             // 가져온 정보를 request에 저장하여 뷰 페이지로 전달
             request.setAttribute("customer", customer);
+            request.setAttribute("favorCategories", favorCategoris);
 
             // 회원 정보 페이지로 이동
             return "/MemberInformation.jsp";

@@ -42,7 +42,7 @@
 		<div class="input-group mb-3">
   			<label class="input-group-text" for="inputGroupSelect01">별점</label>
   			<select class="form-select" id="score" name="score">
-    			<option disabled selected>별점을 선택하세요.</option>
+    			<option disabled value="0" selected>별점을 선택하세요.</option>
     			<option value="1">1</option>
     			<option value="2">2</option>
     			<option value="3">3</option>
@@ -53,7 +53,7 @@
 		<div class="input-group mb-3">
   			<label class="input-group-text" for="inputGroupSelect01">카테고리</label>
   			<select class="form-select" id="category" name="category">
-    			<option disabled selected>식당의 카테고리를 선택하세요.</option>
+    			<option disabled value="0" selected>식당의 카테고리를 선택하세요.</option>
     			<option value="1" ${param.category == '1' ? 'selected' : ''}>양식</option>
     			<option value="2" ${param.category == '2' ? 'selected' : ''}>퓨전요리</option>
     			<option value="3" ${param.category == '3' ? 'selected' : ''}>태국식</option>
@@ -66,6 +66,12 @@
     			<option value="10" ${param.category == '10' ? 'selected' : ''}>아시아</option>
     			<option value="11" ${param.category == '11' ? 'selected' : ''}>일식</option>
     			<option value="12" ${param.category == '12' ? 'selected' : ''}>분식</option>
+    			<option value="13" ${param.category == '13' ? 'selected' : ''}>치킨</option>
+    			<option value="14" ${param.category == '14' ? 'selected' : ''}>고기</option>
+    			<option value="15" ${param.category == '15' ? 'selected' : ''}>패스트푸드</option>
+    			<option value="16" ${param.category == '16' ? 'selected' : ''}>족발</option>
+    			<option value="17" ${param.category == '17' ? 'selected' : ''}>야식</option>
+    			<option value="18" ${param.category == '18' ? 'selected' : ''}>주점</option>
   			</select>
 		</div>
 		<div class="input-group">
