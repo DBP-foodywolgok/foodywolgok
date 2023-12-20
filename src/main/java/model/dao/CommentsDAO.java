@@ -83,7 +83,7 @@ public class CommentsDAO {
 	 * 주어진 댓글 ID에 해당하는 댓글 정보를 데이터베이스에서 찾아 Comments 도메
 	인 클래스에
 	 * 저장하여 반환. */
-	public Comments findComment(int comment_id) throws SQLException {
+	/*public Comments findComment(int comment_id) throws SQLException {
 		String sql = "SELECT diary_id, customer_id, content "
 				+ "FROM COMMENTS "
 				+ "WHERE comment_id=? ";
@@ -104,14 +104,14 @@ public class CommentsDAO {
 			jdbcUtil.close(); // resource 반환
 		}
 		return null;
-	}
+	}*/
 	/**
-	 * 특정 다이어리에 작성된 댓글을 검색하여 List에 저장 및 반환, 날짜 순
+	 * 특정 다이어리에 작성된 댓글을 검색하여 List에 저장 및 반환, comment_id순
 	 */
-	public List<Comments> findCommentsByDiary(int diary_id) throws SQLException {
+	/*public List<Comments> findCommentsWithNameByDiary(int diary_id) throws SQLException {
 		String sql = "SELECT comment_id, diary_id, customer_id, content FROM COMMENTS "
 				+ "WHERE diary_id = ? "
-				+ "ORDER BY nowdate";
+				+ "ORDER BY comment_id";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {diary_id}); //JDBCUtil에 query문과 매개 변수 설정
 		try {
 			ResultSet rs = jdbcUtil.executeQuery(); // query 실행
@@ -121,7 +121,7 @@ public class CommentsDAO {
 				Comments comment = new Comments( //Comments 객체를 생성하여 현재 행의 정보를 저장
 						rs.getInt("comment_id"),
 						rs.getString("content"),
-						rs.getInt(diary_id),
+						diary_id,
 						rs.getInt("customer_id"));
 				commentsList.add(comment); //List에 comment 객체 저장
 			}
@@ -132,7 +132,43 @@ public class CommentsDAO {
 			jdbcUtil.close(); // resource 반환
 		}
 		return null;
+	}*/
+	/**
+	 * 특정 다이어리에 작성된 댓글을 검색하여 List에 저장 및 반환, comment_id순 + name 추출을 위한 join query
+	 */
+	public List<Comments> findCommentsWithNameByDiary(int diary_id) throws SQLException {
+	    String sql = "SELECT c.comment_id, c.diary_id, c.customer_id, c.content, cust.name " +
+	                 "FROM COMMENTS c " +
+	                 "INNER JOIN CUSTOMER cust ON c.customer_id = cust.customer_id " +
+	                 "WHERE c.diary_id = ? " +
+	                 "ORDER BY c.comment_id";
+	    jdbcUtil.setSqlAndParameters(sql, new Object[]{diary_id});
+
+	    try {
+	        ResultSet rs = jdbcUtil.executeQuery();
+	        List<Comments> commentsList = new ArrayList<>();
+
+	        while (rs.next()) {
+	            Comments comment = new Comments(
+	            		rs.getInt("comment_id"),
+						rs.getString("content"),
+						diary_id,
+						rs.getInt("customer_id"),
+						rs.getString("name"));
+	            commentsList.add(comment);
+	        }
+
+	        return commentsList;
+	    } catch (Exception ex) {
+	        ex.printStackTrace();
+	    } finally {
+	        jdbcUtil.close();
+	    }
+
+	    return null;
 	}
+
+	
 	/**
 	 * 특정 다이어리 글에 작성된 댓글 count하여 반환
 	 */

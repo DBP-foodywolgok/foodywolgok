@@ -84,12 +84,22 @@ public class DiaryDAO {
 	 * 다이어리 ID에 해당하는 다이어리를 삭제.
 	 */
 	public int remove(int diary_id) throws SQLException {
-		String sql = "DELETE FROM DIARY WHERE diary_id=?";		
-		jdbcUtil.setSqlAndParameters(sql, new Object[] {diary_id});	// JDBCUtil에 delete문과 매개 변수 설정
+		//String sql = "DELETE FROM DIARY WHERE diary_id=?";		
+		//jdbcUtil.setSqlAndParameters(sql, new Object[] {diary_id});	// JDBCUtil에 delete문과 매개 변수 설정
 
 		try {				
-			int result = jdbcUtil.executeUpdate();	// delete 문 실행
-			return result;
+			// 1. 다이어리에 속한 댓글 삭제
+	        String deleteCommentsSQL = "DELETE FROM COMMENTS WHERE diary_id=?";
+	        jdbcUtil.setSqlAndParameters(deleteCommentsSQL, new Object[]{diary_id});
+	        jdbcUtil.executeUpdate();
+
+	        // 2. 다이어리 삭제
+	        String deleteDiarySQL = "DELETE FROM DIARY WHERE diary_id=?";
+	        jdbcUtil.setSqlAndParameters(deleteDiarySQL, new Object[]{diary_id});
+
+	        int result = jdbcUtil.executeUpdate(); // delete 문 실행
+	        return result;
+			
 		} catch (Exception ex) {
 			jdbcUtil.rollback();
 			ex.printStackTrace();
