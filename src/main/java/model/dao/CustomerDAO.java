@@ -255,6 +255,31 @@ public class CustomerDAO {
 	    }
 	    return null; // 업데이트 실패 시 null 반환
 	}
+	
+	public String getFavoriteCategoriesByCustomerId(Object customerId) {
+	    List<String> favoriteCategories = new ArrayList<>();
+	    ResultSet resultSet = null;
+
+	    try {
+	        String sql = "SELECT c.name FROM category c " +
+	                     "INNER JOIN customer_category cc ON c.category_id = cc.category_id " +
+	                     "WHERE cc.customer_id = ?";
+	        jdbcUtil.setSqlAndParameters(sql, new Object[]{customerId});
+	        resultSet = jdbcUtil.executeQuery();
+
+	        while (resultSet.next()) {
+	            String categoryName = resultSet.getString("name");
+	            favoriteCategories.add(categoryName);
+	        }
+	    }  catch (Exception ex) {
+	        jdbcUtil.rollback();
+	        ex.printStackTrace();
+	    } finally {
+	        jdbcUtil.commit();
+	        jdbcUtil.close(); // resource 반환
+	    }
+	    return String.join(",", favoriteCategories);
+	}
 	 
 	 // 친구 추가 
 	 public boolean addFriend(int customerId1, String email) throws SQLException {
