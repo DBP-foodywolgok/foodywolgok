@@ -9,23 +9,23 @@ public class Diary {
 	private int isShared;
 	private Date nowDate;
 	private String content;
-	private int restaurant_id;
 	private int customer_id;
 	private String picture;
+	private String place;
 	
 	public Diary() {}
 
-	public Diary(int diary_id, String title, int isShared, Date nowDate, String content, int restaurant_id,
-			int customer_id, String picture) {
+	public Diary(int diary_id, String title, int isShared, Date nowDate, String content,
+			int customer_id, String picture, String place) {
 		super();
 		this.diary_id = diary_id;
 		this.title = title;
 		this.isShared = isShared;
 		this.nowDate = nowDate;
 		this.content = content;
-		this.restaurant_id = restaurant_id;
 		this.customer_id = customer_id;
-		this.setPicture(picture);
+		this.picture=picture;
+		this.setPlace(place);
 	}
 
 	public int getDiary_id() {
@@ -68,13 +68,6 @@ public class Diary {
 		this.content = content;
 	}
 
-	public int getRestaurant_id() {
-		return restaurant_id;
-	}
-
-	public void setRestaurant_id(int restaurant_id) {
-		this.restaurant_id = restaurant_id;
-	}
 
 	public int getCustomer_id() {
 		return customer_id;
@@ -93,11 +86,20 @@ public class Diary {
 		this.picture = picture;
 	}
 
+
+	public String getPlace() {
+		return place;
+	}
+
+	public void setPlace(String place) {
+		this.place = place;
+	}
+
 	@Override
 	public String toString() {
 		return "Diary [diary_id=" + diary_id + ", title=" + title + ", isShared=" + isShared + ", nowDate=" + nowDate
-				+ ", content=" + content + ", restaurant_id=" + restaurant_id + ", customer_id=" + customer_id
-				+ ", picture=" + picture + "]";
+				+ ", content=" + content + ", customer_id=" + customer_id + ", picture=" + picture + ", place=" + place
+				+ "]";
 	}
 	
 	

@@ -166,7 +166,7 @@
 <div class="diary-entry"> 
     <h4 class="diary-date"><fmt:formatDate value="${diary.nowDate}" pattern="yyyy.MM.dd" /></h4>
     <h2 class="diary-title"><%=diary.getTitle() %></h2> 
-    <p class="diary-place">토라카츠</p>
+    <p class="diary-place"><%=diary.getPlace() %></p>
     
     <c:if test="${not empty diary.picture}">
     <img src="<c:url value='/upload/${diary.picture}'/>" />

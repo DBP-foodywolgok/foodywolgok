@@ -38,7 +38,8 @@ public class RegisterDiaryController implements Controller {
     	int isShared = 0;
     	String content = null;    	    	
     	String filename = null;    	
-   	
+    	String place=null;
+    	
     	boolean check = ServletFileUpload.isMultipartContent(request);    			
 		if(check) {    // 전송된 요청 메시지의 타입이 multipart 인지 여부를 체크한다. (multipart/form-data)
 			
@@ -82,6 +83,8 @@ public class RegisterDiaryController implements Controller {
                 		else if(item.getFieldName().equals("diary_content")) 
                 			content = value;
                 			// parameter 이름이 pw이면 pw 변수에 값을 저장한다.
+                		else if(item.getFieldName().equals("diary_place"))
+                			place = value;
                 	}
                 	else {  // item이 파일인 경우   
                 		if (item.getFieldName().equals("diary_picture")) {
@@ -119,9 +122,9 @@ public class RegisterDiaryController implements Controller {
 	    	diary.setIsShared(isShared);
 	    	diary.setContent(content);
 	    	diary.setCustomer_id(customerId);
-	    	//임시 
-	    	diary.setRestaurant_id(1);
+	    	
 	    	diary.setPicture(filename);
+	    	diary.setPlace(place);
 	    	
 	    	DiaryDAO diaryDAO = new DiaryDAO();
 	        

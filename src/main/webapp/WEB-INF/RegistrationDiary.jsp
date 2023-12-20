@@ -92,7 +92,7 @@
 	        <input type="text" class="form-control" id="input_title" name="diary_title" placeholder="제목을 입력하세요" required><br/>
 			
 			<label for="input_place" class="form-label">장소</label>
-	  		<input type="submit" class="form-control" id="input_place" name="diary_place" value="장소찾기" ><br/> 
+	  		<input type="text" class="form-control" id="input_place" name="diary_place" placeholder="장소를 입력하세요" required><br/> 
 	  		
 	  		<label for="input_picture" class="form-lbel">사진</label>
 	  		<input type="file" class="form-control" id="input_picture" name="diary_picture" value="사진찾기" name="file"/><br/>
