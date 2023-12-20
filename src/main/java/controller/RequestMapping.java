@@ -13,6 +13,7 @@ import controller.customer.CustomerFriendSearchController;
 import controller.customer.CustomerInformationController;
 import controller.customer.CustomerLoginController;
 import controller.customer.CustomerLogoutController;
+import controller.customer.CustomerRecommendationController;
 import controller.customer.CustomerRegisterController;
 import controller.restaurant.AddWishlistController;
 import controller.restaurant.CategoryController;
@@ -66,11 +67,12 @@ public class RequestMapping {
         mappings.put("/customer/changeCustomerPassword", new CustomerChangePasswordController());
         mappings.put("/customer/diaryList", new ListDiaryController());
 
-        mappings.put("/customer/recommendation", new ForwardController("/Recommendation.jsp"));
+        mappings.put("/customer/recommendation", new CustomerRecommendationController());
      //   mappings.put("/customer/friendlist", new ForwardController("/FriendList.jsp"));
         mappings.put("/customer/mypage", new ForwardController("/MyPage.jsp"));
         mappings.put("/customer/changePassword", new ForwardController("/ChangePassword.jsp"));
         mappings.put("/customer/findFriendList", new ForwardController("/FriendList.jsp"));
+       
         mappings.put("/customer/enrollFriend", new CustomerFriendAddController());
         
         mappings.put("/customer/FriendList", new CustomerFriendSearchController()); 

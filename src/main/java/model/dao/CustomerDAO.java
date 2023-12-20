@@ -5,12 +5,16 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import controller.customer.UserSessionUtils;
 import model.Customer;
+import model.Restaurant;
 
 
 public class CustomerDAO {
@@ -279,6 +283,100 @@ public class CustomerDAO {
 	        jdbcUtil.close(); // resource 반환
 	    }
 	    return String.join(",", favoriteCategories);
+	}
+	
+	// 랜덤으로 레스토랑 가져오기 
+	  public List<Restaurant> getCategoryRestaurant(int categoryId) {
+	        List<Restaurant> randomRestaurants = new ArrayList<>();
+	        ResultSet resultSet = null;
+
+	        try {
+	            String sql = "SELECT * FROM RESTAURANT WHERE category_id = ?";
+	            jdbcUtil.setSqlAndParameters(sql, new Object[]{categoryId});
+	            resultSet = jdbcUtil.executeQuery();
+
+	            while (resultSet.next()) {
+	                Restaurant restaurant = new Restaurant();
+	                restaurant.setRestaurant_id(resultSet.getInt("restaurant_id"));
+	                restaurant.setCateogry(resultSet.getInt("category_id"));
+	                restaurant.setIntroduction(resultSet.getString("introduction"));
+	                restaurant.setLatitude(resultSet.getFloat("latitude"));
+	                restaurant.setLongitude(resultSet.getFloat("longitude"));
+	                restaurant.setName(resultSet.getString("name"));
+	                restaurant.setAddress(resultSet.getString("address"));
+
+	                randomRestaurants.add(restaurant);
+	            }
+	            
+	            Collections.shuffle(randomRestaurants);
+	            List<Restaurant> randomThreeRestaurants = randomRestaurants.subList(0, 3);
+	            return randomThreeRestaurants;
+	        } catch (Exception ex) {
+	            jdbcUtil.rollback();
+	            ex.printStackTrace();
+	        } finally {
+	            jdbcUtil.commit();
+	            jdbcUtil.close();
+	        }
+
+	        return randomRestaurants;
+	    }
+	// 카테고리 하나씩 주기 
+	
+	public List<Map<String, String>> getFavoriteCategoriesListByCustomerId(Object customerId) {
+	    List<Map<String, String>> favoriteCategories = new ArrayList<>();
+	    ResultSet resultSet = null;
+
+	    try {
+	        String sql = "SELECT c.category_id, c.name FROM category c " +
+	                     "INNER JOIN customer_category cc ON c.category_id = cc.category_id " +
+	                     "WHERE cc.customer_id = ?";
+	        jdbcUtil.setSqlAndParameters(sql, new Object[]{customerId});
+	        resultSet = jdbcUtil.executeQuery();
+
+	        while (resultSet.next()) {
+	            Map<String, String> categoryInfo = new HashMap<>();
+	            String categoryId = resultSet.getString("category_id");
+	            String categoryName = resultSet.getString("name");
+
+	            categoryInfo.put("categoryId", categoryId);
+	            categoryInfo.put("categoryName", categoryName);
+
+	            favoriteCategories.add(categoryInfo);
+	        }
+	    } catch (Exception ex) {
+	        jdbcUtil.rollback();
+	        ex.printStackTrace();
+	    } finally {
+	        jdbcUtil.commit();
+	        jdbcUtil.close(); // resource 반환
+	    }
+
+	    return favoriteCategories;
+	}
+	
+	public List<Integer> getCustomerFavoriteCategoryIds(int customerId) {
+	    List<Integer> favoriteCategoryIds = new ArrayList<>();
+	    ResultSet resultSet = null;
+
+	    try {
+	        String sql = "SELECT category_id FROM customer_category WHERE customer_id = ?";
+	        jdbcUtil.setSqlAndParameters(sql, new Object[]{customerId});
+	        resultSet = jdbcUtil.executeQuery();
+
+	        while (resultSet.next()) {
+	            int categoryId = resultSet.getInt("category_id");
+	            favoriteCategoryIds.add(categoryId);
+	        }
+	    } catch (Exception ex) {
+	        jdbcUtil.rollback();
+	        ex.printStackTrace();
+	    } finally {
+	        jdbcUtil.commit();
+	        jdbcUtil.close();
+	    }
+
+	    return favoriteCategoryIds;
 	}
 	 
 	 // 친구 추가 
