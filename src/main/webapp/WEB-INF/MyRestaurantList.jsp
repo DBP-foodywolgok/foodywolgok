@@ -39,7 +39,7 @@
 		</c:when>
 		<c:when test="${ResultCode eq 1}">
 			<c:forEach var="rstr" items="${list}">
-				<a href="#" class="list-group-item list-group-item-action" aria-current="true">
+				<a href="/myRestaurant/view?id=${rstr.getId()}" class="list-group-item list-group-item-action" aria-current="true">
 					<div class="d-flex w-100 justify-content-between">
       					<h5 class="mb-1">${rstr.getName()}</h5>
       					<small>${rstr.getCategory()}</small>

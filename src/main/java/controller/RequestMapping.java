@@ -31,6 +31,7 @@ import controller.restaurant.SearchController;
 import controller.myrestaurant.FindRestaurantController;
 import controller.myrestaurant.ListMyRestaurantController;
 import controller.myrestaurant.RegisterMyRestaurantController;
+import controller.myrestaurant.ViewMyRestaurantController;
 import model.dao.CustomerDAO;
 import model.dao.RestaurantDAO;
 import model.service.CustomerService;
@@ -95,11 +96,12 @@ public class RequestMapping {
         mappings.put("/kindlist", new CategoryController());
         mappings.put("/restaurant/kindview", new ForwardController("/KindView.jsp"));
         
+        // My Restaurant
         mappings.put("/myRestaurant/list", new ListMyRestaurantController());
+        mappings.put("/myRestaurant/view", new ViewMyRestaurantController());
         mappings.put("/myRestaurant/register", new RegisterMyRestaurantController());
         mappings.put("/myRestaurant/find", new FindRestaurantController());
         mappings.put("/myRestaurant/update", new ForwardController("/ModifyMyRestaurant.jsp"));
-        mappings.put("/myRestaurant/view", new ForwardController("/MyRestaurantDetail.jsp"));
 
     //    mappings.put("/customer/register", new customerController());
     	//mappings.put("/customer", new customerController());
