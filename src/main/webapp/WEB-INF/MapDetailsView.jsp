@@ -96,7 +96,7 @@
 		        String starClass = isInWishlist ? "fas" : "far";
 		%>
 		 <% System.out.println("Restaurant: " + restaurant); %> 
-		<a href="/restaurant/wishView?id=<%= restaurant.getRestaurant_id() %>">
+		<a href="/restaurant/chooseWishList?id=<%= restaurant.getRestaurant_id() %>">
 		    <!-- 별표 아이콘 -->
 		    <i class="<%= starClass %> fa-star" id="wishlistStar" data-restaurant-id="<%=restaurant.getRestaurant_id() %>"></i>
 		    <div class="restaurant-name"><%= restaurant.getName() %></div>
