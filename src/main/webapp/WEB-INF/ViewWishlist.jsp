@@ -17,53 +17,51 @@
             height: 100vh;
             background-color: #ffffff;
         }
-
         .wishlist-header {
             text-align: center;
             margin-bottom: 30px;
         }
-
         .wishlist-item {
             padding: 20px;
             margin-bottom: 20px;
             width: 100%;
             box-sizing: border-box;
         }
-
         .btn {
             border: none;
         }
-
         .item-name {
             font-size: 1.5em; /* ${item.name} 글자 크기 */
             margin-bottom: 10px; /* ${item.name} 아래 여백 */
         }
-
         .item-memo {
             margin-top: 10px; /* ${item.memo} 위 여백 */
         }
     </style>
 </head>
 <body>
-
-<div class="container">
-    <div class="wishlist-header">
-        <h1>위시리스트</h1>
+    <div class="container">
+        <div class="wishlist-header">
+            <h1>위시리스트</h1>
+        </div>
+        <div class="container mt-4">
+            <button class="wishlist-add-button" onclick="location.href='/restaurant/viewAddWish'">+ 위시리스트 추가</button>
+        </div>
+        <c:choose>
+            <c:when test="${not empty wishlist}">
+                <c:forEach var="item" items="${wishlist}">
+                    <div class="wishlist-item">
+                        <button type="button" class="btn btn-primary">
+                            <div class="item-name">${item.name}</div>
+                            <div class="item-memo">${item.memo}</div>
+                        </button>
+                    </div>
+                </c:forEach>
+            </c:when>
+            <c:otherwise>
+                <p>위시리스트가 비어있습니다.</p>
+            </c:otherwise>
+        </c:choose>
     </div>
-    <c:if test="${not empty wishlist}">
-        <c:forEach var="item" items="${wishlist}">
-            <div class="wishlist-item">
-                <button type="button" class="btn btn-primary">
-                    <div class="item-name">${item.name}</div>
-                    <div class="item-memo">${item.memo}</div>
-                </button>
-            </div>
-        </c:forEach>
-    </c:if>
-    <c:if test="${empty wishlist}">
-        <p>위시리스트가 비어있습니다.</p>
-    </c:if>
-</div>
-
 </body>
 </html>

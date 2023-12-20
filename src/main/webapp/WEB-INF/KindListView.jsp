@@ -89,10 +89,6 @@
             <%
             }
         %>
-        <form method="post" action="/restaurant/addWish">
-            <input type="hidden" name="restaurant_id" value="<%= request.getAttribute("restaurant_id") %>">
-            <button type="submit" class="btn btn-primary wishlist-button">위시리스트에 추가</button>
-        </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
