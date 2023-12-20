@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="model.*" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>     
@@ -142,12 +142,23 @@
             background-color: #005fa6;
         }
     </style>
-    <script>
+   
+<script>
  	//삭제하기 누르면 질문 
    	function diaryRemove() {
    		return confirm("정말 삭제하시겠습니까?");		
    	}
-	</script>
+   	function commentRemove() {
+   		return confirm("정말 삭제하시겠습니까?");		
+   	}
+   	function editComment(commentId, content) {
+        var updatedContent = prompt("댓글 수정", content);
+        if (updatedContent !== null) {
+            
+    }
+</script>
+
+	
     
 </head>
 <body>
@@ -170,16 +181,36 @@
         <h3 class="comment-title">댓글</h3>
 
         <!-- 각 댓글 -->
-        <div class="comment">
-            <p class="comment-author">친구1</p>
-            <p class="comment-date">2023년 9월 26일</p>
-            <p class="comment-content">친구1의 댓글</p>
-        </div>
-
+        <c:forEach var="comments" items="${diaryCommentsList}">
+	        <div class="comment">
+	            <p class="comment-author">${comments.name}</p>
+	            <p class="comment-content">${comments.content}</p>
+	            
+	           
+	            <!-- 수정과 삭제 링크 -->
+        		<c:if test="${comments.customer_id eq sessionScope.customer_id}">
+            		<p>
+                		<a href="<c:url value='/comments/update'>
+							<c:param name='commentId' value='${comments.comment_id}'/>
+							<c:param name='diaryId' value='${comments.diary_id}'/>
+						</c:url>" onclick="editComment(${comments.comment_id}, '${comments.content}')">수정</a>
+                		|
+               			<a href="<c:url value='/comments/delete'>
+							<c:param name='commentId' value='${comments.comment_id}'/>
+							<c:param name='diaryId' value='${comments.diary_id}'/>
+						</c:url>"onclick="return commentRemove();" class="delete-link">삭제</a>
+           			</p>
+        		</c:if>
+	        </div>
+        </c:forEach>
+		
+		
         <!-- 새로운 댓글 작성 폼 -->
-        <form action="#" method="post">
-            <label for="input_comment" class="form-label">댓글 작성</label>
-            <textarea class="form-control" id="input_comment" rows="3" placeholder="댓글을 작성하세요" required></textarea><br/>
+        <form name="form" action="/diary/comments" method="post">
+        	<input type="hidden" name="diaryId" value="${diary.diary_id}"/>	
+        	<input type="hidden" name="customerId" value="${sessionScope.customer_id}"/>	
+            <label for="input_comment" class="form-label"></label>
+            <textarea class="form-control" id="input_comment" name="diary_comments" rows="3" placeholder="댓글을 작성하세요" required></textarea><br/>
             <button type="submit" class="btn btn-primary">댓글 작성</button>
         </form>
     </div>

@@ -6,15 +6,26 @@ public class Comments {
 	private String content;
 	private int diary_id;
 	private int customer_id;
+	private String name;
 	
+
 	public Comments(){};
 
-	public Comments(int comment_id, String content, int diary_id, int customer_id) {
+	/*public Comments(int comment_id, String content, int diary_id, int customer_id) {
 		super();
 		this.comment_id = comment_id;
 		this.content = content;
 		this.diary_id = diary_id;
 		this.customer_id = customer_id;
+	}*/
+	
+	public Comments(int comment_id, String content, int diary_id, int customer_id, String name) {
+		super();
+		this.comment_id = comment_id;
+		this.content = content;
+		this.diary_id = diary_id;
+		this.customer_id = customer_id;
+		this.name = name;
 	}
 
 	public int getComment_id() {
@@ -53,6 +64,14 @@ public class Comments {
 	public String toString() {
 		return "Comments [comment_id=" + comment_id + ", content=" + content + ", diary_id=" + diary_id
 				+ ", customer_id=" + customer_id + "]";
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	};
 	
 	

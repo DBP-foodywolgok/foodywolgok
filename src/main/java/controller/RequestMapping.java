@@ -23,10 +23,13 @@ import controller.restaurant.ViewRestaurantController;
 import controller.restaurant.ViewWishlistController;
 import controller.restaurant.WishlistUpdateController;
 import controller.diary.RegisterDiaryController;
+import controller.diary.UpdateCommentsController;
 import controller.diary.UpdateDiaryController;
 import controller.diary.ViewDiaryController;
+import controller.diary.DeleteCommentsController;
 import controller.diary.DeleteDiaryController;
 import controller.diary.ListDiaryController;
+import controller.diary.RegisterCommentsController;
 import controller.restaurant.CategoryController;
 import controller.restaurant.SearchController;
 import controller.myrestaurant.FindRestaurantController;
@@ -85,6 +88,10 @@ public class RequestMapping {
         mappings.put("/diary/delete", new DeleteDiaryController());
         mappings.put("/diary/list", new ListDiaryController());
         mappings.put("/diary/view", new ViewDiaryController()); 
+        //댓글
+        mappings.put("/diary/comments", new RegisterCommentsController());
+        mappings.put("/comments/delete", new DeleteCommentsController());
+        mappings.put("/comments/update", new UpdateCommentsController());
         
         //map
         mappings.put("/restaurant/map", new ForwardController("/MapMainView.jsp"));
