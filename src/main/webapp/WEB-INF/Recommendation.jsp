@@ -50,147 +50,68 @@
 <div class="album py-5 bg-body-tertiary">
     <div class="container">
         <div class="row row-cols-1 row-cols-md-3 g-3">
-            <!-- 추가된 div 1 -->
             <div class="col">
                 <div class="card shadow-sm">
                     <div class="card-body">
-                        <p class="card-text">음식 8</p>
+                        <!-- 이미지 경로를 웹에서 접근 가능한 경로로 수정 -->
+                       <img src="/upload/${favoriteCategories[0].categoryId}.png" alt="음식 이미지" width="200"> 
+                
+                        <p class="card-text">${favoriteCategories[0].categoryName}</p>
                     </div>
-                    <!-- 상세보기 버튼 -->
-                    <button class="btn btn-primary detail-button">상세보기</button>
                 </div>
             </div>
-
-            <!-- 추가된 div 2 -->
             <div class="col">
                 <div class="card shadow-sm">
                     <div class="card-body">
-                        <p class="card-text">음식 8</p>
+                        <!-- 이미지 경로를 웹에서 접근 가능한 경로로 수정 -->
+                        <img src="/upload/${favoriteCategories[1].categoryId}.png" alt="음식 이미지" width="200">
+                        <p class="card-text">${favoriteCategories[1].categoryName}</p>
                     </div>
-                    <!-- 상세보기 버튼 -->
-                    <button class="btn btn-primary detail-button">상세보기</button>
                 </div>
             </div>
-
-            <!-- 추가된 div 3 -->
             <div class="col">
                 <div class="card shadow-sm">
                     <div class="card-body">
-                        <p class="card-text">음식 8</p>
+                        <!-- 이미지 경로를 웹에서 접근 가능한 경로로 수정 -->
+                        <img src="/upload/${favoriteCategories[2].categoryId}.png" alt="음식 이미지" width="200">
+                        <p class="card-text">${favoriteCategories[2].categoryName}</p>
                     </div>
-                    <!-- 상세보기 버튼 -->
-                    <button class="btn btn-primary detail-button">상세보기</button>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
 
 <hr>
-  <h2 class="text-center">사용자 추천 음식</h2>
-        <div class="album py-5 bg-body-tertiary">
-            <div class="container">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    <!-- 카드 1 -->
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <div class="card-body">
-                                <p class="card-text">음식 1</p>
-                            </div>
-                            <!-- 상세보기 버튼 -->
-                            <button class="btn btn-primary detail-button">상세보기</button>
-                        </div>
-                    </div>
+ <h2 class="text-center">사용자 추천 음식점</h2>
 
-                    <!-- 카드 2 -->
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <div class="card-body">
-                                <p class="card-text">음식 2</p>
+<!-- 카테고리 별 음식점 -->
+<c:forEach var="category" items="${favoriteCategories}">
+    <!-- 카테고리 이름 출력 -->
+    <h3>${category.categoryName}</h3>
+    
+    <!-- 해당 카테고리에 속하는 음식점들 -->
+    <div class="album py-5 bg-body-tertiary">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <!-- 해당 카테고리에 속하는 음식점 카드 3개 출력 -->
+                <c:forEach var="restaurant" items="${randomRestaurants}">
+                    <c:if test="${restaurant.getCategory() eq category.categoryId}">
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title">${restaurant.getName()}</h5>
+                                    <p class="card-text">${restaurant.getAddress()}</p>
+                                    <!-- 기타 필요한 정보 출력 -->
+                                </div>
                             </div>
-                            <!-- 상세보기 버튼 -->
-                            <button class="btn btn-primary detail-button">상세보기</button>
                         </div>
-                    </div>
-
-                    <!-- 카드 3 -->
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <div class="card-body">
-                                <p class="card-text">음식 3</p>
-                            </div>
-                            <!-- 상세보기 버튼 -->
-                            <button class="btn btn-primary detail-button">상세보기</button>
-                        </div>
-                    </div>
-
-                    <!-- 카드 4 -->
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <div class="card-body">
-                                <p class="card-text">음식 4</p>
-                            </div>
-                            <!-- 상세보기 버튼 -->
-                            <button class="btn btn-primary detail-button">상세보기</button>
-                        </div>
-                    </div>
-
-                    <!-- 카드 5 -->
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <div class="card-body">
-                                <p class="card-text">음식 5</p>
-                            </div>
-                            <!-- 상세보기 버튼 -->
-                            <button class="btn btn-primary detail-button">상세보기</button>
-                        </div>
-                    </div>
-
-                    <!-- 카드 6 -->
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <div class="card-body">
-                                <p class="card-text">음식 6</p>
-                            </div>
-                            <!-- 상세보기 버튼 -->
-                            <button class="btn btn-primary detail-button">상세보기</button>
-                        </div>
-                    </div>
-
-                    <!-- 카드 7 -->
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <div class="card-body">
-                                <p class="card-text">음식 7</p>
-                            </div>
-                            <!-- 상세보기 버튼 -->
-                            <button class="btn btn-primary detail-button">상세보기</button>
-                        </div>
-                    </div>
-
-                    <!-- 카드 9 -->
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <div class="card-body">
-                                <p class="card-text">음식 9</p>
-                            </div>
-                            <!-- 상세보기 버튼 -->
-                            <button class="btn btn-primary detail-button">상세보기</button>
-                        </div>
-                    </div>
-                    
-                       <div class="col">
-                        <div class="card shadow-sm">
-                            <div class="card-body">
-                                <p class="card-text">음식 10</p>
-                            </div>
-                            <!-- 상세보기 버튼 -->
-                            <button class="btn btn-primary detail-button">상세보기</button>
-                        </div>
-                    </div>
-                </div>
+                    </c:if>
+                </c:forEach>
             </div>
         </div>
+    </div>
+</c:forEach>
     </main>
 
     <!-- 부트스트랩 및 자바스크립트 라이브러리 로드 -->
