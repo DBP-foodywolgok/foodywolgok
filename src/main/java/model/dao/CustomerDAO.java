@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -285,32 +286,13 @@ public class CustomerDAO {
 	}
 	
 	// 랜덤으로 레스토랑 가져오기 
-	public List<Restaurant> getRandomRestaurantsByCustomer(int customerId, int limit) {
-	    List<Restaurant> randomRestaurants = new ArrayList<>();
-	    List<Map<String, String>> favoriteCategories = getFavoriteCategoriesListByCustomerId(customerId);
-
-	    try {
-	        for (Map<String, String> categoryInfo : favoriteCategories) {
-	            String categoryId = categoryInfo.get("categoryId");
-	            // categoryId에 해당하는 랜덤 음식점 가져오기
-	            List<Restaurant> restaurantsForCategory = getRandomRestaurants(Integer.parseInt(categoryId), limit);
-
-	            // 결과를 전체 목록에 추가
-	            randomRestaurants.addAll(restaurantsForCategory.subList(0, Math.min(limit, restaurantsForCategory.size())));
-	        }
-	    } catch (Exception ex) {
-	        ex.printStackTrace();
-	    }
-	    return randomRestaurants;
-	}
-	
-	  public List<Restaurant> getRandomRestaurants(int categoryId, int limit) {
+	  public List<Restaurant> getCategoryRestaurant(int categoryId) {
 	        List<Restaurant> randomRestaurants = new ArrayList<>();
 	        ResultSet resultSet = null;
 
 	        try {
-	            String sql = "SELECT * FROM restaurant_table WHERE category_id = ? ORDER BY RAND() LIMIT ?";
-	            jdbcUtil.setSqlAndParameters(sql, new Object[]{categoryId, limit});
+	            String sql = "SELECT * FROM RESTAURANT WHERE category_id = ?";
+	            jdbcUtil.setSqlAndParameters(sql, new Object[]{categoryId});
 	            resultSet = jdbcUtil.executeQuery();
 
 	            while (resultSet.next()) {
@@ -325,6 +307,10 @@ public class CustomerDAO {
 
 	                randomRestaurants.add(restaurant);
 	            }
+	            
+	            Collections.shuffle(randomRestaurants);
+	            List<Restaurant> randomThreeRestaurants = randomRestaurants.subList(0, 3);
+	            return randomThreeRestaurants;
 	        } catch (Exception ex) {
 	            jdbcUtil.rollback();
 	            ex.printStackTrace();
@@ -335,7 +321,6 @@ public class CustomerDAO {
 
 	        return randomRestaurants;
 	    }
-	
 	// 카테고리 하나씩 주기 
 	
 	public List<Map<String, String>> getFavoriteCategoriesListByCustomerId(Object customerId) {
@@ -368,6 +353,30 @@ public class CustomerDAO {
 	    }
 
 	    return favoriteCategories;
+	}
+	
+	public List<Integer> getCustomerFavoriteCategoryIds(int customerId) {
+	    List<Integer> favoriteCategoryIds = new ArrayList<>();
+	    ResultSet resultSet = null;
+
+	    try {
+	        String sql = "SELECT category_id FROM customer_category WHERE customer_id = ?";
+	        jdbcUtil.setSqlAndParameters(sql, new Object[]{customerId});
+	        resultSet = jdbcUtil.executeQuery();
+
+	        while (resultSet.next()) {
+	            int categoryId = resultSet.getInt("category_id");
+	            favoriteCategoryIds.add(categoryId);
+	        }
+	    } catch (Exception ex) {
+	        jdbcUtil.rollback();
+	        ex.printStackTrace();
+	    } finally {
+	        jdbcUtil.commit();
+	        jdbcUtil.close();
+	    }
+
+	    return favoriteCategoryIds;
 	}
 	 
 	 // 친구 추가 

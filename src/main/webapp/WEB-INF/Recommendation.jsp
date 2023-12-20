@@ -83,35 +83,106 @@
 
 
 <hr>
- <h2 class="text-center">사용자 추천 음식점</h2>
-
-<!-- 카테고리 별 음식점 -->
-<c:forEach var="category" items="${favoriteCategories}">
-    <!-- 카테고리 이름 출력 -->
-    <h3>${category.categoryName}</h3>
-    
-    <!-- 해당 카테고리에 속하는 음식점들 -->
-    <div class="album py-5 bg-body-tertiary">
-        <div class="container">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <!-- 해당 카테고리에 속하는 음식점 카드 3개 출력 -->
-                <c:forEach var="restaurant" items="${randomRestaurants}">
-                    <c:if test="${restaurant.getCategory() eq category.categoryId}">
-                        <div class="col">
-                            <div class="card shadow-sm">
-                                <div class="card-body">
-                                    <h5 class="card-title">${restaurant.getName()}</h5>
-                                    <p class="card-text">${restaurant.getAddress()}</p>
-                                    <!-- 기타 필요한 정보 출력 -->
-                                </div>
-                            </div>
-                        </div>
-                    </c:if>
-                </c:forEach>
+<p>${favoriteCategories[0].categoryName}</p>
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-3 g-3">
+        <!-- Category 1 -->
+        <div class="col">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <p class="card-text">${category1.get(0).name}</p>
+                        <p class="card-text">${category1.get(0).address}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <p class="card-text">${category1.get(1).name}</p>
+                        <p class="card-text">${category1.get(1).address}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <p class="card-text">${category1.get(2).name}</p>
+                        <p class="card-text">${category1.get(2).address}</p>
+                </div>
             </div>
         </div>
     </div>
-</c:forEach>
+</div> 
+
+
+
+<hr>
+<p>${favoriteCategories[1].categoryName}</p>
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-3 g-3">
+        <!-- Category 1 -->
+        <div class="col">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <p class="card-text">${category2.get(0).name}</p>
+                       <p class="card-text">${category2.get(0).address}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <p class="card-text">${category2.get(1).name}</p>
+                       <p class="card-text">${category2.get(1).address}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <p class="card-text">${category2.get(2).name}</p>
+                       <p class="card-text">${category2.get(2).address}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+
+
+<hr>
+<p>${favoriteCategories[2].categoryName}</p>
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-3 g-3">
+        <!-- Category 1 -->
+        <div class="col">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <p class="card-text">${category3.get(0).name}</p>
+                            <p class="card-text">${category3.get(0).address}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <p class="card-text">${category3.get(1).name}</p>
+                     <p class="card-text">${category3.get(1).address}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <p class="card-text">${category3.get(2).name}</p>
+                              <p class="card-text">${category3.get(2).address}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+
+  
+  
     </main>
 
     <!-- 부트스트랩 및 자바스크립트 라이브러리 로드 -->

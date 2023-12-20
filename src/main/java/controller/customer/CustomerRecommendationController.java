@@ -1,6 +1,7 @@
 package controller.customer;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -41,16 +42,24 @@ public class CustomerRecommendationController implements Controller {
 	                  return "redirect:/login"; // 로그인 페이지 URL로 리다이렉트
 	              }
 	              
-	              // 랜덤 레스토랑 목록을 가져옴
-	              List<Restaurant> randomRestaurants = customerDAO.getRandomRestaurantsByCustomer(customerId, 3);
-
-	              // 랜덤 레스토랑 목록을 세션에 저장
-	              session.setAttribute("randomRestaurants", randomRestaurants);
-
-	            
-	              
+	          
 	              List<Map<String, String>> favoriteCategories = customerDAO.getFavoriteCategoriesListByCustomerId(customerId);
 	              request.setAttribute("favoriteCategories", favoriteCategories);
+	              
+	            List<Integer> ids =   customerDAO.getCustomerFavoriteCategoryIds(customerId);
+	              
+	    
+	            List<Restaurant> category1 = customerDAO.getCategoryRestaurant(ids.get(0));
+	            List<Restaurant> category2 = customerDAO.getCategoryRestaurant(ids.get(1)); // categoryId2 대신 ids.get(1) 사용
+	            List<Restaurant> category3 = customerDAO.getCategoryRestaurant(ids.get(2)); // categoryId3 대신 ids.get(2) 사용
+	  
+	            
+	            
+	              
+	              // Store the category lists in the session
+	              session.setAttribute("category1", category1);
+	              session.setAttribute("category2", category2);
+	              session.setAttribute("category3", category3);
 	              // 회원 정보 페이지로 이동
 	              return "/Recommendation.jsp";
 	          } catch (Exception e) {
