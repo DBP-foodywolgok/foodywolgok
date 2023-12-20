@@ -21,7 +21,6 @@ import controller.restaurant.SearchController;
 import controller.restaurant.ViewRestaurantController;
 import controller.restaurant.ViewWishlistController;
 import controller.restaurant.WishlistUpdateController;
-import controller.restaurant.ViewWishlistListController;
 import controller.diary.RegisterDiaryController;
 import controller.diary.UpdateDiaryController;
 import controller.diary.ViewDiaryController;
@@ -32,7 +31,6 @@ import controller.restaurant.SearchController;
 import controller.myrestaurant.FindRestaurantController;
 import controller.myrestaurant.ListMyRestaurantController;
 import controller.myrestaurant.RegisterMyRestaurantController;
->>>>>>> 068b7d143028ea874e06ca41e7f06d82a28c3e3a
 import model.dao.CustomerDAO;
 import model.dao.RestaurantDAO;
 import model.service.CustomerService;
