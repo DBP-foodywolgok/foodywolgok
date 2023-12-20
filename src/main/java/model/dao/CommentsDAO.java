@@ -83,7 +83,7 @@ public class CommentsDAO {
 	 * 주어진 댓글 ID에 해당하는 댓글 정보를 데이터베이스에서 찾아 Comments 도메
 	인 클래스에
 	 * 저장하여 반환. */
-	/*public Comments findComment(int comment_id) throws SQLException {
+	public Comments findComment(int comment_id) throws SQLException {
 		String sql = "SELECT diary_id, customer_id, content "
 				+ "FROM COMMENTS "
 				+ "WHERE comment_id=? ";
@@ -104,7 +104,7 @@ public class CommentsDAO {
 			jdbcUtil.close(); // resource 반환
 		}
 		return null;
-	}*/
+	}
 	/**
 	 * 특정 다이어리에 작성된 댓글을 검색하여 List에 저장 및 반환, comment_id순
 	 */

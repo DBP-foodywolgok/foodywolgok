@@ -11,13 +11,13 @@ public class Comments {
 
 	public Comments(){};
 
-	/*public Comments(int comment_id, String content, int diary_id, int customer_id) {
+	public Comments(int comment_id, String content, int diary_id, int customer_id) {
 		super();
 		this.comment_id = comment_id;
 		this.content = content;
 		this.diary_id = diary_id;
 		this.customer_id = customer_id;
-	}*/
+	}
 	
 	public Comments(int comment_id, String content, int diary_id, int customer_id, String name) {
 		super();
