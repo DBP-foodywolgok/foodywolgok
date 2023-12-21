@@ -30,7 +30,7 @@ public class FindRestaurantController implements Controller {
 		
 		/* GET request: Restaurant 검색창 요청 */
 		if (request.getMethod().equals("GET")) {
-			log.debug("My Restaurant RegisterForm Request");
+			log.debug("My Restaurant SearchForm Request");
 			
 			return "/FindRestaurant.jsp";
 		}

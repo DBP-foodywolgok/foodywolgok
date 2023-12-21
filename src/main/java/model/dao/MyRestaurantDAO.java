@@ -119,33 +119,12 @@ public class MyRestaurantDAO {
 		} return 0;
 	}
 	
-	// My_restaurant 테이블 데이터 수정 (식당이 DB에 등록되어 있는 경우)
-	public int updateMyRestaurantByRes(My_restaurant myR, int mrId) {
+	// My_restaurant 테이블 데이터 수정 (별점과 메모)
+	public int updateMyRestaurant(int score, String memo, int mrId) {
 		int result = 0;
-		String updateByRes = "UPDATE my_restaurant SET name = NULL, address = NULL, "
-							+ "score = ?, memo = ?, restaurant_id = ?, category_id = ? "
+		String updateByRes = "UPDATE my_restaurant SET score = ?, memo = ? "
 							+ "WHERE my_restaurant_id = ?";
-		Object[] param = new Object[] { myR.getScore(), myR.getMemo(), myR.getRestaurantId(), myR.getCategoryId(), mrId };
-		jdbcUtil.setSqlAndParameters(updateByRes, param);
-		try {
-			result = jdbcUtil.executeUpdate();
-			return result;
-		} catch (Exception ex) {
-			jdbcUtil.rollback();
-			ex.printStackTrace();
-		} finally {
-			jdbcUtil.commit();
-			jdbcUtil.close();
-		} return 0;
-	}
-	
-	// My_restaurant 테이블 데이터 수정 (사용자가 직접 식당 정보를 입력할 경우)
-	public int updateMyRestaurantByUser(My_restaurant myR, int mrId) {
-		int result = 0;
-		String updateByRes = "UPDATE my_restaurant SET name = ?, address = ?, "
-							+ "score = ?, memo = ?, restaurant_id = NULL, category_id = ? "
-							+ "WHERE my_restaurant_id = ?";
-		Object[] param = new Object[] { myR.getName(), myR.getAddress(), myR.getScore(), myR.getMemo(), myR.getCategoryId(), mrId };
+		Object[] param = new Object[] { score, memo, mrId };
 		jdbcUtil.setSqlAndParameters(updateByRes, param);
 		try {
 			result = jdbcUtil.executeUpdate();

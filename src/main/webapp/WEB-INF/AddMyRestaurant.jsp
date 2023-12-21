@@ -28,7 +28,7 @@
 	</script>
 </head>
 <body>
-	<div class="container">
+	<div class="container text-center">
 	<form action="/myRestaurant/register" method="post" onsubmit="return validateForm()">
 		<div class="input-group mb-3">
 			<span class="input-group-text" id="inputGroup-sizing-default">이름</span>
