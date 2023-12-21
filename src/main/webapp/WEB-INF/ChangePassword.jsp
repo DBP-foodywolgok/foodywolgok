@@ -108,6 +108,8 @@
                    <label for="inputEmail" class="sr-only">변경된 비밀번호가 표시됩니다</label>
                         <input type="text" id="notify" class="form-control rounded-input" placeholder="변경된 비밀번호가 표시됩니다" value="<%= password %>" autofocus="">
                    
+      
+<a href="/customer/main" class="btn btn-lg btn-primary btn-purple" style="margin-left: 10px;">메인으로 이동</a>
             </div>
         </form>
     </div>

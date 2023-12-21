@@ -117,6 +117,10 @@
 <body>
     <div class="container mt-5">
         <h2 class="text-center mb-4">친구 목록</h2>
+        
+          <a href="/customer/main" class="btn btn-primary">메인으로 이동</a>
+          
+          <hr>
 
         <form id="deleteFriendForm" method="post" action="/customer/deleteFriends"> <!-- 액션 수정 -->
     <div class="list-group">
