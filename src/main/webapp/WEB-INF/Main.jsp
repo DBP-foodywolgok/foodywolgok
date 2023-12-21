@@ -122,27 +122,30 @@
     <!-- 캐러셀 내용 -->
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="https://via.placeholder.com/800x400?text=Slide+1" class="d-block w-100" alt="슬라이드 1">
+            <img src="/upload/mydiary.png" class="d-block w-100" style="max-width: 100%; max-height: 500px; object-fit: cover;" alt="나만의 맛집 다이어리">
             <div class="carousel-caption d-none d-md-block">
-                <h5>나만의 맛집 다이어리</h5>
-                <p>나만의 맛집 다이어리를 관리할 수 있습니다.</p>
+                <h5 style="font-weight: bold; color: black;">나만의 맛집 다이어리</h5>
+                <p style="font-weight: bold; color: black;">나만의 맛집 다이어리를 관리할 수 있습니다.</p>
             </div>
         </div>
+
         <div class="carousel-item">
-            <img src="https://via.placeholder.com/800x400?text=Slide+2" class="d-block w-100" alt="슬라이드 2">
+            <img src="/upload/last.png" class="d-block w-100" style="max-width: 100%; max-height: 500px; object-fit: cover;" alt="슬라이드 2">
             <div class="carousel-caption d-none d-md-block">
-                <h5>맛집 추천 기능</h5>
-                <p>사용자의 선호 카테고리에 있는 맛집을 추천해드립니다.</p>
+                <h5 style="font-weight: bold; color: black;">맛집 추천 기능</h5>
+                <p style="font-weight: bold; color: black;">사용자의 선호 카테고리에 있는 맛집을 추천해드립니다.</p>
             </div>
         </div>
+
         <div class="carousel-item">
-            <img src="https://via.placeholder.com/800x400?text=Slide+3" class="d-block w-100" alt="슬라이드 3">
+            <img src="/upload/friendList.png" class="d-block w-100" style="max-width: 100%; max-height: 500px; object-fit: cover;" alt="슬라이드 3">
             <div class="carousel-caption d-none d-md-block">
-                <h5>친구 공유 기능</h5>
-                <p>나만의 맛집을 친구와 공유할 수 있습니다.</p>
+                <h5 style="font-weight: bold; color: black;">친구 공유 기능</h5>
+                <p style="font-weight: bold; color: black;">나만의 맛집을 친구와 공유할 수 있습니다.</p>
             </div>
         </div>
     </div>
+</div>
 
     <!-- 캐러셀 제어 버튼 -->
     <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev">
