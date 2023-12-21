@@ -78,47 +78,47 @@ public class MyRestaurantTest {
 			e.printStackTrace();
 		}
 		
-		/* My Restaurant 수정 */
-		// DB에 등록된 식당일 경우
-		My_restaurant restaurantToUpdate = new My_restaurant();
-		
-		restaurantToUpdate.setScore(4); // 별점
-		restaurantToUpdate.setMemo("엄청 맛있다. 김치찌개가 진짜 맛있다."); // 메모
-		restaurantToUpdate.setRestaurantId(4); // 식당 ID
-		restaurantToUpdate.setCategoryId(8); // 카테고리 ID
-		
-		try {
-			int result = MyRestaurantDAO.updateMyRestaurantByRes(restaurantToUpdate, 4);
-			
-			if (result > 0) {
-				System.out.println("\n나의 식당 수정에 성공했습니다.");
-			} else {
-				System.out.println("\n나의 식당 수정에 실패했습니다.");
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		// DB에 등록된 식당이 아닐 경우
-		My_restaurant restaurantToUpdate2 = new My_restaurant();
-		
-		restaurantToUpdate2.setName("스테이크 식당"); // 이름
-		restaurantToUpdate2.setAddress("서울특별시 동덕로 10");
-		restaurantToUpdate2.setScore(5); // 별점
-		restaurantToUpdate2.setMemo("엄청 맛있다."); // 메모
-		restaurantToUpdate2.setCategoryId(8); // 카테고리 ID
-		
-		try {
-			int result = MyRestaurantDAO.updateMyRestaurantByUser(restaurantToUpdate2, 5);
-			
-			if (result > 0) {
-				System.out.println("\n나의 식당 수정에 성공했습니다.");
-			} else {
-				System.out.println("\n나의 식당 수정에 실패했습니다.");
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+//		/* My Restaurant 수정 */
+//		// DB에 등록된 식당일 경우
+//		My_restaurant restaurantToUpdate = new My_restaurant();
+//		
+//		restaurantToUpdate.setScore(4); // 별점
+//		restaurantToUpdate.setMemo("엄청 맛있다. 김치찌개가 진짜 맛있다."); // 메모
+//		restaurantToUpdate.setRestaurantId(4); // 식당 ID
+//		restaurantToUpdate.setCategoryId(8); // 카테고리 ID
+//		
+//		try {
+//			int result = MyRestaurantDAO.updateMyRestaurantByRes(restaurantToUpdate, 4);
+//			
+//			if (result > 0) {
+//				System.out.println("\n나의 식당 수정에 성공했습니다.");
+//			} else {
+//				System.out.println("\n나의 식당 수정에 실패했습니다.");
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		
+//		// DB에 등록된 식당이 아닐 경우
+//		My_restaurant restaurantToUpdate2 = new My_restaurant();
+//		
+//		restaurantToUpdate2.setName("스테이크 식당"); // 이름
+//		restaurantToUpdate2.setAddress("서울특별시 동덕로 10");
+//		restaurantToUpdate2.setScore(5); // 별점
+//		restaurantToUpdate2.setMemo("엄청 맛있다."); // 메모
+//		restaurantToUpdate2.setCategoryId(8); // 카테고리 ID
+//		
+//		try {
+//			int result = MyRestaurantDAO.updateMyRestaurantByUser(restaurantToUpdate2, 5);
+//			
+//			if (result > 0) {
+//				System.out.println("\n나의 식당 수정에 성공했습니다.");
+//			} else {
+//				System.out.println("\n나의 식당 수정에 실패했습니다.");
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 		
 //		/* My Restaurant 삭제 */
 //		try {

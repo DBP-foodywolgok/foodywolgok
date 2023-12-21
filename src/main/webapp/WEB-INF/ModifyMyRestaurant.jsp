@@ -14,32 +14,39 @@
 	</style>
 </head>
 <body>
-	<div class="container">
+	<div class="container text-center">
+	<form action="/myRestaurant/update" method="post">
 		<div class="input-group mb-3">
 			<span class="input-group-text" id="inputGroup-sizing-default">이름</span>
-  			<input type="text" class="form-control" placeholder="식당의 이름을 입력하세요." aria-label="Restaurant's Name" aria-describedby="button-addon2">
-  			<button class="btn btn-outline-secondary" type="button" id="button-addon2">검색</button>
+  			<input type="text" id="name" name="name" value="${mr.name}" class="form-control" aria-label="Restaurant's Name" aria-describedby="button-addon2" readonly>
 		</div>
 		<div class="input-group mb-3">
   			<span class="input-group-text" id="inputGroup-sizing-default">위치</span>
-  			<input type="text" class="form-control" aria-label="Location" aria-describedby="inputGroup-sizing-default">
+  			<input type="text" id="address" name="address" value="${mr.address}" class="form-control" aria-label="Location" aria-describedby="inputGroup-sizing-default" readonly>
 		</div>
 		<div class="input-group mb-3">
-  			<label class="input-group-text" for="inputGroupSelect01">카테고리</label>
-  			<select class="form-select" id="inputGroupSelect01">
-    			<option selected>식당의 카테고리를 입력하세요.</option>
-    			<option value="1">한식</option>
-    			<option value="2">양식</option>
-    			<option value="3">중식</option>
-    			<option value="4">일식</option>
+  			<label class="input-group-text" for="inputGroupSelect01">별점</label>
+  			<select class="form-select" id="score" name="score">
+    			<option disabled value="0" selected>별점을 선택하세요.</option>
+    			<option value="1" ${mr.score == '1' ? 'selected' : ''}>1</option>
+    			<option value="2" ${mr.score == '2' ? 'selected' : ''}>2</option>
+    			<option value="3" ${mr.score == '3' ? 'selected' : ''}>3</option>
+    			<option value="4" ${mr.score == '4' ? 'selected' : ''}>4</option>
+    			<option value="5" ${mr.score == '5' ? 'selected' : ''}>5</option>
   			</select>
+		</div>
+		<div class="input-group mb-3">
+  			<span class="input-group-text" id="inputGroup-sizing-default">카테고리</span>
+  			<input type="text" id="category" name="category" value="${mr.category}" class="form-control" aria-label="Category" aria-describedby="inputGroup-sizing-default" readonly>
 		</div>
 		<div class="input-group">
   			<span class="input-group-text">메모</span>
-  			<textarea class="form-control" aria-label="Memo" rows="8"></textarea>
+  			<textarea id="memo" name="memo" class="form-control" aria-label="Memo" rows="8">${mr.memo}</textarea>
 		</div><br>
-		<input class="btn btn-outline-primary" type="button" value="수정"> 
-		<button type="button" class="btn btn-outline-primary" onClick="location.href='${pageContext.request.contextPath}/myRestaurant/list'">취소</button>
+		<input type="hidden" name="mrId" value="${param.id}">
+		<input class="btn btn-outline-primary" type="submit" value="수정"> 
+		<button type="button" class="btn btn-outline-primary" onClick="location.href='/myRestaurant/view?id=${param.id}'">취소</button>
+	</form>
 	</div>
 </body>
 </html>
