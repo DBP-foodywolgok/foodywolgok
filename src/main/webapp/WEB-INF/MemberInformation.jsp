@@ -62,8 +62,8 @@
                     value="${favorCategories}" required>
                 <!-- Assuming 'email' is a property in your Customer model -->
             </div>
-                    <button type="submit" class="btn btn-lg btn-primary btn-purple">확인</button>
-             
+                 <button type="submit" class="btn btn-lg btn-primary btn-purple">확인</button>
+<a href="/customer/main" class="btn btn-lg btn-primary btn-purple" style="margin-left: 10px;">메인으로 이동</a>
             <!-- 버튼 -->
     
         </form>

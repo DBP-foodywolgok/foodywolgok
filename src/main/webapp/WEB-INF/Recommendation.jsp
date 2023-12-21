@@ -35,13 +35,15 @@
 
 <body>
     <main>
-        <section class="py-5 text-center container">
-            <div class="row py-lg-5">
-                <div class="col-lg-6 col-md-8 mx-auto">
-                    <h1 class="fw-light">추천 음식</h1>
-                </div>
-            </div>
-        </section>
+       <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="fw-light">추천 음식</h1>
+            <!-- 버튼 추가 -->
+            <a href="/customer/main" class="btn btn-primary">메인으로 이동</a>
+        </div>
+    </div>
+</section>
 
         <hr>
 
