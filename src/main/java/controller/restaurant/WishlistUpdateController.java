@@ -25,6 +25,7 @@ public class WishlistUpdateController implements Controller {
             int customerId = (int) session.getAttribute(UserSessionUtils.USER_SESSION_KEY);
             String name = request.getParameter("name");
             String memo = request.getParameter("memo");
+            String color = request.getParameter("color");
             Date currentDate = new java.sql.Date(System.currentTimeMillis());
 
             System.out.println("customerId: " + customerId);
@@ -34,7 +35,7 @@ public class WishlistUpdateController implements Controller {
             newWishlist.setName(name);
             newWishlist.setMemo(memo);
             newWishlist.setCreated_at(currentDate);
-            newWishlist.setColor("red");
+            newWishlist.setColor(color);
 
             System.out.println("newWishlist: " + newWishlist.getColor() + newWishlist.getCreated_at());
             restaurantDAO.createWishlist(newWishlist);
@@ -53,4 +54,3 @@ public class WishlistUpdateController implements Controller {
         }
     }
 }
-

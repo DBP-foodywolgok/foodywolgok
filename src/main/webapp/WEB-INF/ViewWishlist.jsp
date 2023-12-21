@@ -49,14 +49,14 @@
         </div>
         <c:choose>
             <c:when test="${not empty wishlist}">
-                <c:forEach var="item" items="${wishlist}">
-                    <div class="wishlist-item">
-                        <button type="button" class="btn btn-primary">
-                            <div class="item-name">${item.name}</div>
-                            <div class="item-memo">${item.memo}</div>
-                        </button>
-                    </div>
-                </c:forEach>
+                <c:forEach var="item" items="${wishlist}" varStatus="loop">
+				    <div class="wishlist-item" style="background-color: ${item.color};">
+				        <button type="button" class="btn btn-primary" style="background-color: ${item.color};">
+				            <div class="item-name">${item.name}</div>
+				            <div class="item-memo">${item.memo}</div>
+				        </button>
+				    </div>
+				</c:forEach>
             </c:when>
             <c:otherwise>
                 <p>위시리스트가 비어있습니다.</p>
