@@ -4,9 +4,7 @@ public class Restaurant_Wishlist {
 
 	private int restaurant_wishlist_id;
 	private String nickname;
-	
 	private Restaurant restaurant;
-	
 	private Wishlist wishlist;
 
 	@Override
