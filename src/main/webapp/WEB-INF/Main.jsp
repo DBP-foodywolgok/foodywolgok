@@ -293,22 +293,23 @@
   <!-- Four columns of text -->
   <div class="row">
     <div class="col-lg-3">
-      <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>
+     
+       <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="/upload/diary.png" alt="Image 1">
       <h4 class="fw-normal">나만의 맛집 다이어리</h4>
       <p><a class="btn btn-secondary" href="/customer/diaryList">View details »</a></p>
     </div><!-- /.col-lg-3 -->
     <div class="col-lg-3">
-      <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>
+      <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="/upload/recommend.png" alt="Image 1">
       <h4 class="fw-normal">음식 추천</h4>
       <p><a class="btn btn-secondary" href="/customer/recommendation">View details »</a></p>
     </div><!-- /.col-lg-3 -->
     <div class="col-lg-3">
-      <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>
+   <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="/upload/friend.png" alt="Image 1">
       <h4 class="fw-normal">친구 리스트</h4>
       <p><a class="btn btn-secondary" href="/customer/FriendList">View details »</a></p>
     </div><!-- /.col-lg-3 -->
     <div class="col-lg-3">
-      <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>
+      <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="/upload/map.png" alt="Image 1">
       <h4 class="fw-normal">음식 지도</h4>
       <p><a class="btn btn-secondary" href="/restaurant/map">View details »</a></p>
     </div><!-- /.col-lg-3 -->
