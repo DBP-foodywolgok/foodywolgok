@@ -121,6 +121,7 @@
 	        	<button class="btn btn-primary" onClick= "myDiaryList()">내 다이어리 보기</button>
 	        	<button class="btn btn-primary" onClick= "friendDiaryList()">친구 다이어리 보기</button>
 			</form>-->
+			
 			<form name="form" method="POST" action="/diary/list?command=my">
 	    		<button class="btn btn-custom">내 다이어리 보기</button>
 			</form>

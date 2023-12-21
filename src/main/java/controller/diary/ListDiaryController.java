@@ -31,17 +31,22 @@ public class ListDiaryController implements Controller{
         // DAO를 통해 해당 사용자의 친구 id 리스트 가져오기
         List<Customer> friendList = customerDAO.getFriends(customerId);
         StringBuilder friendIds = new StringBuilder();
-
-        for (Customer customer : friendList) {
-            if (friendIds.length() > 0) {
-                friendIds.append(",");
-            }
-            friendIds.append(customer.getCustomer_id());
+        
+        if (!friendList.isEmpty()) {
+	         for (Customer customer : friendList) {
+	            if (friendIds.length() > 0) {
+	                friendIds.append(",");
+	            }
+	            friendIds.append(customer.getCustomer_id());
+	        }
         }
-
+       
         //String friends= friendIds.toString();
         
-        List<Diary> friendDiaryList = diaryDAO.findDiarysByFriends(friendIds.toString());
+        List<Diary> friendDiaryList  = null;
+        if (!friendList.isEmpty())
+        	friendDiaryList = diaryDAO.findDiarysByFriends(friendIds.toString());
+       
         request.setAttribute("customerId", customerId);
         
         //
@@ -52,6 +57,7 @@ public class ListDiaryController implements Controller{
             request.setAttribute("diaryList", myDiaryList);
             return "/DiaryList.jsp";
         } else if ("friend".equals(command)) {
+        	
         	request.setAttribute("diaryList", friendDiaryList);
         	
         	return "/DiaryList.jsp";
