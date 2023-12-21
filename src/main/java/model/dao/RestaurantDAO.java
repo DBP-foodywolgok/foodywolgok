@@ -277,7 +277,28 @@ public class RestaurantDAO {
             jdbcUtil.close();
         }
     }
+    
 
+    public int countRestaurantsInWishlist(int wishlist_id) {
+        ResultSet rs = null;
+        int restaurantCount = 0;
 
+        StringBuilder query = new StringBuilder();
+        query.append("SELECT COUNT(restaurant_id) AS count FROM restaurant_wishlist WHERE wishlist_id = ?");
+
+        try {
+            jdbcUtil.setSqlAndParameters(query.toString(), new Object[]{wishlist_id});
+            rs = jdbcUtil.executeQuery();
+
+            if (rs.next()) {
+                restaurantCount = rs.getInt("count");
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            jdbcUtil.close();
+        }
+        return restaurantCount;
+    }
 
 }

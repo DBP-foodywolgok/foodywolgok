@@ -54,6 +54,8 @@
 				        <button type="button" class="btn btn-primary" style="background-color: ${item.color};">
 				            <div class="item-name">${item.name}</div>
 				            <div class="item-memo">${item.memo}</div>
+				            <!-- 개수 출력 부분 -->
+				            <div class="restaurant-count">음식점 수: ${count[loop.index]}</div>
 				        </button>
 				    </div>
 				</c:forEach>

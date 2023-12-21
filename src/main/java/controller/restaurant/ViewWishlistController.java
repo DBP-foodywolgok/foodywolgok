@@ -1,5 +1,6 @@
 package controller.restaurant;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,8 +22,14 @@ public class ViewWishlistController implements Controller {
             HttpSession session = request.getSession();
             int customerId = (int) session.getAttribute(UserSessionUtils.USER_SESSION_KEY);
             List<Wishlist> wishlist = restaurantDAO.getWishlistByCustomerId(customerId);
+            
+            List<Integer> count = new ArrayList<>();
+            for (Wishlist wish : wishlist) {
+                int restaurantCount = restaurantDAO.countRestaurantsInWishlist(wish.getWishlist_id());
+                count.add(restaurantCount);
+            }
+            request.setAttribute("count", count);
             request.setAttribute("wishlist", wishlist);
-            System.out.println("wishlist: " + wishlist);
             
             return "/ViewWishlist.jsp"; // 위시리스트 리스트를 보여줄 JSP
         } catch (NumberFormatException e) {
