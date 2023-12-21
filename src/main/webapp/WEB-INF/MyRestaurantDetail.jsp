@@ -37,7 +37,7 @@
 		</div><br>
 		<button type="button" class="btn btn-outline-primary" onClick="location.href='/myRestaurant/update?id=${param.id}'">수정</button>
 		<button type="button" class="btn btn-outline-primary" onClick="location.href='/myRestaurant/delete?id=${param.id}'">삭제</button>
-		<button type="button" class="btn btn-outline-primary" onClick="location.href='/myRestaurant/list?sort=0'">목록</button>
+		<button type="button" class="btn btn-outline-primary" onClick="location.href='/myRestaurant/list'">목록</button>
 	</div>
 </body>
 </html>
