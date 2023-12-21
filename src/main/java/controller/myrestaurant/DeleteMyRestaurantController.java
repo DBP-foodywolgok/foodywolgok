@@ -24,7 +24,7 @@ public class DeleteMyRestaurantController implements Controller{
 		
 		int result = MyRestaurantDAO.deleteMyRestaurant(Integer.parseInt(id));
 		
-		return "redirect:/myRestaurant/list";
+		return "redirect:/myRestaurant/list?sort=0";
 	}
 
 }

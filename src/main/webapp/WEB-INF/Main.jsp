@@ -240,7 +240,7 @@
             </c:choose>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/myRestaurant/list" id="mrestaurantBtn">
+            <a class="nav-link" href="/myRestaurant/list?sort=0" id="mrestaurantBtn">
               My Restaurant 
               <span id="customerName">${sessionScope.customerName}</span>
             </a>

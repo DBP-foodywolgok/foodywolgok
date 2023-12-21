@@ -81,7 +81,7 @@
 		<input type="hidden" name="type" value="<%= (request.getParameter("id") != null) ? 0 : 1 %>">
 		<input type="hidden" name="restaurantId" value="<%= (request.getParameter("id") != null) ? request.getParameter("id") : 0 %>">
 		<input class="btn btn-outline-primary" type="submit" value="등록"> 
-		<button type="button" class="btn btn-outline-primary" onClick="location.href='/myRestaurant/list'">취소</button>
+		<button type="button" class="btn btn-outline-primary" onClick="location.href='/myRestaurant/list?sort=0'">취소</button>
 	</form>
 	</div>
 </body>
