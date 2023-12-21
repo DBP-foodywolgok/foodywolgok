@@ -11,6 +11,7 @@ public class Wishlist {
 	private int customer_id;
 	private String name;
 	private String memo;
+	
 
 	public Wishlist() {
         super();
@@ -51,8 +52,12 @@ public class Wishlist {
 	public void setMemo(String memo) {
 		this.memo = memo;
 	}
+	@Override
+	public String toString() {
+	    return "Wishlist ID: " + this.wishlist_id + ", Customer ID: " + this.customer_id + ", Name: " + this.name + ", Memo: " + this.memo;
+	}
 	
-	public Wishlist(int wishlist_id, String color, Date created_at, int customer_id, String name, String memo) {
+    public Wishlist(int wishlist_id, String color, Date created_at, int customer_id, String name, String memo) {
 		super();
 		this.wishlist_id = wishlist_id;
 		this.color = color;

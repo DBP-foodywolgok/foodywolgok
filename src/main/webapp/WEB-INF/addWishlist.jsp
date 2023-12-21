@@ -13,6 +13,8 @@
         <input type="text" id="name" name="name"><br><br>
         <label for="memo">Memo:</label><br>
         <textarea id="memo" name="memo"></textarea><br><br>
+        <label for="color">Color:</label><br>
+		<input type="color" id="color" name="color"><br><br>
         <input type="submit" value="Submit">
     </form>
 </body>
