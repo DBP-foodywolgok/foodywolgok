@@ -15,6 +15,11 @@
         .center-text {
         	text-align: center;
         }
+        #title {
+        	text-decoration: none;
+        	color: inherit;
+        	cursor: pointer;
+        }
 	</style>
 </head>
 <body>
@@ -23,11 +28,11 @@
 		<div class="container text-center">
 			<div class="row align-items-center justify-content-between">
     			<div class="col-4 text-start">
-      				<h2><strong>나의 맛집</strong></h2>
+      				<h2><strong><a id ="title" href="/myRestaurant/list">나의 맛집</a></strong></h2>
     			</div>
     			<div class="col-8 text-end">
     				<div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
-  						<button type="button" class="btn btn-outline-primary" onClick="location.href='/myRestaurant/list?sort=0'">최신순</button>
+  						<button type="button" class="btn btn-outline-primary" onClick="location.href='/myRestaurant/list'">최신순</button>
   						<button type="button" class="btn btn-outline-primary" onClick="location.href='/myRestaurant/list?sort=1'">오래된순</button>
   						<button type="button" class="btn btn-outline-primary" onClick="location.href='/myRestaurant/list?sort=2'">별점순</button>
 					</div>
@@ -36,6 +41,76 @@
     		</div>
   		</div>
 	</div>
+	<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  		<div class="container-fluid">
+    		<div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      			<ul class="navbar-nav">
+        			<li class="nav-item">
+          				<a class="nav-link" href="/myRestaurant/list?category=1">양식</a>
+        			</li>
+        			<li class="nav-item">
+          				<a class="nav-link" href="/myRestaurant/list?category=2">퓨전요리</a>
+        			</li>
+        			<li class="nav-item">
+          				<a class="nav-link" href="/myRestaurant/list?category=3">태국식</a>
+        			</li>
+        			<li class="nav-item">
+          				<a class="nav-link" href="/myRestaurant/list?category=4">샐러드</a>
+        			</li>
+        			<li class="nav-item">
+          				<a class="nav-link" href="/myRestaurant/list?category=5">죽</a>
+        			</li>
+        			<li class="nav-item">
+          				<a class="nav-link" href="/myRestaurant/list?category=6">디저트</a>
+        			</li>
+        			<li class="nav-item">
+          				<a class="nav-link" href="/myRestaurant/list?category=7">음료</a>
+        			</li>
+        			<li class="nav-item">
+          				<a class="nav-link" href="/myRestaurant/list?category=8">한식</a>
+        			</li>
+        			<li class="nav-item">
+          				<a class="nav-link" href="/myRestaurant/list?category=9">중식</a>
+        			</li>
+      			</ul>
+    		</div>
+  		</div>
+	</nav>
+	<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  		<div class="container-fluid">
+    		<div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      			<ul class="navbar-nav">
+        			<li class="nav-item">
+          				<a class="nav-link" href="/myRestaurant/list?category=10">아시아</a>
+        			</li>
+        			<li class="nav-item">
+          				<a class="nav-link" href="/myRestaurant/list?category=11">일식</a>
+        			</li>
+        			<li class="nav-item">
+          				<a class="nav-link" href="/myRestaurant/list?category=12">분식</a>
+        			</li>
+        			<li class="nav-item">
+          				<a class="nav-link" href="/myRestaurant/list?category=13">치킨</a>
+        			</li>
+        			<li class="nav-item">
+          				<a class="nav-link" href="/myRestaurant/list?category=14">고기</a>
+        			</li>
+        			<li class="nav-item">
+          				<a class="nav-link" href="/myRestaurant/list?category=15">패스트푸드</a>
+        			</li>
+        			<li class="nav-item">
+          				<a class="nav-link" href="/myRestaurant/list?category=16">족발</a>
+        			</li>
+        			<li class="nav-item">
+          				<a class="nav-link" href="/myRestaurant/list?category=17">야식</a>
+        			</li>
+        			<li class="nav-item">
+          				<a class="nav-link" href="/myRestaurant/list?category=18">주점</a>
+        			</li>
+      			</ul>
+    		</div>
+  		</div>
+	</nav>
 	<hr>
     <div class="list-group">
     <c:choose>

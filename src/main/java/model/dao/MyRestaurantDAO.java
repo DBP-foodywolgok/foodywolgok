@@ -117,6 +117,40 @@ public class MyRestaurantDAO {
 		} return null;
 	}
 	
+	// 사용자의 My restaurant 카테고리별 조회 (최신순)
+	public List<My_restaurant> getMyRestaurantByCategory(int customerId, int categoryId) {
+		String allQuery = "SELECT CASE WHEN m.restaurant_id IS NOT NULL THEN r.name ELSE m.name END AS name, "
+						+ "CASE WHEN m.restaurant_id IS NOT NULL THEN r.address ELSE m.address END AS address, "
+						+ "c.name category, m.score score, m.memo memo, m.created_at created_at, m.customer_id customer_id, m.my_restaurant_id id "
+						+ "FROM my_restaurant m LEFT OUTER JOIN restaurant r ON m.restaurant_id = r.restaurant_id "
+						+ "JOIN category c ON m.category_id = c.category_id "
+						+ "WHERE m.customer_id = ? AND m.category_id = ?"
+						+ "ORDER BY m.created_at DESC";
+		Object[] param = new Object[] { customerId, categoryId };
+		jdbcUtil.setSqlAndParameters(allQuery, param);
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();
+			List<My_restaurant> list = new ArrayList<My_restaurant>();
+			while(rs.next()) {
+				My_restaurant dto = new My_restaurant();
+				dto.setId(rs.getInt("ID")); // my_restaurant_id
+				dto.setName(rs.getString("NAME")); // 식당 이름
+				dto.setAddress(rs.getString("ADDRESS")); // 식당 주소
+				dto.setCategory(rs.getString("CATEGORY")); // 식당 카테고리
+				dto.setScore(rs.getInt("SCORE")); // 점수
+				dto.setMemo(rs.getString("MEMO")); // 메모
+				dto.setCreated_at(rs.getDate("CREATED_AT")); // 생성 시간
+					
+				list.add(dto);
+			}
+			return list;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();
+		} return null;
+	}
+	
 	// My restaurant ID로 My restaurant 조회
 	public My_restaurant getMyRestaurantById(int myRId) {
 		String searchQuery = "SELECT CASE WHEN m.restaurant_id IS NOT NULL THEN r.name ELSE m.name END AS name, "
