@@ -25,7 +25,12 @@
     			<div class="col-4 text-start">
       				<h2><strong>나의 맛집</strong></h2>
     			</div>
-    			<div class="col-4 text-end">
+    			<div class="col-8 text-end">
+    				<div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
+  						<button type="button" class="btn btn-outline-primary" onClick="location.href='/myRestaurant/list?sort=0'">최신순</button>
+  						<button type="button" class="btn btn-outline-primary" onClick="location.href='/myRestaurant/list?sort=1'">오래된순</button>
+  						<button type="button" class="btn btn-outline-primary" onClick="location.href='/myRestaurant/list?sort=2'">별점순</button>
+					</div>
       				<input class="btn btn-outline-primary" type="button" value="등록" onClick="location.href='/myRestaurant/register'">
     			</div>
     		</div>
@@ -51,6 +56,6 @@
 		</c:when>
 	</c:choose>
   	</div>
-</div> 
+</div>
 </body>
 </html>

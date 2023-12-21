@@ -56,7 +56,7 @@ public class UpdateMyRestaurantController implements Controller {
 		
 		int result = MyRestaurantDAO.updateMyRestaurant(Integer.parseInt(score), memo, Integer.parseInt(mrId));
 		
-		return "redirect:/myRestaurant/list";
+		return "redirect:/myRestaurant/list?sort=0";
 	}
 
 }
