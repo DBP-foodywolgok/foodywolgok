@@ -94,13 +94,15 @@
             <input type="text" id="findPasswordByEmail" name="findPasswordByEmail" class="form-control rounded-input" placeholder="이메일 주소" required="" autofocus="">
                <%   String password = (String) request.getAttribute("resultEmail"); %>
             <label for="inputPassword" class="sr-only">사용자의 비밀번호</label>
-        <input type="text" id="resultEmail" name="resultEmail" class="form-control rounded-input" placeholder="비밀번호가 표시됩니다" value="<%= password %>" autofocus="">
+    <input type="text" id="resultEmail" name="resultEmail" class="form-control rounded-input" placeholder="비밀번호가 표시됩니다" value="<%= password %>" autofocus="">
             <div class="checkbox">
                 <div style="margin-bottom: 20px;"></div>
                 <label>
                           <button class="btn btn-primary" type="submit">비밀번호 찾기</button>
+                             <a href="/customer/main" class="btn btn-primary" style="margin-left: 10px;">메인으로 이동</a>
                 </label>
             </div>
+         
         </form>
     </div>
 
