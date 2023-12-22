@@ -28,7 +28,7 @@
 ## 📓 참조 문서
 - [💜  푸디 월곡 노션 페이지](https://pebble-measure-4b9.notion.site/3086c01a3f45485ca64bad018c78dae2?pvs=4)   
 - [💜  푸디 월곡 피그마 페이지 ](https://www.figma.com/file/CfnJsOOVrd8f0k3iofRjtT/%ED%91%B8%EB%94%94%EC%9B%94%EA%B3%A1?type=design&node-id=0-1&mode=design&t=P2pVpaW1ZaaWsYO3-0)   
-- [💜  푸디 월곡 시연 영상](https://drive.google.com/file/d/1uEXrfOPOuCDEwFvjCyTY_0o9G5LWVPiA/view?usp=sharing)  <시현 영상을 위한 id: fourI@naver.com password: 1111>
+- [💜  푸디 월곡 시연 영상](https://drive.google.com/file/d/1uEXrfOPOuCDEwFvjCyTY_0o9G5LWVPiA/view?usp=sharing)  <시현 영상을 위한 id: fourI@naver.com (대문자 I 입니다)  password: 1111>
 
 ## 💻 완성된 웹사이트    
 ❤ : 김지희 구현 💙: 고유민 구현 💛 : 백가은 구현 💚 : 김지은 구현 <br>
