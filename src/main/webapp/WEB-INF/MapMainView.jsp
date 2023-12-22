@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="model.dao.RestaurantDAO" %>
+<%@ page import="model.Wishlist" %>
+<%@ page import="model.Restaurant" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,15 +67,33 @@
         </div>
     </div>
 
-    <div id="map" style="height: 600px; margin: 0 auto; text-align: center;">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3160.8019231069825!2d127.03980290993829!3d37.60682052170297!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357cbb7f99870231%3A0x385ba8fa17b75534!2z64-Z642V7Jes7J6Q64yA7ZWZ6rWQ!5e0!3m2!1sko!2skr!4v1702763149423!5m2!1sko!2skr" width="700" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
+    <!-- 지도를 표시할 div -->
+	<div id="map" style="height: 600px;"></div>
+	<!-- Bootstrap JS 추가 -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-    <script>
-        document.getElementById("backButton").addEventListener("click", function() {
-            window.history.back();
-        });
-    </script>
+	<script>
+	function initMap() {
+	    var mapOptions = {
+	        center: { lat: 37.6068163, lng: 127.0423832 },
+	        zoom: 15
+	    };
+
+	    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+	    <c:forEach var="restaurant" items="${restaurants}">
+	        var restaurantLocation = new google.maps.LatLng(${restaurant.latitude}, ${restaurant.longitude});
+	        var marker = new google.maps.Marker({
+	            position: restaurantLocation,
+	            map: map,
+	            title: "${restaurant.name}"
+	        });
+	    </c:forEach>
+	}
+	</script>
+	<script
+  defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDQm_zM-xWsN7J4X6_hSp2S9-YQjH--3A&callback=initMap"
+></script>
 </body>
 </html>

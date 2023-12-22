@@ -311,7 +311,7 @@
     <div class="col-lg-3">
       <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="/upload/map.png" alt="Image 1">
       <h4 class="fw-normal">음식 지도</h4>
-      <p><a class="btn btn-secondary" href="/restaurant/map">View details »</a></p>
+      <p><a class="btn btn-secondary" href="/restaurant/goMap">View details »</a></p>
     </div><!-- /.col-lg-3 -->
   </div><!-- /.row -->
 </div><!-- /.container -->

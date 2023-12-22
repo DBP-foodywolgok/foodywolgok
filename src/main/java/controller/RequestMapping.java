@@ -18,6 +18,7 @@ import controller.customer.CustomerRegisterController;
 import controller.restaurant.AddWishlistController;
 import controller.restaurant.CategoryController;
 import controller.restaurant.ChooseWishlistController;
+import controller.restaurant.RestaurantController;
 import controller.restaurant.SearchController;
 import controller.restaurant.ViewRestaurantController;
 import controller.restaurant.ViewWishlistController;
@@ -56,6 +57,7 @@ public class RequestMapping {
     	
     	
     	// 각 uri에 대응되는 controller 객체를 생성 및 저장
+        mappings.put("/restaurant/goMap", new RestaurantController());//추가
         mappings.put("/customer/register", new CustomerRegisterController());
         mappings.put("/customer/loginPage", new ForwardController("/login.jsp"));
     	mappings.put("/", new ForwardController("/Main.jsp"));

@@ -82,7 +82,20 @@ public class RestaurantTest {
             e.printStackTrace();
             System.out.println("Failed to create Test Wishlist");
         }
-
-
+        System.out.println("\n위시에서 음식점 검색!!!");
+       
+        int customerId = 65;
+        List<Wishlist> wishlists = restaurantDAO.getWishlistByCustomerId(customerId);
+        if (wishlists != null) {
+            for (Wishlist wishlist : wishlists) {
+                System.out.println("Wishlist ID: " + wishlist.getWishlist_id());
+                System.out.println("Color: " + wishlist.getColor());
+                System.out.println("Created at: " + wishlist.getCreated_at());
+                System.out.println("Name: " + wishlist.getName());
+                System.out.println("Memo: " + wishlist.getMemo());
+            }        
+        } else {
+            System.out.println("해당 customerId에 대한 위시리스트가 없습니다.");
+        }
     }
 }

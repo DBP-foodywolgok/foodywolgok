@@ -77,6 +77,36 @@ public class RestaurantDAO {
         }
         return restaurant;
     }
+    public Restaurant getRestaurantByIdAndCustomerId(int customerId, int restaurantId) {
+        ResultSet rs = null;
+        Restaurant restaurant = null;
+
+        StringBuilder query = new StringBuilder();
+        query.append("SELECT category_id, introduction, latitude, longitude, name, address ");
+        query.append("FROM restaurant ");
+        query.append("WHERE restaurant_id = ? AND customer_id = ?");
+
+        try {
+            jdbcUtil.setSqlAndParameters(query.toString(), new Object[]{restaurantId, customerId});
+            rs = jdbcUtil.executeQuery();
+            if (rs.next()) {
+                int categoryId = rs.getInt("category_id");
+                String introduction = rs.getString("introduction");
+                float latitude = rs.getFloat("latitude");
+                float longitude = rs.getFloat("longitude");
+                String name = rs.getString("name");
+                String address = rs.getString("address");
+
+                restaurant = new Restaurant(restaurantId, categoryId, introduction, latitude, longitude, name, address);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            jdbcUtil.close();
+        }
+        return restaurant;
+    }
+
     
     //customerId에 해당하는 위시리스트 가져오기
     public List<Wishlist> getWishlistByCustomerId(int customerId) {
@@ -301,4 +331,27 @@ public class RestaurantDAO {
         return restaurantCount;
     }
 
+  //특정 위시리스트 ID에 해당하는 레스토랑 ID 검색
+    public int getRestaurantIdByWishlistId(int wishlistId) {
+        ResultSet rs = null;
+        int restaurantId = 0;
+
+        StringBuilder query = new StringBuilder();
+        query.append("SELECT restaurant_id FROM restaurant_wishlist WHERE wishlist_id = ?");
+
+        try {
+            jdbcUtil.setSqlAndParameters(query.toString(), new Object[]{wishlistId}); 
+            rs = jdbcUtil.executeQuery();
+
+            if (rs.next()) {
+                restaurantId = rs.getInt("restaurant_id");
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            jdbcUtil.close();
+        }
+        return restaurantId;
+    }
+    
 }
