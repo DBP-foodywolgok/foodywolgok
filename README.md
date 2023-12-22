@@ -30,12 +30,11 @@
 
 ## 💻 완성된 웹사이트    
 ❤ : 김지희 구현 💙: 고유민 구현 💛 : 백가은 구현 💚 : 김지은 구현 <br>
-❤  메인 페이지 
-![20231222_154754](https://github.com/DBP-foodywolgok/foodywolgok/assets/66732343/d829e93a-c320-4d8c-9e4b-ceb4f0e86c0f)
+❤  메인 페이지 구현
 
 ❤  사용자 음식 추천 기능 
-![20231222_155147](https://github.com/DBP-foodywolgok/foodywolgok/assets/66732343/59716baf-565b-4ee6-9177-fdac65e6c493)
-![20231222_155340](https://github.com/DBP-foodywolgok/foodywolgok/assets/66732343/618d9fc1-5291-4f37-95d7-20fad2685923)
+![image](https://github.com/DBP-foodywolgok/foodywolgok/assets/66732343/68ca1311-b48a-4ef0-a1fc-88ea6a77a009)
+![20231222_174857](https://github.com/DBP-foodywolgok/foodywolgok/assets/66732343/6bb945ae-41c2-44d1-826b-4fb64ccaa163)
 
 ❤ 친구 리스트 관리 기능
 ![20231222_155533](https://github.com/DBP-foodywolgok/foodywolgok/assets/66732343/1ed7fbb5-d7af-4f7f-8746-154920319f7f)
