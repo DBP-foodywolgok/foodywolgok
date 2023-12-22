@@ -180,6 +180,30 @@ public class RestaurantDAO {
         return null;
     }
     
+    public List<Integer> getRestaurantIdsByWishlistId(int wishlistId) {
+        ResultSet rs = null;
+        List<Integer> restaurantIds = new ArrayList<>();
+        
+        StringBuilder query = new StringBuilder();
+        query.append("SELECT restaurant_id FROM restaurant_wishlist WHERE wishlist_id = ?");
+
+        try {
+            jdbcUtil.setSqlAndParameters(query.toString(), new Object[]{wishlistId});
+            rs = jdbcUtil.executeQuery();
+            while(rs.next()) {
+                int restaurantId = rs.getInt("restaurant_id");
+                restaurantIds.add(restaurantId);
+            }
+            return restaurantIds;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            jdbcUtil.close();
+        }
+        return null;
+    }
+
+    
   //Wishlist에 음식점 추가
     public void addRestaurantToWishlist(int wishlistId, int restaurantId) {
         String insert = "INSERT INTO restaurant_wishlist (wishlist_id, restaurant_id) VALUES (?, ?)";
