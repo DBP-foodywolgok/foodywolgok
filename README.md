@@ -29,7 +29,7 @@
 - [💜  푸디 월곡 시연 영상](https://www.figma.com/file/CfnJsOOVrd8f0k3iofRjtT/%ED%91%B8%EB%94%94%EC%9B%94%EA%B3%A1?type=design&node-id=0-1&mode=design&t=P2pVpaW1ZaaWsYO3-0)  
 
 ## 💻 완성된 웹사이트    
-❤ : 김지희 구현 💙: 고유민 구현 💛 : 백가은 구현 💚 : 김지은 구현 
+❤ : 김지희 구현 💙: 고유민 구현 💛 : 백가은 구현 💚 : 김지은 구현 <br>
 ❤  메인 페이지 
 ![20231222_154754](https://github.com/DBP-foodywolgok/foodywolgok/assets/66732343/d829e93a-c320-4d8c-9e4b-ceb4f0e86c0f)
 
