@@ -68,13 +68,27 @@
 </div>
 
 <div class="container text-center">
-    <div class="row">
-        <div class="col-md-2 mx-auto">
-            <a href="/kindlist?category=한식" class="btn btn-primary" role="button">한식</a>
+        <div class="row">
+            <div class="col-md-2 mx-auto">
+                <a href="/kindlist?category=한식" class="btn btn-primary" role="button">한식</a>
+            </div>
+            <div class="col-md-2 mx-auto">
+                <a href="/kindlist?category=양식" class="btn btn-primary" role="button">양식</a>
+            </div>
+            <div class="col-md-2 mx-auto">
+                <a href="/kindlist?category=아시아" class="btn btn-primary" role="button">아시아</a>
+            </div>
+            <div class="col-md-2 mx-auto">
+                <a href="/kindlist?category=일식" class="btn btn-primary" role="button">일식</a>
+            </div>
+            <div class="col-md-2 mx-auto">
+                <a href="/kindlist?category=중식" class="btn btn-primary" role="button">중식</a>
+            </div>
+            <div class="col-md-2 mx-auto">
+                <a href="/kindlist?category=분식" class="btn btn-primary" role="button">분식</a>
+            </div>
         </div>
-        <!-- 다른 버튼들도 동일하게 추가 -->
     </div>
-</div>
 
 <div class="restaurant-info">
     <c:if test="${not empty restaurant and not empty isInWishlist}">

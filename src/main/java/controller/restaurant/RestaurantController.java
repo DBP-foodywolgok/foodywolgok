@@ -29,23 +29,25 @@ public class RestaurantController implements Controller {
             List<Wishlist> wishlists = restaurantDAO.getWishlistByCustomerId(customerId);
             
             // (2) 위시리스트의 레스토랑 ID들을 찾아옴
-            List<Integer> restaurantIds = new ArrayList<>();
+            Set<Integer> restaurantIds = new HashSet<>(); // Set을 사용하여 중복된 값 방지
             for (Wishlist wishlist : wishlists) {
                 int wishlistId = wishlist.getWishlist_id();
-                // 해당 위시리스트 ID에 해당하는 레스토랑 ID를 가져옴
-                int restaurantId = restaurantDAO.getRestaurantIdByWishlistId(wishlistId);
-                restaurantIds.add(restaurantId);
+                List<Integer> wishlistRestaurantIds = restaurantDAO.getRestaurantIdsByWishlistId(wishlistId);
+                restaurantIds.addAll(wishlistRestaurantIds); // 중복 없이 추가
+                System.out.println("Wishlist ID: " + wishlistId + ", Restaurant IDs: " + wishlistRestaurantIds);
             }
+            System.out.println("Unique Restaurant IDs: " + restaurantIds);
+
             Set<Integer> uniqueRestaurantIds = new HashSet<>(restaurantIds);
             restaurantIds.clear();
             restaurantIds.addAll(uniqueRestaurantIds);
 
-         // (3) 레스토랑 ID로 레스토랑 검색
+            System.out.println("Unique Restaurant IDs: " + restaurantIds);
+
             List<Restaurant> restaurants = new ArrayList<>();
             for (int restaurantId : restaurantIds) {
                 Restaurant restaurant = restaurantDAO.getRestaurantById(restaurantId);
                 boolean isDuplicate = false;
-                // 중복 체크
                 for (Restaurant existingRestaurant : restaurants) {
                     if (existingRestaurant != null && existingRestaurant.getRestaurant_id() == restaurantId) {
                         isDuplicate = true;
@@ -57,8 +59,8 @@ public class RestaurantController implements Controller {
                 }
             }
 
+            System.out.println("Final Restaurants: " + restaurants);
 
-            System.out.println("restaurants: " + restaurants);
             request.setAttribute("restaurants", restaurants);
             
 
